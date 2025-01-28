@@ -7,6 +7,12 @@ environment:
   sdk: ^3.5.0
 
 dependencies:
+  activity_repository:
+    path: packages/activity_repository
+  api_client:
+    path: packages/api_client
+  authentication_repository:
+    path: packages/authentication_repository
   bloc: ^8.1.4
   flutter:
     sdk: flutter

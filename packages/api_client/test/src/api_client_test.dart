@@ -5,7 +5,7 @@ import 'package:test/test.dart';
 void main() {
   group('ApiClient', () {
     test('can be instantiated', () {
-      expect(ApiClient(), isNotNull);
+      expect(ApiClient(authHeaderProvider: Stream.empty()), isNotNull);
     });
   });
 }

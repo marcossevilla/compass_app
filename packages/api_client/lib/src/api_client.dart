@@ -1,10 +1,8 @@
+import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 
 import 'package:api_client/api_client.dart';
-
-/// Adds the `Authentication` header to a header configuration.
-typedef AuthHeaderProvider = String? Function();
 
 /// {@template api_client}
 /// Client for the Compass API.
@@ -12,10 +10,10 @@ typedef AuthHeaderProvider = String? Function();
 class ApiClient {
   /// {@macro api_client}
   ApiClient({
+    required Stream<String?> authHeaderProvider,
     String? host,
     int? port,
     HttpClient? client,
-    AuthHeaderProvider? authHeaderProvider,
   })  : _host = host ?? 'localhost',
         _port = port ?? 8080,
         _client = client ?? HttpClient(),
@@ -24,18 +22,20 @@ class ApiClient {
   final String _host;
   final int _port;
   final HttpClient _client;
-  final AuthHeaderProvider? _authHeaderProvider;
+  final Stream<String?> _authHeaderProvider;
 
-  void _authHeader(HttpHeaders headers) {
-    final header = _authHeaderProvider?.call();
-    if (header != null) headers.add(HttpHeaders.authorizationHeader, header);
+  Future<void> _authHeader(HttpHeaders headers) async {
+    final header = await _authHeaderProvider.last;
+    if (header != null) {
+      headers.add(HttpHeaders.authorizationHeader, header);
+    }
   }
 
   /// Returns a [List] of [Continent]s.
   Future<List<Continent>> getContinents() async {
     try {
       final request = await _client.get(_host, _port, '/continent');
-      _authHeader(request.headers);
+      await _authHeader(request.headers);
       final response = await request.close();
 
       if (response.statusCode != 200) {
@@ -54,7 +54,7 @@ class ApiClient {
   Future<List<Destination>> getDestinations() async {
     try {
       final request = await _client.get(_host, _port, '/destination');
-      _authHeader(request.headers);
+      await _authHeader(request.headers);
       final response = await request.close();
 
       if (response.statusCode != 200) {
@@ -77,7 +77,7 @@ class ApiClient {
         _port,
         '/destination/$ref/activity',
       );
-      _authHeader(request.headers);
+      await _authHeader(request.headers);
       final response = await request.close();
 
       if (response.statusCode != 200) {
@@ -96,7 +96,7 @@ class ApiClient {
   Future<List<BookingApiModel>> getBookings() async {
     try {
       final request = await _client.get(_host, _port, '/booking');
-      _authHeader(request.headers);
+      await _authHeader(request.headers);
       final response = await request.close();
 
       if (response.statusCode != 200) {
@@ -115,7 +115,7 @@ class ApiClient {
   Future<BookingApiModel> getBooking(int id) async {
     try {
       final request = await _client.get(_host, _port, '/booking/$id');
-      _authHeader(request.headers);
+      await _authHeader(request.headers);
       final response = await request.close();
 
       if (response.statusCode != 200) {
@@ -136,7 +136,7 @@ class ApiClient {
   Future<BookingApiModel> postBooking(BookingApiModel booking) async {
     try {
       final request = await _client.post(_host, _port, '/booking');
-      _authHeader(request.headers);
+      await _authHeader(request.headers);
       request.write(jsonEncode(booking));
       final response = await request.close();
 
@@ -158,7 +158,7 @@ class ApiClient {
   Future<UserApiModel> getUser() async {
     try {
       final request = await _client.get(_host, _port, '/user');
-      _authHeader(request.headers);
+      await _authHeader(request.headers);
       final response = await request.close();
 
       if (response.statusCode != 200) {
@@ -179,7 +179,7 @@ class ApiClient {
   Future<void> deleteBooking(int id) async {
     try {
       final request = await _client.delete(_host, _port, '/booking/$id');
-      _authHeader(request.headers);
+      await _authHeader(request.headers);
       final response = await request.close();
 
       if (response.statusCode != 204) {
