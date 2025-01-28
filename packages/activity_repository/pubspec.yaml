@@ -6,6 +6,10 @@ publish_to: none
 environment:
   sdk: ^3.5.0
 
+dependencies:
+  api_client:
+    path: ../api_client
+
 dev_dependencies:
   mocktail: ^1.0.4
   test: ^1.25.8
