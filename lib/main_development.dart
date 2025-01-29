@@ -26,5 +26,5 @@ Future<void> main() async {
     apiClient: apiClient,
   );
 
-  await bootstrap(() => const App());
+  await bootstrap(() => const AppView());
 }

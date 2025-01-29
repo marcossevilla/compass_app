@@ -75,6 +75,13 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "10.0.0"
+  booking_repository:
+    dependency: "direct main"
+    description:
+      path: "/Users/marcossevilla/development/noscope/compass_app/packages/booking_repository"
+      relative: false
+    source: path
+    version: "0.1.0+1"
   boolean_selector:
     dependency: transitive
     description:
@@ -107,6 +114,13 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.19.0"
+  continent_repository:
+    dependency: "direct main"
+    description:
+      path: "/Users/marcossevilla/development/noscope/compass_app/packages/continent_repository"
+      relative: false
+    source: path
+    version: "0.1.0+1"
   convert:
     dependency: transitive
     description:
@@ -131,6 +145,13 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.0.6"
+  destination_repository:
+    dependency: "direct main"
+    description:
+      path: "/Users/marcossevilla/development/noscope/compass_app/packages/destination_repository"
+      relative: false
+    source: path
+    version: "0.1.0+1"
   diff_match_patch:
     dependency: transitive
     description:
@@ -247,6 +268,13 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.5"
+  itinerary_config_repository:
+    dependency: "direct main"
+    description:
+      path: "/Users/marcossevilla/development/noscope/compass_app/packages/itinerary_config_repository"
+      relative: false
+    source: path
+    version: "0.1.0+1"
   js:
     dependency: transitive
     description:
@@ -620,6 +648,13 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.4.0"
+  user_repository:
+    dependency: "direct main"
+    description:
+      path: "/Users/marcossevilla/development/noscope/compass_app/packages/user_repository"
+      relative: false
+    source: path
+    version: "0.1.0+1"
   vector_math:
     dependency: transitive
     description:

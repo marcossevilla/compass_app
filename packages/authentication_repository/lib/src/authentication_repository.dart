@@ -15,6 +15,9 @@ class AuthenticationRepository {
   final Logger _logger;
   final AuthApiClient _authApiClient;
 
+  /// Check if the user is authenticated.
+  Stream<bool> get isAuthenticated => _authApiClient.isAuthenticated;
+
   /// Fetch the user's profile.
   Future<void> login({
     required String email,
