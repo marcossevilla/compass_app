@@ -1,0 +1,16 @@
+name: itinerary_config_repository
+description: Repository that manages the itinerary configuration domain.
+version: 0.1.0+1
+publish_to: none
+
+environment:
+  sdk: ^3.5.0
+
+dependencies:
+  api_client:
+    path: ../api_client
+
+dev_dependencies:
+  mocktail: ^1.0.4
+  test: ^1.25.8
+  very_good_analysis: ^7.0.0
