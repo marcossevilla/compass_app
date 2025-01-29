@@ -16,4 +16,4 @@ dev_dependencies:
   json_serializable: ^6.9.2
   mocktail: ^1.0.4
   test: ^1.25.8
-  very_good_analysis: ^6.0.0
+  very_good_analysis: ^7.0.0

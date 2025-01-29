@@ -1,5 +1,3 @@
-// ignore_for_file: lines_longer_than_80_chars
-
 import 'package:json_annotation/json_annotation.dart';
 
 part 'activity.g.dart';
@@ -52,8 +50,9 @@ class Activity {
   /// e.g. 'Glacier Trekking and Ice Climbing'
   final String name;
 
-  /// e.g. 'Embark on a thrilling adventure exploring the awe-inspiring glaciers of Alaska.
-  /// Hike across the icy terrain, marvel at the deep blue crevasses, and even try your hand at ice climbing for an unforgettable experience.'
+  /// e.g. 'Embark on a thrilling adventure exploring the awe-inspiring glaciers
+  /// of Alaska. Hike across the icy terrain, marvel at the deep blue crevasses,
+  /// and even try your hand at ice climbing for an unforgettable experience.'
   final String description;
 
   /// e.g. 'Matanuska Glacier or Mendenhall Glacier'
