@@ -1,7 +1,125 @@
 {
     "@@locale": "en",
-    "counterAppBarTitle": "Counter",
-    "@counterAppBarTitle": {
-        "description": "Text shown in the AppBar of the Counter Page"
+    "activities": "Activities",
+    "@activities": {
+        "description": ""
+    },
+    "addDates": "Add Dates",
+    "@addDates": {
+        "description": ""
+    },
+    "bookingDeleted": "Booking deleted",
+    "@bookingDeleted": {
+        "description": ""
+    },
+    "bookNewTrip": "Book New Trip",
+    "@bookNewTrip": {
+        "description": ""
+    },
+    "close": "Close",
+    "@close": {
+        "description": ""
+    },
+    "confirm": "Confirm",
+    "@confirm": {
+        "description": ""
+    },
+    "daytime": "Daytime",
+    "@daytime": {
+        "description": ""
+    },
+    "errorWhileDeletingBooking": "Error while deleting booking",
+    "@errorWhileDeletingBooking": {
+        "description": ""
+    },
+    "errorWhileLoadingActivities": "Error while loading activities",
+    "@errorWhileLoadingActivities": {
+        "description": ""
+    },
+    "errorWhileLoadingBooking": "Error while loading booking",
+    "@errorWhileLoadingBooking": {
+        "description": ""
+    },
+    "errorWhileLoadingContinents": "Error while loading continents",
+    "@errorWhileLoadingContinents": {
+        "description": ""
+    },
+    "errorWhileLoadingDestinations": "Error while loading destinations",
+    "@errorWhileLoadingDestinations": {
+        "description": ""
+    },
+    "errorWhileLoadingHome": "Error while loading home",
+    "@errorWhileLoadingHome": {
+        "description": ""
+    },
+    "errorWhileLogin": "Error while trying to login",
+    "@errorWhileLogin": {
+        "description": ""
+    },
+    "errorWhileLogout": "Error while trying to logout",
+    "@errorWhileLogout": {
+        "description": ""
+    },
+    "errorWhileSavingActivities": "Error while saving activities",
+    "@errorWhileSavingActivities": {
+        "description": ""
+    },
+    "errorWhileSavingItinerary": "Error while saving itinerary",
+    "@errorWhileSavingItinerary": {
+        "description": ""
+    },
+    "errorWhileSharing": "Error while sharing booking",
+    "@errorWhileSharing": {
+        "description": ""
+    },
+    "evening": "Evening",
+    "@evening": {
+        "description": ""
+    },
+    "login": "Login",
+    "@login": {
+        "description": ""
+    },
+    "nameTrips": "{name}'s Trips",
+    "@nameTrips": {
+        "description": "",
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "search": "Search",
+    "@search": {
+        "description": ""
+    },
+    "searchDestination": "Search destination",
+    "@searchDestination": {
+        "description": ""
+    },
+    "selected": "{selection} selected",
+    "@selected": {
+        "description": "",
+        "placeholders": {
+            "selection": {
+                "type": "int"
+            }
+        }
+    },
+    "shareTrip": "Share Trip",
+    "@shareTrip": {
+        "description": ""
+    },
+    "tryAgain": "Try again",
+    "@tryAgain": {
+        "description": ""
+    },
+    "yourChosenActivities": "Your chosen activities",
+    "@yourChosenActivities": {
+        "description": ""
+    },
+    "when": "When",
+    "@when": {
+        "description": ""
     }
 }
