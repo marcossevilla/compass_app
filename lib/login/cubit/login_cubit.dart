@@ -19,17 +19,17 @@ class LoginCubit extends Cubit<LoginState> {
     try {
       final (email, password) = credentials;
 
-      emit(const LoginState(status: LoginStatus.loading));
+      emit(state.copyWith(status: LoginStatus.loading));
 
       await _authenticationRepository.login(
         email: email,
         password: password,
       );
 
-      emit(const LoginState(status: LoginStatus.success));
+      emit(state.copyWith(status: LoginStatus.success));
     } on Exception catch (error) {
       _log.warning('Login failed! $error');
-      emit(const LoginState(status: LoginStatus.failure));
+      emit(state.copyWith(status: LoginStatus.failure));
     }
   }
 }
