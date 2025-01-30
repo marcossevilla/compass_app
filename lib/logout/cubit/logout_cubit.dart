@@ -23,7 +23,7 @@ class LogoutCubit extends Cubit<LogoutState> {
     try {
       emit(state.copyWith(status: LogoutStatus.loading));
       await _authenticationRepository.logout();
-      _itineraryConfigRepository.setItineraryConfig(const ItineraryConfig());
+      _itineraryConfigRepository.itineraryConfig = const ItineraryConfig();
       emit(state.copyWith(status: LogoutStatus.success));
     } on Exception catch (e) {
       _log.warning('Logout failed', e);

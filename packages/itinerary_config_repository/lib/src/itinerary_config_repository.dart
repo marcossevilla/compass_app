@@ -15,8 +15,7 @@ class ItineraryConfigRepository {
   }
 
   /// Sets the itinerary configuration.
-  bool setItineraryConfig(ItineraryConfig itineraryConfig) {
+  set itineraryConfig(ItineraryConfig itineraryConfig) {
     _itineraryConfig = itineraryConfig;
-    return true;
   }
 }
