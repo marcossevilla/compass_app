@@ -39,4 +39,23 @@ class ItineraryConfig {
 
   /// Selected [Activity] references.
   final List<String> activities;
+
+  /// Returns an instance of [ItineraryConfig] with updated properties.
+  ItineraryConfig copyWith({
+    String? continent,
+    DateTime? startDate,
+    DateTime? endDate,
+    int? guests,
+    String? destination,
+    List<String>? activities,
+  }) {
+    return ItineraryConfig(
+      continent: continent ?? this.continent,
+      startDate: startDate ?? this.startDate,
+      endDate: endDate ?? this.endDate,
+      guests: guests ?? this.guests,
+      destination: destination ?? this.destination,
+      activities: activities ?? this.activities,
+    );
+  }
 }
