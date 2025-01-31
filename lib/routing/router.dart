@@ -1,6 +1,7 @@
 import 'package:authentication_repository/authentication_repository.dart';
 import 'package:compass_app/home/home.dart';
 import 'package:compass_app/login/login.dart';
+import 'package:compass_app/results/results.dart';
 import 'package:compass_app/routing/routing.dart';
 import 'package:compass_app/search_form/search_form.dart';
 import 'package:flutter/widgets.dart';
@@ -29,6 +30,10 @@ GoRouter router(ValueNotifier<bool> isAuthenticated) {
           GoRoute(
             path: Routes.searchRelative,
             builder: (context, state) => const SearchFormPage(),
+          ),
+          GoRoute(
+            path: Routes.resultsRelative,
+            builder: (context, state) => const ResultsPage(),
           ),
         ],
       ),

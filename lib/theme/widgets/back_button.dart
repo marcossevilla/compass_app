@@ -1,17 +1,18 @@
 import 'dart:ui' as ui;
 
-import 'package:compass_app/routing/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-/// Home button to navigate back to the '/' path.
-class HomeButton extends StatelessWidget {
-  const HomeButton({
-    this.blur = false,
+/// Custom back button to pop navigation.
+class AppBackButton extends StatelessWidget {
+  const AppBackButton({
     super.key,
+    this.onTap,
+    this.blur = false,
   });
 
   final bool blur;
+  final GestureTapCallback? onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +20,6 @@ class HomeButton extends StatelessWidget {
       height: 40,
       width: 40,
       child: Stack(
-        fit: StackFit.expand,
         children: [
           if (blur)
             ClipRect(
@@ -32,15 +32,17 @@ class HomeButton extends StatelessWidget {
             decoration: BoxDecoration(
               border: Border.all(color: Colors.grey.shade100),
               borderRadius: BorderRadius.circular(8),
-              color: Colors.transparent,
             ),
             child: InkWell(
               borderRadius: BorderRadius.circular(8),
-              onTap: () => context.go(Routes.home),
+              onTap: () {
+                if (onTap != null) return onTap!();
+                return context.pop();
+              },
               child: Center(
                 child: Icon(
                   size: 24,
-                  Icons.home_outlined,
+                  Icons.arrow_back,
                   color: Theme.of(context).colorScheme.onSurface,
                 ),
               ),

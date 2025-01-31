@@ -1,8 +1,4 @@
-// Copyright 2024 The Flutter team. All rights reserved.
-// Use of this source code is governed by a BSD-style license that can be
-// found in the LICENSE file.
-
-import 'dart:ui';
+import 'dart:ui' as ui;
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -30,7 +26,7 @@ class TagChip extends StatelessWidget {
     return ClipRRect(
       borderRadius: BorderRadius.circular(height / 2),
       child: BackdropFilter(
-        filter: ImageFilter.blur(sigmaX: 3, sigmaY: 3),
+        filter: ui.ImageFilter.blur(sigmaX: 3, sigmaY: 3),
         child: DecoratedBox(
           decoration: BoxDecoration(
             color: chipColor ?? tagChipTheme?.chipColor ?? Colors.transparent,
