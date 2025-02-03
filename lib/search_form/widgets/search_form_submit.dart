@@ -24,6 +24,7 @@ class SearchFormSubmit extends StatelessWidget {
     );
 
     return BlocListener<SearchFormCubit, SearchFormState>(
+      listenWhen: (previous, current) => previous.status != current.status,
       listener: (context, state) {
         if (state.status == SearchFormStatus.configSaved) {
           context.go(Routes.results);
@@ -58,7 +59,7 @@ class SearchFormSubmit extends StatelessWidget {
           child: SizedBox(
             height: 52,
             child: Center(
-              child: Text(l10n.search),
+              child: Text(l10n.search.toUpperCase()),
             ),
           ),
         ),

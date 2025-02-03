@@ -46,9 +46,11 @@ class _LoginViewState extends State<LoginView> {
               content: Text(l10n.errorWhileLogin),
               action: SnackBarAction(
                 label: l10n.tryAgain,
-                onPressed: () => context
-                    .read<LoginCubit>()
-                    .login((_email.value.text, _password.value.text)),
+                onPressed: () async {
+                  await context
+                      .read<LoginCubit>()
+                      .login((_email.value.text, _password.value.text));
+                },
               ),
             ),
           ),

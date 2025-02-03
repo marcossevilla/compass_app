@@ -91,6 +91,9 @@ class BookingApiModel {
   factory BookingApiModel.fromJson(Map<String, Object?> json) =>
       _$BookingApiModelFromJson(json);
 
+  /// Converts a [BookingApiModel] to a JSON object.
+  Map<String, Object?> toJson() => _$BookingApiModelToJson(this);
+
   /// Booking ID.
   /// Generated when stored in server.
   final int? id;

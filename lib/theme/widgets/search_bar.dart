@@ -10,9 +10,9 @@ import 'package:itinerary_config_repository/itinerary_config_repository.dart';
 /// Includes [HomeButton] to navigate back to the '/' path.
 class AppSearchBar extends StatelessWidget {
   const AppSearchBar({
-    super.key,
     this.config,
     this.onTap,
+    super.key,
   });
 
   final ItineraryConfig? config;
@@ -62,9 +62,7 @@ class _QueryText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (config == null) {
-      return const _EmptySearch();
-    }
+    if (config == null) return const _EmptySearch();
 
     final ItineraryConfig(:continent, :startDate, :endDate, :guests) = config!;
     if (startDate == null ||

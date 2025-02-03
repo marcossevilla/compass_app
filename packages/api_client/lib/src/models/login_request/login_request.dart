@@ -5,7 +5,7 @@ part 'login_request.g.dart';
 /// {@template login_request}
 /// Simple data class to hold login request data.
 /// {@endtemplate}
-@JsonSerializable()
+@JsonSerializable(createToJson: true)
 class LoginRequest {
   /// {@macro login_request}
   const LoginRequest({
@@ -17,6 +17,9 @@ class LoginRequest {
   factory LoginRequest.fromJson(Map<String, Object?> json) {
     return _$LoginRequestFromJson(json);
   }
+
+  /// Converts a [LoginRequest] to a [Map].
+  Map<String, Object?> toJson() => _$LoginRequestToJson(this);
 
   /// Email address.
   final String email;

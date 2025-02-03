@@ -47,13 +47,13 @@ class ResultsCubit extends Cubit<ResultsState> {
     } on Exception catch (e) {
       _log.warning('Failed to load destinations', e);
       emit(state.copyWith(status: ResultsStatus.searchFailure));
-    } finally {
-      emit(state.copyWith(status: ResultsStatus.initial));
     }
   }
 
   Future<void> updateItineraryConfig(String destinationRef) async {
     assert(destinationRef.isNotEmpty, 'destinationRef should not be empty');
+
+    final currentStatus = state.status;
 
     try {
       final itineraryConfig = _itineraryConfigRepository.itineraryConfig;
@@ -66,7 +66,7 @@ class ResultsCubit extends Cubit<ResultsState> {
       _log.warning('Failed to store ItineraryConfig', e);
       emit(state.copyWith(status: ResultsStatus.updateConfigFailure));
     } finally {
-      emit(state.copyWith(status: ResultsStatus.initial));
+      emit(state.copyWith(status: currentStatus));
     }
   }
 }

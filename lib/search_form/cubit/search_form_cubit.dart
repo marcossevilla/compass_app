@@ -45,10 +45,16 @@ class SearchFormCubit extends Cubit<SearchFormState> {
   Future<void> loadItineraryConfig() async {
     try {
       final itineraryConfig = _itineraryConfigRepository.itineraryConfig;
-      final dateRange = DateTimeRange(
-        start: itineraryConfig.startDate!,
-        end: itineraryConfig.endDate!,
-      );
+
+      DateTimeRange? dateRange;
+
+      if (itineraryConfig.startDate != null &&
+          itineraryConfig.endDate != null) {
+        dateRange = DateTimeRange(
+          start: itineraryConfig.startDate!,
+          end: itineraryConfig.endDate!,
+        );
+      }
 
       emit(
         state.copyWith(

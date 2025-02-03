@@ -20,8 +20,8 @@ class AuthApiClient {
         _client = client ?? HttpClient(),
         _logger = Logger('AuthApiClient'),
         _sharedPreferences = sharedPreferences,
-        _authToken = StreamController<String?>(),
-        _isAuthenticated = StreamController<bool>();
+        _authToken = StreamController<String?>.broadcast(),
+        _isAuthenticated = StreamController<bool>.broadcast();
 
   static const _tokenKey = 'TOKEN';
 
@@ -34,26 +34,25 @@ class AuthApiClient {
   final SharedPreferences _sharedPreferences;
 
   /// Provides the authentication token.
-  Stream<String?> get authToken {
-    return _authToken.stream.asBroadcastStream();
-  }
+  Stream<String?> get authToken => _authToken.stream;
+
+  Stream<bool?> get _isAuthenticatedStream => _isAuthenticated.stream;
 
   /// Check if the user is authenticated.
   Stream<bool> get isAuthenticated {
-    return _isAuthenticated.stream.asyncMap((isAuth) async {
+    return _isAuthenticatedStream.asyncMap((isAuth) async {
       if (isAuth != null) return isAuth;
       // No status cached, fetch from storage.
       await token();
       return isAuth ?? false;
-    }).asBroadcastStream();
+    });
   }
 
   /// Provides the authentication header.
   Stream<String?> get authHeaderProvider {
-    return authToken.map((token) {
-      if (token != null) return 'Bearer $token';
-      return null;
-    }).asBroadcastStream();
+    return authToken.map(
+      (token) => token != null ? 'Bearer $token' : null,
+    );
   }
 
   /// Fetch token from shared preferences.

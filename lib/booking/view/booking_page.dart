@@ -10,8 +10,21 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:itinerary_config_repository/itinerary_config_repository.dart';
 
+enum _BookingMode { create, load }
+
 class BookingPage extends StatelessWidget {
-  const BookingPage({super.key});
+  const BookingPage.loadBooking({
+    required int id,
+    super.key,
+  })  : _id = id,
+        _mode = _BookingMode.load;
+
+  const BookingPage.createBooking({super.key})
+      : _id = null,
+        _mode = _BookingMode.create;
+
+  final _BookingMode _mode;
+  final int? _id;
 
   @override
   Widget build(BuildContext context) {
@@ -27,12 +40,17 @@ class BookingPage extends StatelessWidget {
 
         final bookingShareUseCase = BookingShareUseCase.withSharePlus();
 
-        return BookingCubit(
+        final cubit = BookingCubit(
           createUseCase: bookingCreateUseCase,
           shareUseCase: bookingShareUseCase,
           bookingRepository: bookingRepository,
           itineraryConfigRepository: context.read<ItineraryConfigRepository>(),
         );
+
+        return switch (_mode) {
+          _BookingMode.create => cubit..createBooking(),
+          _BookingMode.load => cubit..loadBooking(_id!),
+        };
       },
       child: const BookingView(),
     );

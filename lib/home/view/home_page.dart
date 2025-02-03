@@ -60,7 +60,7 @@ class HomeView extends StatelessWidget {
           heroTag: null,
           key: const ValueKey('booking-button'),
           icon: const Icon(Icons.add_location_outlined),
-          label: Text(l10n.bookNewTrip),
+          label: Text(l10n.bookNewTrip.toUpperCase()),
           onPressed: () => context.go(Routes.search),
         ),
         body: SafeArea(
@@ -154,7 +154,9 @@ class _Booking extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
             Padding(
-              padding: EdgeInsets.only(right: dimensions.paddingHorizontal),
+              padding: EdgeInsets.only(
+                right: dimensions.paddingHorizontal,
+              ),
               child: const Icon(Icons.delete),
             ),
           ],
@@ -164,8 +166,8 @@ class _Booking extends StatelessWidget {
         onTap: onTap,
         child: Padding(
           padding: EdgeInsets.symmetric(
-            horizontal: dimensions.paddingScreenHorizontal,
             vertical: dimensions.paddingVertical,
+            horizontal: dimensions.paddingScreenHorizontal,
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,

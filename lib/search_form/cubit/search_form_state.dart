@@ -34,6 +34,7 @@ class SearchFormState extends Equatable {
       dateRange: dateRange ?? this.dateRange,
       selectedContinent: selectedContinent ?? this.selectedContinent,
       continents: continents ?? this.continents,
+      status: status ?? this.status,
     );
   }
 

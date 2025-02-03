@@ -17,7 +17,7 @@ class ResultsPage extends StatelessWidget {
       create: (_) => ResultsCubit(
         destinationRepository: context.read<DestinationRepository>(),
         itineraryConfigRepository: context.read<ItineraryConfigRepository>(),
-      ),
+      )..search(),
       child: const ResultsView(),
     );
   }
@@ -65,7 +65,9 @@ class ResultsView extends StatelessWidget {
                           itineraryConfig: state.itineraryConfig,
                         ),
                       ),
-                      Grid(destinations: state.destinations),
+                      Grid(
+                        destinations: state.destinations,
+                      ),
                     ],
                   ),
                 );
@@ -120,7 +122,7 @@ class ResultsSearchBar extends StatelessWidget {
       child: Padding(
         padding: EdgeInsets.only(
           top: dimensions.paddingScreenVertical,
-          bottom: dimensions.paddingScreenVertical,
+          bottom: AppDimensions.mobile.paddingScreenVertical,
         ),
         child: AppSearchBar(
           config: itineraryConfig,

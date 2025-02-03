@@ -33,8 +33,8 @@ class SearchFormContinent extends StatelessWidget {
           if (state.status == SearchFormStatus.error) {
             return Center(
               child: ErrorIndicator(
-                title: l10n.errorWhileLoadingContinents,
                 label: l10n.tryAgain,
+                title: l10n.errorWhileLoadingContinents,
                 onPressed: context.read<SearchFormCubit>().load,
               ),
             );
@@ -106,9 +106,9 @@ class CarouselItem extends StatelessWidget {
                   name,
                   textAlign: TextAlign.center,
                   style: GoogleFonts.openSans(
+                    color: Colors.white70,
                     fontSize: 18,
                     fontWeight: FontWeight.w500,
-                    color: Colors.white10,
                   ),
                 ),
               ),

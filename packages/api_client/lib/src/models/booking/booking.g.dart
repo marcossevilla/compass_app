@@ -11,7 +11,7 @@ Booking _$BookingFromJson(Map<String, dynamic> json) => Booking(
       endDate: DateTime.parse(json['endDate'] as String),
       destination:
           Destination.fromJson(json['destination'] as Map<String, dynamic>),
-      activity: (json['activity'] as List<dynamic>)
+      activities: (json['activities'] as List<dynamic>)
           .map((e) => Activity.fromJson(e as Map<String, dynamic>))
           .toList(),
       id: (json['id'] as num?)?.toInt(),
@@ -22,7 +22,7 @@ Map<String, dynamic> _$BookingToJson(Booking instance) => <String, dynamic>{
       'startDate': instance.startDate.toIso8601String(),
       'endDate': instance.endDate.toIso8601String(),
       'destination': instance.destination.toJson(),
-      'activity': instance.activity.map((e) => e.toJson()).toList(),
+      'activities': instance.activities.map((e) => e.toJson()).toList(),
     };
 
 BookingSummary _$BookingSummaryFromJson(Map<String, dynamic> json) =>

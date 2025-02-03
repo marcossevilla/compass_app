@@ -121,7 +121,7 @@ class ActivitiesCubit extends Cubit<ActivitiesState> {
     _log.finest('Activity $activityRef removed');
   }
 
-  Future<void> saveActivities() async {
+  void saveActivities() {
     try {
       final itineraryConfig = _itineraryConfigRepository.itineraryConfig;
 
