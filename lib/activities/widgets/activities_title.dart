@@ -1,5 +1,4 @@
 import 'package:compass_app/activities/activities.dart';
-import 'package:compass_app/l10n/gen/app_localizations.dart';
 import 'package:compass_app/l10n/l10n.dart';
 import 'package:compass_app/theme/theme.dart';
 import 'package:flutter/material.dart';

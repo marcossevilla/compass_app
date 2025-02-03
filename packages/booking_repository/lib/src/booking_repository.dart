@@ -20,7 +20,7 @@ class BookingRepository {
       endDate: booking.endDate,
       name: '${booking.destination.name}, ${booking.destination.continent}',
       destinationRef: booking.destination.ref,
-      activitiesRef: [...booking.activity.map((activity) => activity.ref)],
+      activitiesRef: [...booking.activities.map((activity) => activity.ref)],
     );
 
     await _apiClient.postBooking(bookingApiModel);
@@ -55,7 +55,7 @@ class BookingRepository {
       startDate: booking.startDate,
       endDate: booking.endDate,
       destination: destination,
-      activity: [...activities],
+      activities: [...activities],
     );
   }
 

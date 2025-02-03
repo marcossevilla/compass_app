@@ -13,7 +13,7 @@ class Booking {
     required this.startDate,
     required this.endDate,
     required this.destination,
-    required this.activity,
+    required this.activities,
     this.id,
   });
 
@@ -36,7 +36,7 @@ class Booking {
   final Destination destination;
 
   /// List of chosen activities.
-  final List<Activity> activity;
+  final List<Activity> activities;
 }
 
 /// {@template booking_summary}
