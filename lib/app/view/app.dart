@@ -59,9 +59,7 @@ class AppView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<bool>(
-      stream: context.select(
-        (AuthenticationRepository repository) => repository.isAuthenticated,
-      ),
+      stream: context.read<AuthenticationRepository>().isAuthenticated,
       builder: (context, snapshot) {
         final isAuthenticated = ValueNotifier(snapshot.data ?? false);
         return MaterialApp.router(

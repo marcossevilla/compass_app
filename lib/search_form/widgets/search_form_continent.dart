@@ -84,10 +84,11 @@ class CarouselItem extends StatelessWidget {
       child: ClipRRect(
         borderRadius: BorderRadius.circular(10),
         child: Stack(
+          fit: StackFit.expand,
           children: [
             CachedNetworkImage(
-              imageUrl: imageUrl,
               fit: BoxFit.cover,
+              imageUrl: imageUrl,
               errorWidget: (context, url, error) {
                 // NOTE: Getting "invalid image data" error for some of the
                 // images e.g. https://rstr.in/google/tripedia/jlbgFDrSUVE.
