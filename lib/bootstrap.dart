@@ -2,8 +2,8 @@ import 'dart:async';
 import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
+import 'package:logging/logging.dart';
 
 class AppBlocObserver extends BlocObserver {
   const AppBlocObserver();
@@ -22,6 +22,8 @@ class AppBlocObserver extends BlocObserver {
 }
 
 Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
+  Logger.root.level = Level.ALL;
+
   FlutterError.onError = (details) {
     log(details.exceptionAsString(), stackTrace: details.stack);
   };
@@ -29,15 +31,6 @@ Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
   Bloc.observer = const AppBlocObserver();
 
   // Add cross-flavor configuration here.
-
-  SystemChrome.setSystemUIOverlayStyle(
-    const SystemUiOverlayStyle(
-      statusBarColor: Color(0x00000000),
-      statusBarIconBrightness: Brightness.dark,
-      systemNavigationBarColor: Color(0xFFFFFFFF),
-      systemNavigationBarIconBrightness: Brightness.dark,
-    ),
-  );
 
   runApp(await builder());
 }

@@ -75,9 +75,11 @@ class _LoginViewState extends State<LoginView> {
                   ),
                   SizedBox(height: dimensions.paddingVertical),
                   FilledButton(
-                    onPressed: () => context
-                        .read<LoginCubit>()
-                        .login((_email.value.text, _password.value.text)),
+                    onPressed: () async {
+                      await context
+                          .read<LoginCubit>()
+                          .login((_email.value.text, _password.value.text));
+                    },
                     child: Text(l10n.login),
                   ),
                 ],

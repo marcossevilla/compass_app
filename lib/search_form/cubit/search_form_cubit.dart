@@ -73,18 +73,22 @@ class SearchFormCubit extends Cubit<SearchFormState> {
 
   void updateSelectedContinent(String? continent) {
     emit(state.copyWith(selectedContinent: continent));
+    _log.finest('Selected continent: $continent');
   }
 
   void updateDateTimeRange(DateTimeRange? dateTimeRange) {
     emit(state.copyWith(dateRange: dateTimeRange));
+    _log.finest('Selected date range: $dateTimeRange');
   }
 
   void incrementGuests() {
     emit(state.copyWith(guests: state.guests + 1));
+    _log.finest('Set guests number: ${state.guests + 1}');
   }
 
   void decrementGuests() {
     emit(state.copyWith(guests: state.guests - 1));
+    _log.finest('Set guests number: ${state.guests - 1}');
   }
 
   void updateItineraryConfig() {

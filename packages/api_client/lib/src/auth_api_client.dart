@@ -25,22 +25,25 @@ class AuthApiClient {
 
   static const _tokenKey = 'TOKEN';
 
-  final String _host;
   final int _port;
+  final String _host;
   final Logger _logger;
   final HttpClient _client;
-  final StreamController<bool?> _isAuthenticated;
-  final StreamController<String?> _authToken;
   final SharedPreferences _sharedPreferences;
+  final StreamController<String?> _authToken;
+  final StreamController<bool?> _isAuthenticated;
 
-  /// Provides the authentication token.
-  Stream<String?> get authToken => _authToken.stream;
-
-  Stream<bool?> get _isAuthenticatedStream => _isAuthenticated.stream;
+  /// Provides the authentication header.
+  Stream<String?> get authHeaderProvider {
+    return _authToken.stream.map(
+      (token) => token != null ? 'Bearer $token' : null,
+    );
+  }
 
   /// Check if the user is authenticated.
   Stream<bool> get isAuthenticated {
-    return _isAuthenticatedStream.asyncMap((isAuth) async {
+    _isAuthenticated.onListen = token;
+    return _isAuthenticated.stream.asyncMap((isAuth) async {
       if (isAuth != null) return isAuth;
       // No status cached, fetch from storage.
       await token();
@@ -48,19 +51,13 @@ class AuthApiClient {
     });
   }
 
-  /// Provides the authentication header.
-  Stream<String?> get authHeaderProvider {
-    return authToken.map(
-      (token) => token != null ? 'Bearer $token' : null,
-    );
-  }
-
   /// Fetch token from shared preferences.
   Future<void> token() async {
     try {
-      final result = _sharedPreferences.getString(_tokenKey);
-      _authToken.sink.add(result);
-      _isAuthenticated.sink.add(result != null);
+      final token = _sharedPreferences.getString(_tokenKey);
+      _authToken.sink.add(token);
+      _isAuthenticated.sink.add(token != null);
+      _logger.finer('Got token from SharedPreferences');
     } catch (error, stackTrace) {
       _logger.severe(
         'Failed to fetch Token from SharedPreferences',
