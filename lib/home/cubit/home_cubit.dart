@@ -45,6 +45,7 @@ class HomeCubit extends Cubit<HomeState> {
 
   Future<void> deleteBooking(int id) async {
     try {
+      emit(state.copyWith(status: HomeStatus.deletingBooking));
       await _bookingRepository.delete(id);
       emit(state.copyWith(status: HomeStatus.bookingDeleted));
       _log.fine('Deleted booking $id');

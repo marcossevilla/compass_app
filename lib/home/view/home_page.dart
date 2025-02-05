@@ -7,18 +7,19 @@ import 'package:compass_app/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:user_repository/user_repository.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+  const HomePage({
+    required this.homeCubit,
+    super.key,
+  });
+
+  final HomeCubit homeCubit;
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (_) => HomeCubit(
-        userRepository: context.read<UserRepository>(),
-        bookingRepository: context.read<BookingRepository>(),
-      )..load(),
+    return BlocProvider.value(
+      value: homeCubit,
       child: const HomeView(),
     );
   }
@@ -33,6 +34,7 @@ class HomeView extends StatelessWidget {
     final dimensions = context.dimensions;
 
     return BlocListener<HomeCubit, HomeState>(
+      listenWhen: (previous, current) => previous.status != current.status,
       listener: (context, state) {
         if (state.status == HomeStatus.bookingDeleted) {
           ScaffoldMessenger.of(context)

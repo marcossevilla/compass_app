@@ -4,6 +4,7 @@ enum HomeStatus {
   initial,
   loading,
   success,
+  deletingBooking,
   bookingDeleted,
   errorInitializing,
   errorWhileDeletingBooking,

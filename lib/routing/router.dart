@@ -1,3 +1,4 @@
+import 'package:booking_repository/booking_repository.dart';
 import 'package:compass_app/activities/activities.dart';
 import 'package:compass_app/booking/booking.dart';
 import 'package:compass_app/home/home.dart';
@@ -6,7 +7,9 @@ import 'package:compass_app/results/results.dart';
 import 'package:compass_app/routing/routing.dart';
 import 'package:compass_app/search_form/search_form.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:user_repository/user_repository.dart';
 
 /// Top go_router entry point.
 ///
@@ -36,7 +39,14 @@ GoRouter router(ValueNotifier<bool> isAuthenticated) {
       ),
       GoRoute(
         path: Routes.home,
-        builder: (context, state) => const HomePage(),
+        builder: (context, state) => HomePage(
+          // Passing the [HomeCubit] here to trigger load each time
+          // the home page is opened.
+          homeCubit: HomeCubit(
+            userRepository: context.read<UserRepository>(),
+            bookingRepository: context.read<BookingRepository>(),
+          )..load(),
+        ),
         routes: [
           GoRoute(
             path: Routes.searchRelative,
