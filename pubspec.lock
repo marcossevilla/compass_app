@@ -78,8 +78,8 @@ packages:
   booking_repository:
     dependency: "direct main"
     description:
-      path: "/Users/marcossevilla/development/noscope/compass_app/packages/booking_repository"
-      relative: false
+      path: "packages/booking_repository"
+      relative: true
     source: path
     version: "0.1.0+1"
   boolean_selector:
@@ -141,8 +141,8 @@ packages:
   continent_repository:
     dependency: "direct main"
     description:
-      path: "/Users/marcossevilla/development/noscope/compass_app/packages/continent_repository"
-      relative: false
+      path: "packages/continent_repository"
+      relative: true
     source: path
     version: "0.1.0+1"
   convert:
@@ -180,8 +180,8 @@ packages:
   destination_repository:
     dependency: "direct main"
     description:
-      path: "/Users/marcossevilla/development/noscope/compass_app/packages/destination_repository"
-      relative: false
+      path: "packages/destination_repository"
+      relative: true
     source: path
     version: "0.1.0+1"
   diff_match_patch:
@@ -296,10 +296,10 @@ packages:
     dependency: "direct main"
     description:
       name: go_router
-      sha256: "9b736a9fa879d8ad6df7932cbdcc58237c173ab004ef90d8377923d7ad731eaa"
+      sha256: "04539267a740931c6d4479a10d466717ca5901c6fdfd3fcda09391bbb8ebd651"
       url: "https://pub.dev"
     source: hosted
-    version: "14.7.2"
+    version: "14.8.0"
   google_fonts:
     dependency: "direct main"
     description:
@@ -351,8 +351,8 @@ packages:
   itinerary_config_repository:
     dependency: "direct main"
     description:
-      path: "/Users/marcossevilla/development/noscope/compass_app/packages/itinerary_config_repository"
-      relative: false
+      path: "packages/itinerary_config_repository"
+      relative: true
     source: path
     version: "0.1.0+1"
   js:
@@ -891,8 +891,8 @@ packages:
   user_repository:
     dependency: "direct main"
     description:
-      path: "/Users/marcossevilla/development/noscope/compass_app/packages/user_repository"
-      relative: false
+      path: "packages/user_repository"
+      relative: true
     source: path
     version: "0.1.0+1"
   uuid:
