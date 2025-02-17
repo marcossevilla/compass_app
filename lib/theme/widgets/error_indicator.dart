@@ -19,21 +19,21 @@ class ErrorIndicator extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        IntrinsicWidth(
-          child: Padding(
-            padding: const EdgeInsets.all(8),
-            child: Center(
+        Align(
+          child: IntrinsicWidth(
+            child: Padding(
+              padding: const EdgeInsets.all(8),
               child: Row(
                 children: [
                   Icon(
                     Icons.error_outline,
-                    color: colorScheme.onError,
+                    color: colorScheme.error,
                   ),
                   const SizedBox(width: 10),
                   Text(
                     title,
                     style: TextStyle(
-                      color: colorScheme.onError,
+                      color: colorScheme.error,
                     ),
                   ),
                 ],

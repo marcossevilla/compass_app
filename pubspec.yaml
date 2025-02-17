@@ -39,10 +39,12 @@ dependencies:
     path: packages/user_repository
 
 dev_dependencies:
+  alchemist: ^0.11.0
   bloc_test: ^10.0.0
   flutter_test:
     sdk: flutter
   mocktail: ^1.0.4
+  mocktail_image_network: ^1.2.0
   very_good_analysis: ^7.0.0
 
 flutter:
