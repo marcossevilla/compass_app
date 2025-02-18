@@ -1,14 +1,14 @@
-name: compass_app
+name: app
 
 concurrency:
-  group: $-$
+  group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
 on:
-  push:
-    branches:
-      - main
   pull_request:
+    paths:
+      - "packages/app/**"
+      - ".github/workflows/app.yaml"
     branches:
       - main
 
@@ -19,7 +19,7 @@ jobs:
   build:
     uses: VeryGoodOpenSource/very_good_workflows/.github/workflows/flutter_package.yml@v1
     with:
-      flutter_channel: stable
+      flutter-version: 3.29.0
 
   spell-check:
     uses: VeryGoodOpenSource/very_good_workflows/.github/workflows/spell_check.yml@v1
