@@ -1,0 +1,45 @@
+name: compass_app
+description: Another app that helps users build and book itineraries for trips.
+version: 1.0.0+1
+publish_to: none
+
+environment:
+  sdk: ^3.7.0
+resolution: workspace
+
+dependencies:
+  activity_repository: 0.1.0+1
+  api_client: 0.1.0+1
+  authentication_repository: 0.1.0+1
+  bloc: ^9.0.0
+  booking_repository: 0.1.0+1
+  cached_network_image: ^3.4.1
+  continent_repository: 0.1.0+1
+  destination_repository: 0.1.0+1
+  equatable: ^2.0.7
+  flutter:
+    sdk: flutter
+  flutter_bloc: ^9.0.0
+  flutter_localizations:
+    sdk: flutter
+  flutter_svg: ^2.0.17
+  go_router: ^14.6.3
+  google_fonts: ^6.2.1
+  intl: ^0.19.0
+  itinerary_config_repository: 0.1.0+1
+  logging: ^1.3.0
+  share_plus: ^10.1.4
+  user_repository: 0.1.0+1
+
+dev_dependencies:
+  bloc_test: ^10.0.0
+  flutter_test:
+    sdk: flutter
+  mocktail: ^1.0.4
+  very_good_analysis: ^7.0.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/logo.svg
+    - assets/user.jpg

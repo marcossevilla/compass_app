@@ -21,7 +21,9 @@ class AuthApiClient {
         _logger = Logger('AuthApiClient'),
         _sharedPreferences = sharedPreferences,
         _authToken = StreamController<String?>.broadcast(),
-        _isAuthenticated = StreamController<bool>.broadcast();
+        _isAuthenticated = StreamController<bool>.broadcast() {
+    _isAuthenticated.onListen = token;
+  }
 
   static const _tokenKey = 'TOKEN';
 
@@ -42,7 +44,6 @@ class AuthApiClient {
 
   /// Check if the user is authenticated.
   Stream<bool> get isAuthenticated {
-    _isAuthenticated.onListen = token;
     return _isAuthenticated.stream.asyncMap((isAuth) async {
       if (isAuth != null) return isAuth;
       // No status cached, fetch from storage.
@@ -98,17 +99,17 @@ class AuthApiClient {
 
   /// Log the user out.
   Future<void> logout() async {
-    _logger.info('User logged out');
     try {
-      // Clear stored auth token
+      // Clear stored auth token.
       _logger.finer('Removed token');
       await _sharedPreferences.remove(_tokenKey);
 
-      // Clear token in ApiClient
+      // Clear token.
       _authToken.sink.add(null);
 
-      // Clear authenticated status
+      // Clear authenticated status.
       _isAuthenticated.sink.add(false);
+      _logger.info('User logged out');
     } catch (error) {
       _logger.severe('Failed to clear stored auth token');
       rethrow;
