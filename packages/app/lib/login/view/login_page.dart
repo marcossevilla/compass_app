@@ -63,7 +63,7 @@ class _LoginViewState extends State<LoginView> {
         body: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            const TiltedCards(),
+            const Expanded(child: TiltedCards()),
             Padding(
               padding: dimensions.edgeInsetsScreenSymmetric,
               child: Column(
