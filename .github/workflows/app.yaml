@@ -18,4 +18,4 @@ jobs:
     with:
       min_coverage: 0
       flutter_version: 3.29.0
-      working_directory: "packages/app"
+      working_directory: packages/app
