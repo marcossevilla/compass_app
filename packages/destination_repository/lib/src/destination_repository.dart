@@ -5,9 +5,8 @@ import 'package:api_client/api_client.dart';
 /// {@endtemplate}
 class DestinationRepository {
   /// {@macro destination_repository}
-  DestinationRepository({
-    required ApiClient apiClient,
-  }) : _apiClient = apiClient;
+  DestinationRepository({required ApiClient apiClient})
+    : _apiClient = apiClient;
 
   final ApiClient _apiClient;
 

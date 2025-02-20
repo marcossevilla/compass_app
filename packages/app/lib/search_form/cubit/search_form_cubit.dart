@@ -11,10 +11,10 @@ class SearchFormCubit extends Cubit<SearchFormState> {
   SearchFormCubit({
     required ContinentRepository continentRepository,
     required ItineraryConfigRepository itineraryConfigRepository,
-  })  : _log = Logger('SearchFormViewModel'),
-        _continentRepository = continentRepository,
-        _itineraryConfigRepository = itineraryConfigRepository,
-        super(const SearchFormState());
+  }) : _log = Logger('SearchFormViewModel'),
+       _continentRepository = continentRepository,
+       _itineraryConfigRepository = itineraryConfigRepository,
+       super(const SearchFormState());
 
   final Logger _log;
   final ContinentRepository _continentRepository;

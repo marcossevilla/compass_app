@@ -25,25 +25,15 @@ class ErrorIndicator extends StatelessWidget {
             child: Center(
               child: Row(
                 children: [
-                  Icon(
-                    Icons.error_outline,
-                    color: colorScheme.onError,
-                  ),
+                  Icon(Icons.error_outline, color: colorScheme.onError),
                   const SizedBox(width: 10),
-                  Text(
-                    title,
-                    style: TextStyle(
-                      color: colorScheme.onError,
-                    ),
-                  ),
+                  Text(title, style: TextStyle(color: colorScheme.onError)),
                 ],
               ),
             ),
           ),
         ),
-        const SizedBox(
-          height: 10,
-        ),
+        const SizedBox(height: 10),
         FilledButton(
           onPressed: onPressed,
           style: const ButtonStyle(

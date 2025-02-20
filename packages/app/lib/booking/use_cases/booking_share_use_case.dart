@@ -27,7 +27,8 @@ class BookingShareUseCase {
       end: booking.endDate,
     );
 
-    final text = 'Trip to ${booking.destination.name}\n'
+    final text =
+        'Trip to ${booking.destination.name}\n'
         'on ${dateRange.dateFormatStartEnd}\n'
         'Activities:\n'
         '${booking.activities.map((a) => ' - ${a.name}').join('\n')}.';

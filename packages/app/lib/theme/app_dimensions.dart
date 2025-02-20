@@ -34,9 +34,7 @@ abstract final class AppDimensions {
 
   /// Horizontal symmetric padding for screen edges
   EdgeInsets get edgeInsetsScreenHorizontal {
-    return EdgeInsets.symmetric(
-      horizontal: paddingScreenHorizontal,
-    );
+    return EdgeInsets.symmetric(horizontal: paddingScreenHorizontal);
   }
 
   /// Symmetric padding for screen edges

@@ -14,10 +14,12 @@ class ActivitiesPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (_) => ActivitiesCubit(
-        activityRepository: context.read<ActivityRepository>(),
-        itineraryConfigRepository: context.read<ItineraryConfigRepository>(),
-      )..loadActivities(),
+      create:
+          (_) => ActivitiesCubit(
+            activityRepository: context.read<ActivityRepository>(),
+            itineraryConfigRepository:
+                context.read<ItineraryConfigRepository>(),
+          )..loadActivities(),
       child: const ActivitiesView(),
     );
   }
@@ -64,9 +66,7 @@ class ActivitiesView extends StatelessWidget {
                     const Expanded(
                       child: CustomScrollView(
                         slivers: [
-                          SliverToBoxAdapter(
-                            child: ActivitiesHeader(),
-                          ),
+                          SliverToBoxAdapter(child: ActivitiesHeader()),
                           ActivitiesTitle(
                             activityTimeOfDay: ActivityTimeOfDay.daytime,
                           ),
@@ -82,9 +82,7 @@ class ActivitiesView extends StatelessWidget {
                         ],
                       ),
                     ),
-                    BottomArea(
-                      selectedActivities: state.selectedActivities,
-                    ),
+                    BottomArea(selectedActivities: state.selectedActivities),
                   ],
                 );
               }
@@ -94,9 +92,7 @@ class ActivitiesView extends StatelessWidget {
                   const ActivitiesHeader(),
                   if (state.status == ActivitiesStatus.loadingActivities)
                     const Expanded(
-                      child: Center(
-                        child: CircularProgressIndicator(),
-                      ),
+                      child: Center(child: CircularProgressIndicator()),
                     ),
                   if (state.status == ActivitiesStatus.failedLoadingActivities)
                     Expanded(
@@ -121,10 +117,7 @@ class ActivitiesView extends StatelessWidget {
 
 @visibleForTesting
 class BottomArea extends StatelessWidget {
-  const BottomArea({
-    required this.selectedActivities,
-    super.key,
-  });
+  const BottomArea({required this.selectedActivities, super.key});
 
   final Set<String> selectedActivities;
 
@@ -151,9 +144,10 @@ class BottomArea extends StatelessWidget {
                 style: Theme.of(context).textTheme.labelLarge,
               ),
               FilledButton(
-                onPressed: selectedActivities.isNotEmpty
-                    ? context.read<ActivitiesCubit>().saveActivities
-                    : null,
+                onPressed:
+                    selectedActivities.isNotEmpty
+                        ? context.read<ActivitiesCubit>().saveActivities
+                        : null,
                 child: Text(l10n.confirm),
               ),
             ],

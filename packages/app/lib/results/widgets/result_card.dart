@@ -5,11 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class ResultCard extends StatelessWidget {
-  const ResultCard({
-    required this.destination,
-    required this.onTap,
-    super.key,
-  });
+  const ResultCard({required this.destination, required this.onTap, super.key});
 
   final Destination destination;
   final GestureTapCallback onTap;
@@ -45,13 +41,8 @@ class ResultCard extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  destination.name.toUpperCase(),
-                  style: _cardTitleStyle,
-                ),
-                const SizedBox(
-                  height: 6,
-                ),
+                Text(destination.name.toUpperCase(), style: _cardTitleStyle),
+                const SizedBox(height: 6),
                 Wrap(
                   spacing: 4,
                   runSpacing: 4,
@@ -64,9 +55,7 @@ class ResultCard extends StatelessWidget {
           Positioned.fill(
             child: Material(
               color: Colors.transparent,
-              child: InkWell(
-                onTap: onTap,
-              ),
+              child: InkWell(onTap: onTap),
             ),
           ),
         ],

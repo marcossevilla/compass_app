@@ -8,10 +8,7 @@ part 'login_response.g.dart';
 @JsonSerializable()
 class LoginResponse {
   /// {@macro login_response}
-  const LoginResponse({
-    required this.token,
-    required this.userId,
-  });
+  const LoginResponse({required this.token, required this.userId});
 
   /// Converts a [Map] to an [LoginResponse].
   factory LoginResponse.fromJson(Map<String, Object?> json) {

@@ -8,10 +8,7 @@ part 'user.g.dart';
 @JsonSerializable()
 class User {
   /// {@macro user}
-  const User({
-    required this.name,
-    required this.picture,
-  });
+  const User({required this.name, required this.picture});
 
   /// Creates a [User] from a JSON object.
   factory User.fromJson(Map<String, Object?> json) => _$UserFromJson(json);

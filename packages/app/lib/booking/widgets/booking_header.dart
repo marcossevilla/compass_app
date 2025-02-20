@@ -6,10 +6,7 @@ import 'package:compass_app/theme/theme.dart';
 import 'package:flutter/material.dart';
 
 class BookingHeader extends StatelessWidget {
-  const BookingHeader({
-    required this.booking,
-    super.key,
-  });
+  const BookingHeader({required this.booking, super.key});
 
   final Booking booking;
 
@@ -25,10 +22,7 @@ class BookingHeader extends StatelessWidget {
         _Top(booking: booking),
         Padding(
           padding: dimensions.edgeInsetsScreenHorizontal,
-          child: Text(
-            booking.destination.knownFor,
-            style: textTheme.bodyLarge,
-          ),
+          child: Text(booking.destination.knownFor, style: textTheme.bodyLarge),
         ),
         SizedBox(height: dimensions.paddingVertical),
         _Tags(booking: booking),
@@ -65,9 +59,7 @@ class _Top extends StatelessWidget {
           Positioned(
             right: dimensions.paddingScreenHorizontal,
             top: dimensions.paddingScreenVertical,
-            child: const SafeArea(
-              child: HomeButton(blur: true),
-            ),
+            child: const SafeArea(child: HomeButton(blur: true)),
           ),
         ],
       ),
@@ -129,10 +121,7 @@ class _Headline extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              booking.destination.name,
-              style: textTheme.headlineLarge,
-            ),
+            Text(booking.destination.name, style: textTheme.headlineLarge),
             Text(
               DateTimeRange(
                 start: booking.startDate,
@@ -171,10 +160,7 @@ class _Gradient extends StatelessWidget {
         gradient: LinearGradient(
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter,
-          colors: [
-            Colors.transparent,
-            Theme.of(context).colorScheme.surface,
-          ],
+          colors: [Colors.transparent, Theme.of(context).colorScheme.surface],
         ),
       ),
     );

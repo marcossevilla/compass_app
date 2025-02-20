@@ -7,6 +7,7 @@ import 'package:destination_repository/destination_repository.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:itinerary_config_repository/itinerary_config_repository.dart';
 import 'package:mocktail/mocktail.dart';
+import 'package:mocktail_image_network/mocktail_image_network.dart';
 import 'package:user_repository/user_repository.dart';
 
 import '../../helpers/helpers.dart';
@@ -30,24 +31,27 @@ void main() {
       itineraryConfigRepository = MockItineraryConfigRepository();
       userRepository = MockUserRepository();
 
-      when(() => authenticationRepository.isAuthenticated).thenAnswer(
-        (_) => Stream.value(true),
-      );
+      when(
+        () => authenticationRepository.isAuthenticated,
+      ).thenAnswer((_) => Stream.value(true));
     });
 
-    testWidgets('renders AppView', (tester) async {
-      await tester.pumpWidget(
-        App(
-          activityRepository: activityRepository,
-          authenticationRepository: authenticationRepository,
-          bookingRepository: bookingRepository,
-          continentRepository: continentRepository,
-          destinationRepository: destinationRepository,
-          itineraryConfigRepository: itineraryConfigRepository,
-          userRepository: userRepository,
-        ),
-      );
-      expect(find.byType(AppView), findsOneWidget);
-    });
+    testWidgets(
+      'renders AppView',
+      (tester) => mockNetworkImages(() async {
+        await tester.pumpWidget(
+          App(
+            activityRepository: activityRepository,
+            authenticationRepository: authenticationRepository,
+            bookingRepository: bookingRepository,
+            continentRepository: continentRepository,
+            destinationRepository: destinationRepository,
+            itineraryConfigRepository: itineraryConfigRepository,
+            userRepository: userRepository,
+          ),
+        );
+        expect(find.byType(AppView), findsOneWidget);
+      }),
+    );
   });
 }

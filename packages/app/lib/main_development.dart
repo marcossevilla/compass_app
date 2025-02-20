@@ -15,9 +15,7 @@ Future<void> main() async {
 
   final sharedPreferences = await SharedPreferences.getInstance();
 
-  final authApiClient = AuthApiClient(
-    sharedPreferences: sharedPreferences,
-  );
+  final authApiClient = AuthApiClient(sharedPreferences: sharedPreferences);
 
   final apiClient = ApiClient(
     authHeaderProvider: authApiClient.authHeaderProvider,

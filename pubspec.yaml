@@ -14,3 +14,6 @@ workspace:
   - packages/destination_repository
   - packages/itinerary_config_repository
   - packages/user_repository
+
+dev_dependencies:
+  very_good_analysis: ^7.0.0

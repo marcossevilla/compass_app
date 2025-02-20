@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
 
 class AppCheckbox extends StatelessWidget {
-  const AppCheckbox({
-    required this.value,
-    required this.onChanged,
-    super.key,
-  });
+  const AppCheckbox({required this.value, required this.onChanged, super.key});
 
   final bool value;
   final ValueChanged<bool?> onChanged;
@@ -30,11 +26,7 @@ class AppCheckbox extends StatelessWidget {
             height: 24,
             child: Visibility(
               visible: value,
-              child: Icon(
-                Icons.check,
-                size: 14,
-                color: colorScheme.onPrimary,
-              ),
+              child: Icon(Icons.check, size: 14, color: colorScheme.onPrimary),
             ),
           ),
         ),

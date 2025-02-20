@@ -8,10 +8,7 @@ part 'login_request.g.dart';
 @JsonSerializable(createToJson: true)
 class LoginRequest {
   /// {@macro login_request}
-  const LoginRequest({
-    required this.email,
-    required this.password,
-  });
+  const LoginRequest({required this.email, required this.password});
 
   /// Converts a [Map] to an [LoginRequest].
   factory LoginRequest.fromJson(Map<String, Object?> json) {

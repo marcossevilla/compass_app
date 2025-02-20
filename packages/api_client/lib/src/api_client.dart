@@ -14,10 +14,10 @@ class ApiClient {
     String? host,
     int? port,
     HttpClient? client,
-  })  : _host = host ?? 'localhost',
-        _port = port ?? 8080,
-        _client = client ?? HttpClient(),
-        _authHeaderProvider = authHeaderProvider {
+  }) : _host = host ?? 'localhost',
+       _port = port ?? 8080,
+       _client = client ?? HttpClient(),
+       _authHeaderProvider = authHeaderProvider {
     _authHeaderProviderSubscription = _authHeaderProvider.listen(
       (data) => data != null ? _authHeader = data : null,
     );

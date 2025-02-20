@@ -14,10 +14,10 @@ class BookingCreateUseCase {
     required ActivityRepository activityRepository,
     required BookingRepository bookingRepository,
     required DestinationRepository destinationRepository,
-  })  : _log = Logger('BookingCreateUseCase'),
-        _activityRepository = activityRepository,
-        _bookingRepository = bookingRepository,
-        _destinationRepository = destinationRepository;
+  }) : _log = Logger('BookingCreateUseCase'),
+       _activityRepository = activityRepository,
+       _bookingRepository = bookingRepository,
+       _destinationRepository = destinationRepository;
 
   final Logger _log;
   final ActivityRepository _activityRepository;
@@ -32,9 +32,7 @@ class BookingCreateUseCase {
       throw Exception('Destination is not set');
     }
 
-    final destination = await fetchDestination(
-      itineraryConfig.destination!,
-    );
+    final destination = await fetchDestination(itineraryConfig.destination!);
 
     _log.fine('Destination loaded: ${destination.ref}');
 

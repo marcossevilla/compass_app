@@ -9,19 +9,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({
-    required this.homeCubit,
-    super.key,
-  });
+  const HomePage({required this.homeCubit, super.key});
 
   final HomeCubit homeCubit;
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider.value(
-      value: homeCubit,
-      child: const HomeView(),
-    );
+    return BlocProvider.value(value: homeCubit, child: const HomeView());
   }
 }
 
@@ -39,20 +33,14 @@ class HomeView extends StatelessWidget {
         if (state.status == HomeStatus.bookingDeleted) {
           ScaffoldMessenger.of(context)
             ..hideCurrentSnackBar()
-            ..showSnackBar(
-              SnackBar(
-                content: Text(l10n.bookingDeleted),
-              ),
-            );
+            ..showSnackBar(SnackBar(content: Text(l10n.bookingDeleted)));
         }
 
         if (state.status == HomeStatus.errorWhileDeletingBooking) {
           ScaffoldMessenger.of(context)
             ..hideCurrentSnackBar()
             ..showSnackBar(
-              SnackBar(
-                content: Text(l10n.errorWhileDeletingBooking),
-              ),
+              SnackBar(content: Text(l10n.errorWhileDeletingBooking)),
             );
         }
       },
@@ -70,9 +58,7 @@ class HomeView extends StatelessWidget {
             builder: (context, state) {
               if (state.status == HomeStatus.loading ||
                   state.status == HomeStatus.initial) {
-                return const Center(
-                  child: CircularProgressIndicator(),
-                );
+                return const Center(child: CircularProgressIndicator());
               }
 
               if (state.status == HomeStatus.errorInitializing) {
@@ -102,14 +88,14 @@ class HomeView extends StatelessWidget {
                       return _Booking(
                         key: ValueKey(booking.id),
                         booking: booking,
-                        onTap: () => context.push(
-                          Routes.bookingWithId(booking.id),
-                        ),
+                        onTap:
+                            () =>
+                                context.push(Routes.bookingWithId(booking.id)),
                         confirmDismiss: (_) async {
                           // Wait for command to complete.
-                          await context
-                              .read<HomeCubit>()
-                              .deleteBooking(booking.id);
+                          await context.read<HomeCubit>().deleteBooking(
+                            booking.id,
+                          );
 
                           // If command completed successfully, return true.
                           // Removes the dismissable from the list.
@@ -156,9 +142,7 @@ class _Booking extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
             Padding(
-              padding: EdgeInsets.only(
-                right: dimensions.paddingHorizontal,
-              ),
+              padding: EdgeInsets.only(right: dimensions.paddingHorizontal),
               child: const Icon(Icons.delete),
             ),
           ],
@@ -174,10 +158,7 @@ class _Booking extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                booking.name,
-                style: textTheme.titleLarge,
-              ),
+              Text(booking.name, style: textTheme.titleLarge),
               Text(
                 DateTimeRange(
                   start: booking.startDate,

@@ -9,15 +9,18 @@ part of 'itinerary_config.dart';
 ItineraryConfig _$ItineraryConfigFromJson(Map<String, dynamic> json) =>
     ItineraryConfig(
       continent: json['continent'] as String?,
-      startDate: json['startDate'] == null
-          ? null
-          : DateTime.parse(json['startDate'] as String),
-      endDate: json['endDate'] == null
-          ? null
-          : DateTime.parse(json['endDate'] as String),
+      startDate:
+          json['startDate'] == null
+              ? null
+              : DateTime.parse(json['startDate'] as String),
+      endDate:
+          json['endDate'] == null
+              ? null
+              : DateTime.parse(json['endDate'] as String),
       guests: (json['guests'] as num?)?.toInt(),
       destination: json['destination'] as String?,
-      activities: (json['activities'] as List<dynamic>?)
+      activities:
+          (json['activities'] as List<dynamic>?)
               ?.map((e) => e as String)
               .toList() ??
           const [],

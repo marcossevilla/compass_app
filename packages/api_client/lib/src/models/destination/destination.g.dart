@@ -7,14 +7,14 @@ part of 'destination.dart';
 // **************************************************************************
 
 Destination _$DestinationFromJson(Map<String, dynamic> json) => Destination(
-      ref: json['ref'] as String,
-      name: json['name'] as String,
-      country: json['country'] as String,
-      continent: json['continent'] as String,
-      knownFor: json['knownFor'] as String,
-      tags: (json['tags'] as List<dynamic>).map((e) => e as String).toList(),
-      imageUrl: json['imageUrl'] as String,
-    );
+  ref: json['ref'] as String,
+  name: json['name'] as String,
+  country: json['country'] as String,
+  continent: json['continent'] as String,
+  knownFor: json['knownFor'] as String,
+  tags: (json['tags'] as List<dynamic>).map((e) => e as String).toList(),
+  imageUrl: json['imageUrl'] as String,
+);
 
 Map<String, dynamic> _$DestinationToJson(Destination instance) =>
     <String, dynamic>{

@@ -13,10 +13,12 @@ class SearchFormPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (_) => SearchFormCubit(
-        continentRepository: context.read<ContinentRepository>(),
-        itineraryConfigRepository: context.read<ItineraryConfigRepository>(),
-      )..load(),
+      create:
+          (_) => SearchFormCubit(
+            continentRepository: context.read<ContinentRepository>(),
+            itineraryConfigRepository:
+                context.read<ItineraryConfigRepository>(),
+          )..load(),
       child: const SearchFormView(),
     );
   }

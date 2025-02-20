@@ -13,9 +13,10 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (_) => LoginCubit(
-        authenticationRepository: context.read<AuthenticationRepository>(),
-      ),
+      create:
+          (_) => LoginCubit(
+            authenticationRepository: context.read<AuthenticationRepository>(),
+          ),
       child: const LoginView(),
     );
   }
@@ -37,48 +38,48 @@ class _LoginViewState extends State<LoginView> {
     final l10n = context.l10n;
     final dimensions = context.dimensions;
     return BlocListener<LoginCubit, LoginState>(
-      listener: (context, state) => switch (state.status) {
-        LoginStatus.initial => () {},
-        LoginStatus.loading => () {},
-        LoginStatus.success => context.go(Routes.home),
-        LoginStatus.failure => ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text(l10n.errorWhileLogin),
-              action: SnackBarAction(
-                label: l10n.tryAgain,
-                onPressed: () async {
-                  await context
-                      .read<LoginCubit>()
-                      .login((_email.value.text, _password.value.text));
-                },
+      listener:
+          (context, state) => switch (state.status) {
+            LoginStatus.initial => () {},
+            LoginStatus.loading => () {},
+            LoginStatus.success => context.go(Routes.home),
+            LoginStatus.failure => ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text(l10n.errorWhileLogin),
+                action: SnackBarAction(
+                  label: l10n.tryAgain,
+                  onPressed: () async {
+                    final credentials = (
+                      _email.value.text,
+                      _password.value.text,
+                    );
+                    await context.read<LoginCubit>().login(credentials);
+                  },
+                ),
               ),
             ),
-          ),
-      },
+          },
       child: Scaffold(
         body: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            const TiltedCards(),
+            const Expanded(child: TiltedCards()),
             Padding(
               padding: dimensions.edgeInsetsScreenSymmetric,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  TextField(
-                    controller: _email,
-                  ),
+                  TextField(controller: _email),
                   SizedBox(height: dimensions.paddingVertical),
-                  TextField(
-                    controller: _password,
-                    obscureText: true,
-                  ),
+                  TextField(controller: _password, obscureText: true),
                   SizedBox(height: dimensions.paddingVertical),
                   FilledButton(
                     onPressed: () async {
-                      await context
-                          .read<LoginCubit>()
-                          .login((_email.value.text, _password.value.text));
+                      final credentials = (
+                        _email.value.text,
+                        _password.value.text,
+                      );
+                      await context.read<LoginCubit>().login(credentials);
                     },
                     child: Text(l10n.login),
                   ),

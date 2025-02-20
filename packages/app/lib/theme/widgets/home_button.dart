@@ -6,10 +6,7 @@ import 'package:go_router/go_router.dart';
 
 /// Home button to navigate back to the '/' path.
 class HomeButton extends StatelessWidget {
-  const HomeButton({
-    this.blur = false,
-    super.key,
-  });
+  const HomeButton({this.blur = false, super.key});
 
   final bool blur;
 

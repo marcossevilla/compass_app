@@ -5,10 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ActivitiesTitle extends StatelessWidget {
-  const ActivitiesTitle({
-    required this.activityTimeOfDay,
-    super.key,
-  });
+  const ActivitiesTitle({required this.activityTimeOfDay, super.key});
 
   final ActivityTimeOfDay activityTimeOfDay;
 
@@ -34,9 +31,7 @@ class ActivitiesTitle extends StatelessWidget {
     return SliverToBoxAdapter(
       child: Padding(
         padding: context.dimensions.edgeInsetsScreenHorizontal,
-        child: Text(
-          _label(context.l10n),
-        ),
+        child: Text(_label(context.l10n)),
       ),
     );
   }
