@@ -1,0 +1,21 @@
+name: main
+
+concurrency:
+  group: $-$
+  cancel-in-progress: true
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  spell-check:
+      uses: VeryGoodOpenSource/very_good_workflows/.github/workflows/spell_check.yml@v1
+      with:
+        includes: |
+          packages/**/*.md
+        modified_files_only: false
