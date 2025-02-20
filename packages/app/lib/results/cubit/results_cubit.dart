@@ -10,10 +10,10 @@ class ResultsCubit extends Cubit<ResultsState> {
   ResultsCubit({
     required DestinationRepository destinationRepository,
     required ItineraryConfigRepository itineraryConfigRepository,
-  })  : _log = Logger('ResultsCubit'),
-        _destinationRepository = destinationRepository,
-        _itineraryConfigRepository = itineraryConfigRepository,
-        super(const ResultsState());
+  }) : _log = Logger('ResultsCubit'),
+       _destinationRepository = destinationRepository,
+       _itineraryConfigRepository = itineraryConfigRepository,
+       super(const ResultsState());
 
   final Logger _log;
   final DestinationRepository _destinationRepository;

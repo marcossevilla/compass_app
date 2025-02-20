@@ -20,13 +20,13 @@ class App extends StatelessWidget {
     required ItineraryConfigRepository itineraryConfigRepository,
     required UserRepository userRepository,
     super.key,
-  })  : _activityRepository = activityRepository,
-        _authenticationRepository = authenticationRepository,
-        _bookingRepository = bookingRepository,
-        _continentRepository = continentRepository,
-        _destinationRepository = destinationRepository,
-        _itineraryConfigRepository = itineraryConfigRepository,
-        _userRepository = userRepository;
+  }) : _activityRepository = activityRepository,
+       _authenticationRepository = authenticationRepository,
+       _bookingRepository = bookingRepository,
+       _continentRepository = continentRepository,
+       _destinationRepository = destinationRepository,
+       _itineraryConfigRepository = itineraryConfigRepository,
+       _userRepository = userRepository;
 
   final ActivityRepository _activityRepository;
   final AuthenticationRepository _authenticationRepository;

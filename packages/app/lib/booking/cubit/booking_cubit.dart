@@ -13,12 +13,12 @@ class BookingCubit extends Cubit<BookingState> {
     required BookingShareUseCase shareUseCase,
     required BookingRepository bookingRepository,
     required ItineraryConfigRepository itineraryConfigRepository,
-  })  : _log = Logger('BookingCubit'),
-        _createUseCase = createUseCase,
-        _shareUseCase = shareUseCase,
-        _bookingRepository = bookingRepository,
-        _itineraryConfigRepository = itineraryConfigRepository,
-        super(const BookingState());
+  }) : _log = Logger('BookingCubit'),
+       _createUseCase = createUseCase,
+       _shareUseCase = shareUseCase,
+       _bookingRepository = bookingRepository,
+       _itineraryConfigRepository = itineraryConfigRepository,
+       super(const BookingState());
 
   final Logger _log;
   final BookingCreateUseCase _createUseCase;
@@ -36,12 +36,7 @@ class BookingCubit extends Cubit<BookingState> {
         _itineraryConfigRepository.itineraryConfig,
       );
 
-      emit(
-        state.copyWith(
-          booking: booking,
-          status: BookingStatus.created,
-        ),
-      );
+      emit(state.copyWith(booking: booking, status: BookingStatus.created));
 
       _log.fine('Created Booking');
     } on Exception catch (e) {
@@ -58,12 +53,7 @@ class BookingCubit extends Cubit<BookingState> {
       final booking = await _bookingRepository.getBooking(id);
       _log.fine('Loaded booking $id');
 
-      emit(
-        state.copyWith(
-          booking: booking,
-          status: BookingStatus.loaded,
-        ),
-      );
+      emit(state.copyWith(booking: booking, status: BookingStatus.loaded));
     } on Exception catch (e) {
       _log.warning('Failed to load booking $id', e);
       emit(state.copyWith(status: BookingStatus.loadingFailure));

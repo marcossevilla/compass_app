@@ -1,17 +1,10 @@
-// Copyright 2024 The Flutter team. All rights reserved.
-// Use of this source code is governed by a BSD-style license that can be
-// found in the LICENSE file.
-
 import 'package:compass_app/activities/activities.dart';
 import 'package:compass_app/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ActivitiesList extends StatelessWidget {
-  const ActivitiesList({
-    required this.activityTimeOfDay,
-    super.key,
-  });
+  const ActivitiesList({required this.activityTimeOfDay, super.key});
 
   final ActivityTimeOfDay activityTimeOfDay;
 
@@ -44,32 +37,27 @@ class ActivitiesList extends StatelessWidget {
         bottom: dimensions.paddingVertical,
       ),
       sliver: SliverList(
-        delegate: SliverChildBuilderDelegate(
-          (context, index) {
-            final activity = list[index];
-            return Padding(
-              padding: EdgeInsets.only(
-                bottom: index < list.length - 1 ? 20 : 0,
-              ),
-              child: ActivityEntry(
-                key: ValueKey(activity.ref),
-                activity: activity,
-                selected: selectedActivities.contains(activity.ref),
-                onChanged: (value) {
-                  if (value!) {
-                    return context
-                        .read<ActivitiesCubit>()
-                        .addActivity(activity.ref);
-                  }
-                  return context
-                      .read<ActivitiesCubit>()
-                      .removeActivity(activity.ref);
-                },
-              ),
-            );
-          },
-          childCount: list.length,
-        ),
+        delegate: SliverChildBuilderDelegate((context, index) {
+          final activity = list[index];
+          return Padding(
+            padding: EdgeInsets.only(bottom: index < list.length - 1 ? 20 : 0),
+            child: ActivityEntry(
+              key: ValueKey(activity.ref),
+              activity: activity,
+              selected: selectedActivities.contains(activity.ref),
+              onChanged: (value) {
+                if (value!) {
+                  return context.read<ActivitiesCubit>().addActivity(
+                    activity.ref,
+                  );
+                }
+                return context.read<ActivitiesCubit>().removeActivity(
+                  activity.ref,
+                );
+              },
+            ),
+          );
+        }, childCount: list.length),
       ),
     );
   }

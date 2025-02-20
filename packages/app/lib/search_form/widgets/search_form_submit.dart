@@ -19,9 +19,7 @@ class SearchFormSubmit extends StatelessWidget {
   Widget build(BuildContext context) {
     final l10n = context.l10n;
     final dimensions = context.dimensions;
-    final valid = context.select(
-      (SearchFormCubit cubit) => cubit.state.valid,
-    );
+    final valid = context.select((SearchFormCubit cubit) => cubit.state.valid);
 
     return BlocListener<SearchFormCubit, SearchFormState>(
       listenWhen: (previous, current) => previous.status != current.status,
@@ -53,14 +51,13 @@ class SearchFormSubmit extends StatelessWidget {
           bottom: dimensions.paddingScreenVertical,
         ),
         child: FilledButton(
-          onPressed: valid
-              ? context.read<SearchFormCubit>().updateItineraryConfig
-              : null,
+          onPressed:
+              valid
+                  ? context.read<SearchFormCubit>().updateItineraryConfig
+                  : null,
           child: SizedBox(
             height: 52,
-            child: Center(
-              child: Text(l10n.search.toUpperCase()),
-            ),
+            child: Center(child: Text(l10n.search.toUpperCase())),
           ),
         ),
       ),

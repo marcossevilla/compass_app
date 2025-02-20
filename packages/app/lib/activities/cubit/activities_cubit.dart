@@ -10,10 +10,10 @@ class ActivitiesCubit extends Cubit<ActivitiesState> {
   ActivitiesCubit({
     required ActivityRepository activityRepository,
     required ItineraryConfigRepository itineraryConfigRepository,
-  })  : _log = Logger('ActivitiesCubit'),
-        _activityRepository = activityRepository,
-        _itineraryConfigRepository = itineraryConfigRepository,
-        super(const ActivitiesState());
+  }) : _log = Logger('ActivitiesCubit'),
+       _activityRepository = activityRepository,
+       _itineraryConfigRepository = itineraryConfigRepository,
+       super(const ActivitiesState());
 
   final Logger _log;
   final ActivityRepository _activityRepository;
@@ -53,10 +53,8 @@ class ActivitiesCubit extends Cubit<ActivitiesState> {
       );
 
       final eveningActivities = activities.where(
-        (activity) => [
-          TimeOfDay.evening,
-          TimeOfDay.night,
-        ].contains(activity.timeOfDay),
+        (activity) =>
+            [TimeOfDay.evening, TimeOfDay.night].contains(activity.timeOfDay),
       );
 
       emit(
@@ -88,10 +86,7 @@ class ActivitiesCubit extends Cubit<ActivitiesState> {
 
     emit(
       state.copyWith(
-        selectedActivities: {
-          ...state.selectedActivities,
-          activityRef,
-        },
+        selectedActivities: {...state.selectedActivities, activityRef},
         status: ActivitiesStatus.loadedActivities,
       ),
     );

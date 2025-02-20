@@ -11,10 +11,12 @@ class LogoutButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (_) => LogoutCubit(
-        authenticationRepository: context.read<AuthenticationRepository>(),
-        itineraryConfigRepository: context.read<ItineraryConfigRepository>(),
-      ),
+      create:
+          (_) => LogoutCubit(
+            authenticationRepository: context.read<AuthenticationRepository>(),
+            itineraryConfigRepository:
+                context.read<ItineraryConfigRepository>(),
+          ),
       child: const LogoutButtonView(),
     );
   }
@@ -28,9 +30,10 @@ class LogoutButtonView extends StatelessWidget {
     final l10n = context.l10n;
 
     return BlocListener<LogoutCubit, LogoutState>(
-      listenWhen: (previous, current) =>
-          previous.status != current.status &&
-          current.status == LogoutStatus.failure,
+      listenWhen:
+          (previous, current) =>
+              previous.status != current.status &&
+              current.status == LogoutStatus.failure,
       listener: (context, state) {
         // We do not need to navigate to `/login` on logout,
         // it is done automatically by GoRouter.

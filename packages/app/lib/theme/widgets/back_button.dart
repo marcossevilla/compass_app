@@ -5,11 +5,7 @@ import 'package:go_router/go_router.dart';
 
 /// Custom back button to pop navigation.
 class AppBackButton extends StatelessWidget {
-  const AppBackButton({
-    super.key,
-    this.onTap,
-    this.blur = false,
-  });
+  const AppBackButton({super.key, this.onTap, this.blur = false});
 
   final bool blur;
   final GestureTapCallback? onTap;

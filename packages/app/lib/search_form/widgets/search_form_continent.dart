@@ -25,9 +25,7 @@ class SearchFormContinent extends StatelessWidget {
       child: BlocBuilder<SearchFormCubit, SearchFormState>(
         builder: (context, state) {
           if (state.status == SearchFormStatus.loading) {
-            return const Center(
-              child: CircularProgressIndicator(),
-            );
+            return const Center(child: CircularProgressIndicator());
           }
 
           if (state.status == SearchFormStatus.error) {
@@ -93,9 +91,7 @@ class CarouselItem extends StatelessWidget {
                 // NOTE: Getting "invalid image data" error for some of the
                 // images e.g. https://rstr.in/google/tripedia/jlbgFDrSUVE.
                 return DecoratedBox(
-                  decoration: BoxDecoration(
-                    color: Colors.grey.shade300,
-                  ),
+                  decoration: BoxDecoration(color: Colors.grey.shade300),
                   child: const SizedBox(width: 140, height: 140),
                 );
               },

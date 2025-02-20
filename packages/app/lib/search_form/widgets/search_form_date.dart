@@ -50,10 +50,7 @@ class SearchFormDate extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  l10n.when,
-                  style: textTheme.titleMedium,
-                ),
+                Text(l10n.when, style: textTheme.titleMedium),
                 BlocBuilder<SearchFormCubit, SearchFormState>(
                   builder: (context, state) {
                     final dateRange = state.dateRange;

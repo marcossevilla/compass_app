@@ -14,10 +14,12 @@ class ResultsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (_) => ResultsCubit(
-        destinationRepository: context.read<DestinationRepository>(),
-        itineraryConfigRepository: context.read<ItineraryConfigRepository>(),
-      )..search(),
+      create:
+          (_) => ResultsCubit(
+            destinationRepository: context.read<DestinationRepository>(),
+            itineraryConfigRepository:
+                context.read<ItineraryConfigRepository>(),
+          )..search(),
       child: const ResultsView(),
     );
   }
@@ -41,9 +43,7 @@ class ResultsView extends StatelessWidget {
           ScaffoldMessenger.of(context)
             ..hideCurrentSnackBar()
             ..showSnackBar(
-              SnackBar(
-                content: Text(l10n.errorWhileSavingItinerary),
-              ),
+              SnackBar(content: Text(l10n.errorWhileSavingItinerary)),
             );
         }
       },
@@ -65,9 +65,7 @@ class ResultsView extends StatelessWidget {
                           itineraryConfig: state.itineraryConfig,
                         ),
                       ),
-                      Grid(
-                        destinations: state.destinations,
-                      ),
+                      Grid(destinations: state.destinations),
                     ],
                   ),
                 );
@@ -75,14 +73,10 @@ class ResultsView extends StatelessWidget {
 
               return Column(
                 children: [
-                  ResultsSearchBar(
-                    itineraryConfig: state.itineraryConfig,
-                  ),
+                  ResultsSearchBar(itineraryConfig: state.itineraryConfig),
                   if (state.status == ResultsStatus.searching)
                     const Expanded(
-                      child: Center(
-                        child: CircularProgressIndicator(),
-                      ),
+                      child: Center(child: CircularProgressIndicator()),
                     ),
                   if (state.status == ResultsStatus.searchFailure)
                     Expanded(
@@ -106,10 +100,7 @@ class ResultsView extends StatelessWidget {
 
 @visibleForTesting
 class ResultsSearchBar extends StatelessWidget {
-  const ResultsSearchBar({
-    required this.itineraryConfig,
-    super.key,
-  });
+  const ResultsSearchBar({required this.itineraryConfig, super.key});
 
   final ItineraryConfig itineraryConfig;
 
@@ -136,10 +127,7 @@ class ResultsSearchBar extends StatelessWidget {
 
 @visibleForTesting
 class Grid extends StatelessWidget {
-  const Grid({
-    required this.destinations,
-    super.key,
-  });
+  const Grid({required this.destinations, super.key});
 
   final List<Destination> destinations;
 
@@ -152,19 +140,17 @@ class Grid extends StatelessWidget {
         mainAxisSpacing: 8,
         childAspectRatio: 182 / 222,
       ),
-      delegate: SliverChildBuilderDelegate(
-        (context, index) {
-          final destination = destinations[index];
-          return ResultCard(
-            key: ValueKey(destination.ref),
-            destination: destination,
-            onTap: () => context
-                .read<ResultsCubit>()
-                .updateItineraryConfig(destination.ref),
-          );
-        },
-        childCount: destinations.length,
-      ),
+      delegate: SliverChildBuilderDelegate((context, index) {
+        final destination = destinations[index];
+        return ResultCard(
+          key: ValueKey(destination.ref),
+          destination: destination,
+          onTap:
+              () => context.read<ResultsCubit>().updateItineraryConfig(
+                destination.ref,
+              ),
+        );
+      }, childCount: destinations.length),
     );
   }
 }

@@ -33,10 +33,7 @@ class SearchFormGuests extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(
-                'Who',
-                style: Theme.of(context).textTheme.titleMedium,
-              ),
+              Text('Who', style: Theme.of(context).textTheme.titleMedium),
               const QuantitySelector(),
             ],
           ),
@@ -68,19 +65,18 @@ class QuantitySelector extends StatelessWidget {
           ),
           BlocSelector<SearchFormCubit, SearchFormState, int>(
             selector: (state) => state.guests,
-            builder: (context, state) => Text(
-              state.toString(),
-              style: state == 0
-                  ? theme.inputDecorationTheme.hintStyle
-                  : theme.textTheme.bodyMedium,
-            ),
+            builder:
+                (context, state) => Text(
+                  state.toString(),
+                  style:
+                      state == 0
+                          ? theme.inputDecorationTheme.hintStyle
+                          : theme.textTheme.bodyMedium,
+                ),
           ),
           InkWell(
             onTap: context.read<SearchFormCubit>().incrementGuests,
-            child: Icon(
-              Icons.add_circle_outline,
-              color: Colors.grey.shade300,
-            ),
+            child: Icon(Icons.add_circle_outline, color: Colors.grey.shade300),
           ),
         ],
       ),

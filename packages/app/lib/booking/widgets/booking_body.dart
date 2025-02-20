@@ -18,20 +18,15 @@ class BookingBody extends StatelessWidget {
 
         return CustomScrollView(
           slivers: [
-            SliverToBoxAdapter(
-              child: BookingHeader(booking: booking),
-            ),
+            SliverToBoxAdapter(child: BookingHeader(booking: booking)),
             SliverList(
               delegate: SliverChildBuilderDelegate(
-                (context, index) => _Activity(
-                  activity: booking.activities[index],
-                ),
+                (context, index) =>
+                    _Activity(activity: booking.activities[index]),
                 childCount: booking.activities.length,
               ),
             ),
-            const SliverToBoxAdapter(
-              child: SizedBox(height: 200),
-            ),
+            const SliverToBoxAdapter(child: SizedBox(height: 200)),
           ],
         );
       },

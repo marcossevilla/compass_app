@@ -40,7 +40,8 @@ class TagChip extends StatelessWidget {
                 children: [
                   Icon(
                     iconTag,
-                    color: onChipColor ??
+                    color:
+                        onChipColor ??
                         tagChipTheme?.onChipColor ??
                         Colors.white,
                     size: fontSize,
@@ -100,10 +101,7 @@ class TagChip extends StatelessWidget {
 }
 
 class TagChipTheme extends ThemeExtension<TagChipTheme> {
-  const TagChipTheme({
-    required this.chipColor,
-    required this.onChipColor,
-  });
+  const TagChipTheme({required this.chipColor, required this.onChipColor});
 
   final Color chipColor;
   final Color onChipColor;

@@ -30,9 +30,9 @@ void main() {
       itineraryConfigRepository = MockItineraryConfigRepository();
       userRepository = MockUserRepository();
 
-      when(() => authenticationRepository.isAuthenticated).thenAnswer(
-        (_) => Stream.value(true),
-      );
+      when(
+        () => authenticationRepository.isAuthenticated,
+      ).thenAnswer((_) => Stream.value(true));
     });
 
     testWidgets('renders AppView', (tester) async {

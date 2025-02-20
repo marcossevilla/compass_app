@@ -80,10 +80,7 @@ class _Card extends StatelessWidget {
                 color: showTitle ? Colors.black.withValues(alpha: 0.5) : null,
                 colorBlendMode: showTitle ? BlendMode.darken : null,
               ),
-              if (showTitle)
-                Center(
-                  child: SvgPicture.asset('assets/logo.svg'),
-                ),
+              if (showTitle) Center(child: SvgPicture.asset('assets/logo.svg')),
             ],
           ),
         ),

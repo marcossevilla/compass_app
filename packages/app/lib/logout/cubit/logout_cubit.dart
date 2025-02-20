@@ -10,10 +10,10 @@ class LogoutCubit extends Cubit<LogoutState> {
   LogoutCubit({
     required AuthenticationRepository authenticationRepository,
     required ItineraryConfigRepository itineraryConfigRepository,
-  })  : _log = Logger('LogoutCubit'),
-        _authenticationRepository = authenticationRepository,
-        _itineraryConfigRepository = itineraryConfigRepository,
-        super(const LogoutState());
+  }) : _log = Logger('LogoutCubit'),
+       _authenticationRepository = authenticationRepository,
+       _itineraryConfigRepository = itineraryConfigRepository,
+       super(const LogoutState());
 
   final Logger _log;
   final AuthenticationRepository _authenticationRepository;

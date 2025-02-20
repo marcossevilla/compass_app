@@ -6,10 +6,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:user_repository/user_repository.dart';
 
 class HomeHeader extends StatelessWidget {
-  const HomeHeader({
-    required this.user,
-    super.key,
-  });
+  const HomeHeader({required this.user, super.key});
 
   final User? user;
 
@@ -38,9 +35,7 @@ class HomeHeader extends StatelessWidget {
           ],
         ),
         SizedBox(height: dimensions.paddingVertical),
-        Title(
-          text: l10n.nameTrips(user!.name),
-        ),
+        Title(text: l10n.nameTrips(user!.name)),
       ],
     );
   }
@@ -48,10 +43,7 @@ class HomeHeader extends StatelessWidget {
 
 @visibleForTesting
 class Title extends StatelessWidget {
-  const Title({
-    required this.text,
-    super.key,
-  });
+  const Title({required this.text, super.key});
 
   final String text;
 
@@ -59,16 +51,12 @@ class Title extends StatelessWidget {
   Widget build(BuildContext context) {
     return ShaderMask(
       blendMode: BlendMode.srcIn,
-      shaderCallback: (bounds) => RadialGradient(
-        center: Alignment.bottomLeft,
-        radius: 2,
-        colors: [
-          Colors.purple.shade700,
-          Colors.purple.shade400,
-        ],
-      ).createShader(
-        Rect.fromLTWH(0, 0, bounds.width, bounds.height),
-      ),
+      shaderCallback:
+          (bounds) => RadialGradient(
+            center: Alignment.bottomLeft,
+            radius: 2,
+            colors: [Colors.purple.shade700, Colors.purple.shade400],
+          ).createShader(Rect.fromLTWH(0, 0, bounds.width, bounds.height)),
       child: Text(
         text,
         style: GoogleFonts.rubik(

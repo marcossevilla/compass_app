@@ -10,10 +10,10 @@ class HomeCubit extends Cubit<HomeState> {
   HomeCubit({
     required UserRepository userRepository,
     required BookingRepository bookingRepository,
-  })  : _log = Logger('HomeCubit'),
-        _userRepository = userRepository,
-        _bookingRepository = bookingRepository,
-        super(const HomeState());
+  }) : _log = Logger('HomeCubit'),
+       _userRepository = userRepository,
+       _bookingRepository = bookingRepository,
+       super(const HomeState());
 
   final Logger _log;
   final UserRepository _userRepository;

@@ -13,15 +13,13 @@ import 'package:itinerary_config_repository/itinerary_config_repository.dart';
 enum _BookingMode { create, load }
 
 class BookingPage extends StatelessWidget {
-  const BookingPage.loadBooking({
-    required int id,
-    super.key,
-  })  : _id = id,
-        _mode = _BookingMode.load;
+  const BookingPage.loadBooking({required int id, super.key})
+    : _id = id,
+      _mode = _BookingMode.load;
 
   const BookingPage.createBooking({super.key})
-      : _id = null,
-        _mode = _BookingMode.create;
+    : _id = null,
+      _mode = _BookingMode.create;
 
   final _BookingMode _mode;
   final int? _id;
@@ -63,14 +61,13 @@ class BookingView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l10n = context.l10n;
-    final booking = context.select(
-      (BookingCubit cubit) => cubit.state.booking,
-    );
+    final booking = context.select((BookingCubit cubit) => cubit.state.booking);
 
     return BlocListener<BookingCubit, BookingState>(
-      listenWhen: (previous, current) =>
-          previous.status != current.status &&
-          current.status == BookingStatus.sharingFailure,
+      listenWhen:
+          (previous, current) =>
+              previous.status != current.status &&
+              current.status == BookingStatus.sharingFailure,
       listener: (context, state) {
         ScaffoldMessenger.of(context)
           ..hideCurrentSnackBar()
@@ -95,9 +92,10 @@ class BookingView extends StatelessWidget {
             // Workaround for https://github.com/flutter/flutter/issues/115358#issuecomment-2117157419.
             heroTag: null,
             key: const ValueKey('share-button'),
-            onPressed: booking == null
-                ? null
-                : context.read<BookingCubit>().shareBooking,
+            onPressed:
+                booking == null
+                    ? null
+                    : context.read<BookingCubit>().shareBooking,
             label: Text(l10n.shareTrip),
             icon: const Icon(Icons.share_outlined),
           ),
@@ -105,9 +103,7 @@ class BookingView extends StatelessWidget {
             builder: (context, state) {
               // If either command is running, show progress indicator.
               if (state.status.isInProgress) {
-                return const Center(
-                  child: CircularProgressIndicator(),
-                );
+                return const Center(child: CircularProgressIndicator());
               }
 
               // If fails to create booking, tap to try again.
