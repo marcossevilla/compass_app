@@ -7,11 +7,11 @@ part of 'continent.dart';
 // **************************************************************************
 
 Continent _$ContinentFromJson(Map<String, dynamic> json) => Continent(
-      name: json['name'] as String,
-      imageUrl: json['imageUrl'] as String,
-    );
+  name: json['name'] as String,
+  imageUrl: json['imageUrl'] as String,
+);
 
 Map<String, dynamic> _$ContinentToJson(Continent instance) => <String, dynamic>{
-      'name': instance.name,
-      'imageUrl': instance.imageUrl,
-    };
+  'name': instance.name,
+  'imageUrl': instance.imageUrl,
+};

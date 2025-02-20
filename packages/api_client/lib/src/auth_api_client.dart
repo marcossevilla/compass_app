@@ -15,13 +15,13 @@ class AuthApiClient {
     int? port,
     String? host,
     HttpClient? client,
-  })  : _port = port ?? 8080,
-        _host = host ?? 'localhost',
-        _client = client ?? HttpClient(),
-        _logger = Logger('AuthApiClient'),
-        _sharedPreferences = sharedPreferences,
-        _authToken = StreamController<String?>.broadcast(),
-        _isAuthenticated = StreamController<bool>.broadcast() {
+  }) : _port = port ?? 8080,
+       _host = host ?? 'localhost',
+       _client = client ?? HttpClient(),
+       _logger = Logger('AuthApiClient'),
+       _sharedPreferences = sharedPreferences,
+       _authToken = StreamController<String?>.broadcast(),
+       _isAuthenticated = StreamController<bool>.broadcast() {
     _isAuthenticated.onListen = token;
   }
 

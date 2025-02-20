@@ -140,7 +140,10 @@ class Grid extends StatelessWidget {
         mainAxisSpacing: 8,
         childAspectRatio: 182 / 222,
       ),
-      delegate: SliverChildBuilderDelegate((context, index) {
+      delegate: SliverChildBuilderDelegate(childCount: destinations.length, (
+        context,
+        index,
+      ) {
         final destination = destinations[index];
         return ResultCard(
           key: ValueKey(destination.ref),
@@ -150,7 +153,7 @@ class Grid extends StatelessWidget {
                 destination.ref,
               ),
         );
-      }, childCount: destinations.length),
+      }),
     );
   }
 }

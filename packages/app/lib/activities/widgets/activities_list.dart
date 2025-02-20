@@ -37,7 +37,10 @@ class ActivitiesList extends StatelessWidget {
         bottom: dimensions.paddingVertical,
       ),
       sliver: SliverList(
-        delegate: SliverChildBuilderDelegate((context, index) {
+        delegate: SliverChildBuilderDelegate(childCount: list.length, (
+          context,
+          index,
+        ) {
           final activity = list[index];
           return Padding(
             padding: EdgeInsets.only(bottom: index < list.length - 1 ? 20 : 0),
@@ -57,7 +60,7 @@ class ActivitiesList extends StatelessWidget {
               },
             ),
           );
-        }, childCount: list.length),
+        }),
       ),
     );
   }

@@ -49,10 +49,11 @@ class _LoginViewState extends State<LoginView> {
                 action: SnackBarAction(
                   label: l10n.tryAgain,
                   onPressed: () async {
-                    await context.read<LoginCubit>().login((
+                    final credentials = (
                       _email.value.text,
                       _password.value.text,
-                    ));
+                    );
+                    await context.read<LoginCubit>().login(credentials);
                   },
                 ),
               ),
@@ -74,10 +75,11 @@ class _LoginViewState extends State<LoginView> {
                   SizedBox(height: dimensions.paddingVertical),
                   FilledButton(
                     onPressed: () async {
-                      await context.read<LoginCubit>().login((
+                      final credentials = (
                         _email.value.text,
                         _password.value.text,
-                      ));
+                      );
+                      await context.read<LoginCubit>().login(credentials);
                     },
                     child: Text(l10n.login),
                   ),
