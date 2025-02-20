@@ -14,8 +14,8 @@ on:
 
 jobs:
   spell-check:
-      uses: VeryGoodOpenSource/very_good_workflows/.github/workflows/spell_check.yml@v1
-      with:
-        includes: |
-          packages/**/*.md
-        modified_files_only: false
+    uses: VeryGoodOpenSource/very_good_workflows/.github/workflows/spell_check.yml@v1
+    with:
+      includes: |
+        packages/**/*.md
+      modified_files_only: false
