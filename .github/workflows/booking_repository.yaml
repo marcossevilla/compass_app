@@ -14,8 +14,8 @@ on:
 
 jobs:
   build:
-    uses: VeryGoodOpenSource/very_good_workflows/.github/workflows/dart_package.yml@v1
+    uses: VeryGoodOpenSource/very_good_workflows/.github/workflows/flutter_package.yml@v1
     with:
-      dart_sdk: 3.7.0
       min_coverage: 0
+      flutter_version: 3.29.0
       working_directory: "packages/booking_repository"
