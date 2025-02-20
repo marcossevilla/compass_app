@@ -1,0 +1,21 @@
+name: continent_repository
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+on:
+  pull_request:
+    paths:
+      - "packages/continent_repository/**"
+      - ".github/workflows/continent_repository.yaml"
+    branches:
+      - main
+
+jobs:
+  build:
+    uses: VeryGoodOpenSource/very_good_workflows/.github/workflows/flutter_package.yml@v1
+    with:
+      flutter_version: 3.29.0
+      min_coverage: 0
+      working_directory: packages/continent_repository

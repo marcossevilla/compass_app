@@ -5,9 +5,7 @@ import 'package:api_client/api_client.dart';
 /// {@endtemplate}
 class BookingRepository {
   /// {@macro booking_repository}
-  BookingRepository({
-    required ApiClient apiClient,
-  }) : _apiClient = apiClient;
+  BookingRepository({required ApiClient apiClient}) : _apiClient = apiClient;
 
   final ApiClient _apiClient;
 

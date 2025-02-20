@@ -8,10 +8,7 @@ part 'continent.g.dart';
 @JsonSerializable()
 class Continent {
   /// {@macro continent}
-  const Continent({
-    required this.name,
-    required this.imageUrl,
-  });
+  const Continent({required this.name, required this.imageUrl});
 
   /// Creates a [Continent] from a JSON object.
   factory Continent.fromJson(Map<String, Object?> json) {
