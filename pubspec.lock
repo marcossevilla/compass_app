@@ -1011,7 +1011,7 @@ packages:
     source: hosted
     version: "2.1.4"
   very_good_analysis:
-    dependency: transitive
+    dependency: "direct dev"
     description:
       name: very_good_analysis
       sha256: "62d2b86d183fb81b2edc22913d9f155d26eb5cf3855173adb1f59fac85035c63"

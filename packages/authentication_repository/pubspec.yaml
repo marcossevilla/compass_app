@@ -8,8 +8,7 @@ environment:
 resolution: workspace
 
 dependencies:
-  api_client:
-    path: ../api_client
+  api_client: ^0.1.0
   logging: ^1.3.0
 
 dev_dependencies:
