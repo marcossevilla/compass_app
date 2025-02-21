@@ -26,28 +26,18 @@ void main() {
         columns: 3,
         columnWidthBuilder: (_) => const FlexColumnWidth(),
         children: [
-          GoldenTestScenario(
-            name: 'default',
-            child: const AppBackButton(),
-          ),
+          GoldenTestScenario(name: 'default', child: const AppBackButton()),
           GoldenTestScenario(
             name: 'blurred',
-            child: const AppBackButton(
-              blur: true,
-            ),
+            child: const AppBackButton(blur: true),
           ),
           GoldenTestScenario(
             name: 'tappable',
-            child: AppBackButton(
-              onTap: () {},
-            ),
+            child: AppBackButton(onTap: () {}),
           ),
           GoldenTestScenario(
             name: 'tappable blurred',
-            child: AppBackButton(
-              blur: true,
-              onTap: () {},
-            ),
+            child: AppBackButton(blur: true, onTap: () {}),
           ),
         ],
       );
@@ -64,10 +54,8 @@ void main() {
       'renders correctly when pressed',
       fileName: 'back_button_pressed',
       constraints: constraints,
-      pumpWidget: (tester, widget) => tester.pumpApp(
-        widget,
-        goRouter: goRouter,
-      ),
+      pumpWidget:
+          (tester, widget) => tester.pumpApp(widget, goRouter: goRouter),
       whilePerforming: longPress(find.byType(AppBackButton)),
       builder: buildGroup,
     );

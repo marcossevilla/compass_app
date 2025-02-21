@@ -16,9 +16,6 @@ class MockGoRouterProvider extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InheritedGoRouter(
-      goRouter: goRouter,
-      child: child,
-    );
+    return InheritedGoRouter(goRouter: goRouter, child: child);
   }
 }

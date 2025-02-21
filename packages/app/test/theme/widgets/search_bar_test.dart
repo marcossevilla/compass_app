@@ -26,26 +26,18 @@ void main() {
     Widget buildGroup() {
       return GoldenTestGroup(
         children: [
-          GoldenTestScenario(
-            name: 'default',
-            child: const AppSearchBar(),
-          ),
+          GoldenTestScenario(name: 'default', child: const AppSearchBar()),
           GoldenTestScenario(
             name: 'with config',
             child: AppSearchBar(config: config),
           ),
           GoldenTestScenario(
             name: 'tappable',
-            child: AppSearchBar(
-              onTap: () {},
-            ),
+            child: AppSearchBar(onTap: () {}),
           ),
           GoldenTestScenario(
             name: 'tappable with config',
-            child: AppSearchBar(
-              onTap: () {},
-              config: config,
-            ),
+            child: AppSearchBar(onTap: () {}, config: config),
           ),
         ],
       );
@@ -61,10 +53,8 @@ void main() {
     goldenTest(
       'renders correctly when pressed',
       fileName: 'search_bar_pressed',
-      pumpWidget: (tester, widget) => tester.pumpApp(
-        widget,
-        goRouter: goRouter,
-      ),
+      pumpWidget:
+          (tester, widget) => tester.pumpApp(widget, goRouter: goRouter),
       whilePerforming: press(find.byType(InkWell)),
       builder: buildGroup,
     );
