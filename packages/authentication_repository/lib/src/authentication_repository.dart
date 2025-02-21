@@ -9,8 +9,8 @@ import 'package:logging/logging.dart';
 class AuthenticationRepository {
   /// {@macro authentication_repository}
   AuthenticationRepository({required AuthApiClient authApiClient})
-      : _logger = Logger('AuthenticationRepository'),
-        _authApiClient = authApiClient;
+    : _logger = Logger('AuthenticationRepository'),
+      _authApiClient = authApiClient;
 
   final Logger _logger;
   final AuthApiClient _authApiClient;
@@ -19,16 +19,10 @@ class AuthenticationRepository {
   Stream<bool> get isAuthenticated => _authApiClient.isAuthenticated;
 
   /// Fetch the user's profile.
-  Future<void> login({
-    required String email,
-    required String password,
-  }) async {
+  Future<void> login({required String email, required String password}) async {
     try {
       await _authApiClient.login(
-        LoginRequest(
-          email: email,
-          password: password,
-        ),
+        LoginRequest(email: email, password: password),
       );
 
       _logger.info('User logged int');

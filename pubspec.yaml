@@ -1,54 +1,19 @@
-name: compass_app
-description: Another app that helps users build and book itineraries for trips.
-version: 1.0.0+1
+name: compass_workspace
 publish_to: none
 
 environment:
-  sdk: ^3.5.0
+  sdk: ^3.7.0
 
-dependencies:
-  activity_repository:
-    path: packages/activity_repository
-  api_client:
-    path: packages/api_client
-  authentication_repository:
-    path: packages/authentication_repository
-  bloc: ^9.0.0
-  booking_repository:
-    path: packages/booking_repository
-  cached_network_image: ^3.4.1
-  continent_repository:
-    path: packages/continent_repository
-  destination_repository:
-    path: packages/destination_repository
-  equatable: ^2.0.7
-  flutter:
-    sdk: flutter
-  flutter_bloc: ^9.0.0
-  flutter_localizations:
-    sdk: flutter
-  flutter_svg: ^2.0.17
-  go_router: ^14.6.3
-  google_fonts: ^6.2.1
-  intl: ^0.19.0
-  itinerary_config_repository:
-    path: packages/itinerary_config_repository
-  logging: ^1.3.0
-  share_plus: ^10.1.4
-  user_repository:
-    path: packages/user_repository
+workspace:
+  - packages/activity_repository
+  - packages/api_client
+  - packages/authentication_repository
+  - packages/app
+  - packages/booking_repository
+  - packages/continent_repository
+  - packages/destination_repository
+  - packages/itinerary_config_repository
+  - packages/user_repository
 
 dev_dependencies:
-  alchemist: ^0.11.0
-  bloc_test: ^10.0.0
-  flutter_test:
-    sdk: flutter
-  mocktail: ^1.0.4
-  mocktail_image_network: ^1.2.0
   very_good_analysis: ^7.0.0
-
-flutter:
-  uses-material-design: true
-  assets:
-    - assets/logo.svg
-    - assets/user.jpg

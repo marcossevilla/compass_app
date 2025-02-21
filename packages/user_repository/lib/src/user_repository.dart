@@ -17,10 +17,7 @@ class UserRepository {
 
     final result = await _apiClient.getUser();
 
-    final user = User(
-      name: result.name,
-      picture: result.picture,
-    );
+    final user = User(name: result.name, picture: result.picture);
 
     _cachedData = user;
 

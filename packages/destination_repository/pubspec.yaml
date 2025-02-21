@@ -4,11 +4,11 @@ version: 0.1.0+1
 publish_to: none
 
 environment:
-  sdk: ^3.5.0
+  sdk: ^3.7.0
+resolution: workspace
 
 dependencies:
-  api_client:
-    path: ../api_client
+  api_client: ^0.1.0
 
 dev_dependencies:
   mocktail: ^1.0.4
