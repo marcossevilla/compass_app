@@ -2,9 +2,12 @@ import 'dart:async';
 
 import 'package:alchemist/alchemist.dart';
 import 'package:compass_app/theme/theme.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:flutter_test/flutter_test.dart';
 
 Future<void> testExecutable(FutureOr<void> Function() testMain) async {
+  TestWidgetsFlutterBinding.ensureInitialized();
+
   const isRunningInCi = bool.fromEnvironment('CI');
 
   final theme = AppTheme.standard;
