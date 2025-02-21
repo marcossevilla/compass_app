@@ -19,11 +19,15 @@ Future<void> testExecutable(FutureOr<void> Function() testMain) async {
     backgroundColor: theme.colorScheme.onSecondary,
   );
 
+  final currentConfig = AlchemistConfig.current();
+
   return AlchemistConfig.runWithConfig(
-    config: AlchemistConfig.current().copyWith(
+    config: currentConfig.copyWith(
       theme: theme,
       goldenTestTheme: goldenTestTheme,
-      platformGoldensConfig: PlatformGoldensConfig(enabled: !isRunningInCi),
+      platformGoldensConfig: currentConfig.platformGoldensConfig.merge(
+        PlatformGoldensConfig(enabled: !isRunningInCi),
+      ),
     ),
     run: testMain,
   );
