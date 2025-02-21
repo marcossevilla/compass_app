@@ -8,7 +8,7 @@ import 'package:flutter_test/flutter_test.dart';
 Future<void> testExecutable(FutureOr<void> Function() testMain) async {
   TestWidgetsFlutterBinding.ensureInitialized();
 
-  const isRunningInCi = bool.fromEnvironment('CI');
+  const isRunningInCi = bool.fromEnvironment('GITHUB_ACTIONS');
 
   final theme = AppTheme.standard;
 
@@ -22,9 +22,7 @@ Future<void> testExecutable(FutureOr<void> Function() testMain) async {
     config: AlchemistConfig.current().copyWith(
       theme: theme,
       goldenTestTheme: goldenTestTheme,
-      ciGoldensConfig: CiGoldensConfig(theme: theme),
-      platformGoldensConfig: PlatformGoldensConfig(
-        theme: theme,
+      platformGoldensConfig: const PlatformGoldensConfig(
         // This might not be redundant.
         // ignore: avoid_redundant_argument_values
         enabled: !isRunningInCi,

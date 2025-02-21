@@ -53,8 +53,9 @@ void main() {
     goldenTest(
       'renders correctly when pressed',
       fileName: 'search_bar_pressed',
-      pumpWidget:
-          (tester, widget) => tester.pumpApp(widget, goRouter: goRouter),
+      pumpWidget: (tester, widget) async {
+        await tester.pumpApp(widget, goRouter: goRouter);
+      },
       whilePerforming: press(find.byType(InkWell)),
       builder: buildGroup,
     );
