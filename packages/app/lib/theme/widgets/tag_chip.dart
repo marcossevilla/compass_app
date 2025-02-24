@@ -1,7 +1,7 @@
 import 'dart:ui' as ui;
 
+import 'package:compass_app/theme/theme.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class TagChip extends StatelessWidget {
   const TagChip({
@@ -21,7 +21,7 @@ class TagChip extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final tagChipTheme = Theme.of(context).extension<TagChipTheme>();
+    final tagChipTheme = context.tagChipTheme;
 
     return ClipRRect(
       borderRadius: BorderRadius.circular(height / 2),
@@ -50,7 +50,7 @@ class TagChip extends StatelessWidget {
                   Text(
                     tag,
                     textAlign: TextAlign.center,
-                    style: _textStyle(tagChipTheme),
+                    style: tagChipTheme?.textStyle,
                   ),
                 ],
               ),
@@ -84,49 +84,5 @@ class TagChip extends StatelessWidget {
       'Winter destination' => Icons.ac_unit,
       _ => Icons.label_outlined,
     };
-  }
-
-  // Note: original Figma file uses Google Sans
-  // which is not available on GoogleFonts.
-  TextStyle _textStyle(TagChipTheme? tagChipTheme) {
-    return GoogleFonts.openSans(
-      textStyle: TextStyle(
-        fontWeight: FontWeight.w500,
-        fontSize: fontSize,
-        color: onChipColor ?? tagChipTheme?.onChipColor ?? Colors.white,
-        textBaseline: TextBaseline.alphabetic,
-      ),
-    );
-  }
-}
-
-class TagChipTheme extends ThemeExtension<TagChipTheme> {
-  const TagChipTheme({required this.chipColor, required this.onChipColor});
-
-  final Color chipColor;
-  final Color onChipColor;
-
-  @override
-  ThemeExtension<TagChipTheme> copyWith({
-    Color? chipColor,
-    Color? onChipColor,
-  }) {
-    return TagChipTheme(
-      chipColor: chipColor ?? this.chipColor,
-      onChipColor: onChipColor ?? this.onChipColor,
-    );
-  }
-
-  @override
-  ThemeExtension<TagChipTheme> lerp(
-    covariant ThemeExtension<TagChipTheme> other,
-    double t,
-  ) {
-    if (other is! TagChipTheme) return this;
-
-    return TagChipTheme(
-      chipColor: Color.lerp(chipColor, other.chipColor, t) ?? chipColor,
-      onChipColor: Color.lerp(onChipColor, other.onChipColor, t) ?? onChipColor,
-    );
   }
 }

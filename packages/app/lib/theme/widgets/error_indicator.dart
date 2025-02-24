@@ -19,10 +19,10 @@ class ErrorIndicator extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        IntrinsicWidth(
-          child: Padding(
-            padding: const EdgeInsets.all(8),
-            child: Center(
+        Align(
+          child: IntrinsicWidth(
+            child: Padding(
+              padding: const EdgeInsets.all(8),
               child: Row(
                 children: [
                   Icon(Icons.error_outline, color: colorScheme.onError),
