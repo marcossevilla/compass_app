@@ -1,3 +1,4 @@
+import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'activity.g.dart';
@@ -24,7 +25,7 @@ enum TimeOfDay {
 /// An activity that can be done at a destination.
 /// {@endtemplate}
 @JsonSerializable()
-class Activity {
+class Activity extends Equatable {
   /// {@macro activity}
   const Activity({
     required this.name,
@@ -79,4 +80,17 @@ class Activity {
 
   /// e.g. 'https://storage.googleapis.com/tripedia-images/activities/alaska_glacier-trekking-and-ice-climbing.jpg'
   final String imageUrl;
+
+  @override
+  List<Object> get props => [
+    name,
+    description,
+    locationName,
+    duration,
+    timeOfDay,
+    familyFriendly,
+    price,
+    destinationRef,
+    ref,
+  ];
 }

@@ -1,5 +1,6 @@
-import 'package:api_client/api_client.dart';
+import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
+import 'package:models/models.dart';
 
 part 'itinerary_config.g.dart';
 
@@ -7,7 +8,7 @@ part 'itinerary_config.g.dart';
 /// Configuration for an itinerary.
 /// {@endtemplate}
 @JsonSerializable()
-class ItineraryConfig {
+class ItineraryConfig extends Equatable {
   /// {@macro itinerary_config}
   const ItineraryConfig({
     this.continent,
@@ -19,8 +20,12 @@ class ItineraryConfig {
   });
 
   /// Creates an [ItineraryConfig] from a JSON object.
-  factory ItineraryConfig.fromJson(Map<String, Object?> json) =>
-      _$ItineraryConfigFromJson(json);
+  factory ItineraryConfig.fromJson(Map<String, Object?> json) {
+    return _$ItineraryConfigFromJson(json);
+  }
+
+  /// Converts this [ItineraryConfig] to a JSON object.
+  Map<String, Object?> toJson() => _$ItineraryConfigToJson(this);
 
   /// [Continent] name.
   final String? continent;
@@ -58,4 +63,14 @@ class ItineraryConfig {
       activities: activities ?? this.activities,
     );
   }
+
+  @override
+  List<Object?> get props => [
+    continent,
+    startDate,
+    endDate,
+    guests,
+    destination,
+    activities,
+  ];
 }

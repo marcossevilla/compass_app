@@ -2,7 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:api_client/api_client.dart';
+import 'package:models/models.dart';
 
 /// {@template api_client}
 /// Client for the Compass API.

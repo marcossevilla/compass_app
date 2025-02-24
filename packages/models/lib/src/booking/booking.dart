@@ -1,5 +1,6 @@
-import 'package:api_client/api_client.dart';
+import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
+import 'package:models/models.dart';
 
 part 'booking.g.dart';
 
@@ -7,7 +8,7 @@ part 'booking.g.dart';
 /// A booking that contains a destination and a list of activities.
 /// {@endtemplate}
 @JsonSerializable(explicitToJson: true)
-class Booking {
+class Booking extends Equatable {
   /// {@macro booking}
   const Booking({
     required this.startDate,
@@ -21,6 +22,9 @@ class Booking {
   factory Booking.fromJson(Map<String, Object?> json) {
     return _$BookingFromJson(json);
   }
+
+  /// Converts this [Booking] to a JSON object.
+  Map<String, Object?> toJson() => _$BookingToJson(this);
 
   /// Optional ID of the booking.
   /// May be null if the booking is not yet stored.
@@ -37,6 +41,9 @@ class Booking {
 
   /// List of chosen activities.
   final List<Activity> activities;
+
+  @override
+  List<Object?> get props => [id, startDate, endDate, destination, activities];
 }
 
 /// {@template booking_summary}
@@ -45,7 +52,7 @@ class Booking {
 /// like activitities or destination.
 /// {@endtemplate}
 @JsonSerializable()
-class BookingSummary {
+class BookingSummary extends Equatable {
   /// {@macro booking_summary}
   const BookingSummary({
     required this.id,
@@ -59,6 +66,9 @@ class BookingSummary {
     return _$BookingSummaryFromJson(json);
   }
 
+  /// Converts this [BookingSummary] to a JSON object.
+  Map<String, Object?> toJson() => _$BookingSummaryToJson(this);
+
   /// Booking id.
   final int id;
 
@@ -70,13 +80,16 @@ class BookingSummary {
 
   /// End date of the booking.
   final DateTime endDate;
+
+  @override
+  List<Object> get props => [id, name, startDate, endDate];
 }
 
 /// {@template booking_api_model}
 /// A booking that contains a destination and a list of activities.
 /// {@endtemplate}
 @JsonSerializable()
-class BookingApiModel {
+class BookingApiModel extends Equatable {
   /// {@macro booking_api_model}
   const BookingApiModel({
     required this.startDate,
@@ -88,8 +101,9 @@ class BookingApiModel {
   });
 
   /// Creates a [BookingApiModel] from a JSON object.
-  factory BookingApiModel.fromJson(Map<String, Object?> json) =>
-      _$BookingApiModelFromJson(json);
+  factory BookingApiModel.fromJson(Map<String, Object?> json) {
+    return _$BookingApiModelFromJson(json);
+  }
 
   /// Converts a [BookingApiModel] to a JSON object.
   Map<String, Object?> toJson() => _$BookingApiModelToJson(this);
@@ -113,4 +127,14 @@ class BookingApiModel {
 
   /// List of chosen activities.
   final List<String> activitiesRef;
+
+  @override
+  List<Object?> get props => [
+    id,
+    startDate,
+    endDate,
+    name,
+    destinationRef,
+    activitiesRef,
+  ];
 }
