@@ -1,3 +1,4 @@
+import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'destination.g.dart';
@@ -6,7 +7,7 @@ part 'destination.g.dart';
 /// A destination that can be visited.
 /// {@endtemplate}
 @JsonSerializable()
-class Destination {
+class Destination extends Equatable {
   /// {@macro destination}
   const Destination({
     required this.ref,
@@ -19,8 +20,9 @@ class Destination {
   });
 
   /// Creates a [Destination] from a JSON object.
-  factory Destination.fromJson(Map<String, Object?> json) =>
-      _$DestinationFromJson(json);
+  factory Destination.fromJson(Map<String, Object?> json) {
+    return _$DestinationFromJson(json);
+  }
 
   /// Converts this [Destination] to a JSON object.
   Map<String, Object?> toJson() => _$DestinationToJson(this);
@@ -45,4 +47,15 @@ class Destination {
 
   /// e.g. 'https://storage.googleapis.com/tripedia-images/destinations/alaska.jpg'
   final String imageUrl;
+
+  @override
+  List<Object> get props => [
+    ref,
+    name,
+    country,
+    continent,
+    knownFor,
+    tags,
+    imageUrl,
+  ];
 }

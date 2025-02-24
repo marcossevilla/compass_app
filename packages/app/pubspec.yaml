@@ -39,7 +39,6 @@ dev_dependencies:
     sdk: flutter
   mocktail: ^1.0.4
   mocktail_image_network: ^1.2.0
-  very_good_analysis: ^7.0.0
 
 flutter:
   uses-material-design: true
