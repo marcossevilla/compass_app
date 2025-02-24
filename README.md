@@ -42,7 +42,7 @@ This project is a work in progress and I plan to continue adding features and ma
 - [x] Move data and domain layer to standalone packages.
 - [x] Refactor project to use a monorepo structure by implementing [Pub Workspaces](https://dart.dev/tools/pub/workspaces).
 - [x] Add GitHub workflows for every package in the monorepo.
-- [ ] Rewrite the server code to use [package:dart_frog](https://pub.dev/packages/dart_frog).
+- [ ] Rewrite the server code to use [`package:dart_frog`](https://pub.dev/packages/dart_frog).
 - [ ] Add unit and widget tests to each package.
 - [ ] Add integration tests for feature parity with the original app.
 - [ ] Reach 100% test coverage in each package.
@@ -50,5 +50,5 @@ This project is a work in progress and I plan to continue adding features and ma
 These points are to reach feature parity with the original app and also my non-negotiable standards. But I also want to use this project to showcase how I think Flutter apps should be built, so I plan to implement the following features:
 
 - [ ] Deep linking.
-- [ ] Code push with Shorebird.
-- [ ] Crash reporting with Sentry for both frontend and backend.
+- [ ] Code push with [`package:shorebird_code_push`](https://pub.dev/packages/shorebird_code_push).
+- [ ] Crash reporting with Sentry for both frontend ([`sentry_flutter`](https://pub.dev/packages/sentry_flutter)) and backend ([`sentry_dart_frog`](https://pub.dev/packages/sentry_dart_frog)).
