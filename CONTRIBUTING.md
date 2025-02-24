@@ -6,22 +6,22 @@ This document outlines the guidelines for contributing to our monorepo, which in
 
 ## Table of Contents
 
-- [**Getting Started**](#getting-started)
+- [Getting Started](#getting-started)
     - [Setup the Project](#setup-the-project)
     - [Project Structure](#project-structure)
-- [**Making Changes**](#making-changes)
+- [Making Changes](#making-changes)
     - [Branching](#branching)
     - [Coding Standards](#coding-standards)
     - [Testing](#testing)
     - [Documentation](#documentation)
     - [Committing Changes](#committing-changes)
-- [**Submitting Changes**](#submitting-changes)
+- [Submitting Changes](#submitting-changes)
     - [Pull Requests](#pull-requests)
     - [Code Reviews](#code-reviews)
-- [**Reporting Issues**](#reporting-issues)
+- [Reporting Issues](#reporting-issues)
     - [Bug Reports](#bug-reports)
     - [Feature Requests](#feature-requests)
-- [**Community Guidelines**](#community-guidelines)
+- [Community Guidelines](#community-guidelines)
 
 ## Getting Started
 
@@ -111,18 +111,18 @@ flutter test
 * **Descriptive Commit Messages:** Use clear and concise commit messages that explain the purpose of your changes. Follow the Conventional Commits specification.
 
 ```
-feat: Add new feature [feature name]
-fix: Fix bug [bug name]
-docs: Update documentation for [feature/bug]
-refactor: Refactor [component/module]
-test: Add tests for [component/module]
-chore: Update dependencies or configuration
+feat: add new feature [feature name]
+fix: fix bug [bug name]
+docs: update documentation for [feature/bug]
+refactor: refactor [component/module]
+test: add tests for [component/module]
+chore: update dependencies or configuration
 ```
 
 Example:
 
 ```
-feat: Implement user authentication flow
+feat: implement user authentication flow
 ```
 
 ## Submitting Changes
