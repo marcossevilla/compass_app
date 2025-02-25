@@ -16,15 +16,15 @@ Map<String, dynamic> _$UserToJson(User instance) => <String, dynamic>{
 
 UserApiModel _$UserApiModelFromJson(Map<String, dynamic> json) => UserApiModel(
   id: json['id'] as String,
-  name: json['name'] as String,
   email: json['email'] as String,
+  name: json['name'] as String,
   picture: json['picture'] as String,
 );
 
 Map<String, dynamic> _$UserApiModelToJson(UserApiModel instance) =>
     <String, dynamic>{
-      'id': instance.id,
       'name': instance.name,
-      'email': instance.email,
       'picture': instance.picture,
+      'id': instance.id,
+      'email': instance.email,
     };
