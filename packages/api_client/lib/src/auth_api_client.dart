@@ -2,8 +2,9 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:api_client/api_client.dart';
 import 'package:logging/logging.dart';
+import 'package:models/models.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 /// {@template auth_api_client}
 /// Authentication client for the Compass API.

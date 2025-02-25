@@ -1,3 +1,4 @@
+import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'login_request.g.dart';
@@ -5,8 +6,8 @@ part 'login_request.g.dart';
 /// {@template login_request}
 /// Simple data class to hold login request data.
 /// {@endtemplate}
-@JsonSerializable(createToJson: true)
-class LoginRequest {
+@JsonSerializable()
+class LoginRequest extends Equatable {
   /// {@macro login_request}
   const LoginRequest({required this.email, required this.password});
 
@@ -23,4 +24,7 @@ class LoginRequest {
 
   /// Plain text password.
   final String password;
+
+  @override
+  List<Object> get props => [email, password];
 }

@@ -1,3 +1,4 @@
+import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'login_response.g.dart';
@@ -6,7 +7,7 @@ part 'login_response.g.dart';
 /// LoginResponse model.
 /// {@endtemplate}
 @JsonSerializable()
-class LoginResponse {
+class LoginResponse extends Equatable {
   /// {@macro login_response}
   const LoginResponse({required this.token, required this.userId});
 
@@ -15,9 +16,15 @@ class LoginResponse {
     return _$LoginResponseFromJson(json);
   }
 
+  /// Converts this [LoginResponse] to a JSON object.
+  Map<String, Object?> toJson() => _$LoginResponseToJson(this);
+
   /// The token to be used for authentication.
   final String token;
 
   /// The user id.
   final String userId;
+
+  @override
+  List<Object> get props => [token, userId];
 }
