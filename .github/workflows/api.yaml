@@ -1,0 +1,23 @@
+name: api
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+on:
+  pull_request:
+    paths:
+      - "packages/api/**"
+      - ".github/workflows/api.yaml"
+    branches:
+      - main
+
+jobs:
+  build:
+    uses: VeryGoodOpenSource/very_good_workflows/.github/workflows/dart_package.yml@v1
+    with:
+      dart_sdk: 3.7.0
+      report_on: "routes"
+      working_directory: packages/api
+      coverage_excludes: "**/*.g.dart"
+      analyze_directories: "routes test lib"

@@ -6,6 +6,7 @@ environment:
 
 workspace:
   - packages/activity_repository
+  - packages/api
   - packages/api_client
   - packages/authentication_repository
   - packages/app
