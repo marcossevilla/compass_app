@@ -31,13 +31,13 @@ class User extends Equatable {
 /// A user that can be authenticated.
 /// {@endtemplate}
 @JsonSerializable()
-class UserApiModel extends Equatable {
+class UserApiModel extends User {
   /// {@macro user_api_model}
   const UserApiModel({
     required this.id,
-    required this.name,
     required this.email,
-    required this.picture,
+    required super.name,
+    required super.picture,
   });
 
   /// Creates a [UserApiModel] from a JSON object.
@@ -46,19 +46,14 @@ class UserApiModel extends Equatable {
   }
 
   /// Converts this [UserApiModel] to a JSON object.
+  @override
   Map<String, Object?> toJson() => _$UserApiModelToJson(this);
 
   /// The user's ID.
   final String id;
 
-  /// The user's name.
-  final String name;
-
   /// The user's email.
   final String email;
-
-  /// The user's picture URL.
-  final String picture;
 
   @override
   List<Object> get props => [id, name, email, picture];
