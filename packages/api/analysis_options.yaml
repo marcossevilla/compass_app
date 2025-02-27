@@ -5,3 +5,4 @@ analyzer:
 linter:
   rules:
     file_names: false
+    public_member_api_docs: false
