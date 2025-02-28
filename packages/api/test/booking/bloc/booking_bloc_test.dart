@@ -18,23 +18,28 @@ void main() {
 
     blocTest<BookingBloc, BookingState>(
       'emits [BookingState] with new booking when BookingAdded is added',
-      build: () => BookingBloc(sequentialId: 0),
+      build: BookingBloc.new,
       act: (bloc) => bloc.add(BookingAdded(booking)),
       expect: () {
         return [
-          BookingState(bookings: [defaultBooking, booking]),
+          BookingState(bookings: [defaultBooking, booking], sequentialId: 1),
         ];
       },
     );
 
     blocTest<BookingBloc, BookingState>(
       'emits [BookingState] with default booking when BookingRemoved is added',
-      build: () => BookingBloc(sequentialId: 0),
-      seed: () => BookingState(bookings: [defaultBooking, booking]),
+      build: BookingBloc.new,
+      seed: () {
+        return BookingState(
+          bookings: [defaultBooking, booking],
+          sequentialId: 2,
+        );
+      },
       act: (bloc) => bloc.add(BookingRemoved(booking)),
       expect: () {
         return [
-          BookingState(bookings: [defaultBooking]),
+          BookingState(bookings: [defaultBooking], sequentialId: 2),
         ];
       },
     );

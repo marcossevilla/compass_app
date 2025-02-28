@@ -9,14 +9,18 @@ part 'booking_event.dart';
 part 'booking_state.dart';
 
 class BookingBloc extends Bloc<BookingEvent, BookingState> {
-  BookingBloc({required int sequentialId})
-    : super(BookingState.initial(sequentialId: sequentialId)) {
+  BookingBloc() : super(BookingState.initial()) {
     on<BookingAdded>(_onBookingAdded);
     on<BookingRemoved>(_onBookingRemoved);
   }
 
   void _onBookingAdded(BookingAdded event, Emitter<BookingState> emit) {
-    emit(BookingState(bookings: [...state.bookings, event.booking]));
+    emit(
+      BookingState(
+        bookings: [...state.bookings, event.booking],
+        sequentialId: state.sequentialId + 1,
+      ),
+    );
   }
 
   void _onBookingRemoved(BookingRemoved event, Emitter<BookingState> emit) {
@@ -24,6 +28,8 @@ class BookingBloc extends Bloc<BookingEvent, BookingState> {
       (booking) => booking == event.booking,
     );
 
-    emit(BookingState(bookings: [...bookings]));
+    emit(
+      BookingState(bookings: [...bookings], sequentialId: state.sequentialId),
+    );
   }
 }

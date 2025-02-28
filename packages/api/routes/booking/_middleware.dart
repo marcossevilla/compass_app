@@ -1,14 +1,8 @@
 import 'package:api/api.dart';
 import 'package:dart_frog/dart_frog.dart';
 
-var _sequentialId = 0;
+final _bookingBloc = BookingBloc();
 
 Handler middleware(Handler handler) {
-  return handler
-      .use(provider<int>((context) => _sequentialId))
-      .use(
-        provider<BookingBloc>(
-          (context) => BookingBloc(sequentialId: _sequentialId),
-        ),
-      );
+  return handler.use(provider<BookingBloc>((_) => _bookingBloc));
 }

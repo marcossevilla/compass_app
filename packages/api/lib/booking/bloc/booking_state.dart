@@ -1,11 +1,10 @@
 part of 'booking_bloc.dart';
 
 class BookingState extends Equatable {
-  const BookingState({required this.bookings});
+  const BookingState({required this.bookings, required this.sequentialId});
 
-  factory BookingState.initial({required int sequentialId}) {
-    return BookingState(bookings: [defaultBooking(sequentialId: sequentialId)]);
-  }
+  BookingState.initial({this.sequentialId = 0})
+    : bookings = [defaultBooking(sequentialId: sequentialId)];
 
   @visibleForTesting
   static BookingApiModel defaultBooking({required int sequentialId}) {
@@ -26,8 +25,9 @@ class BookingState extends Equatable {
     );
   }
 
+  final int sequentialId;
   final List<BookingApiModel> bookings;
 
   @override
-  List<Object> get props => [bookings];
+  List<Object> get props => [sequentialId, bookings];
 }
