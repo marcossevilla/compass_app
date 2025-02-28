@@ -2,6 +2,7 @@ import 'package:api/api.dart';
 import 'package:bloc/bloc.dart';
 import 'package:collection/collection.dart';
 import 'package:equatable/equatable.dart';
+import 'package:meta/meta.dart';
 import 'package:models/models.dart';
 
 part 'booking_event.dart';
