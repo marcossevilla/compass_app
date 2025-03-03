@@ -1,11 +1,10 @@
-import 'dart:async';
 import 'dart:io';
 
 import 'package:api/api.dart';
 import 'package:collection/collection.dart';
 import 'package:dart_frog/dart_frog.dart';
 
-FutureOr<Response> onRequest(RequestContext context, String id) {
+Response onRequest(RequestContext context, String id) {
   return switch (context.request.method) {
     HttpMethod.get => _get(context, id),
     HttpMethod.delete => _delete(context, id),

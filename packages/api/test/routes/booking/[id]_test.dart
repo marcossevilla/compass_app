@@ -57,10 +57,10 @@ void main() {
         when(() => context.request).thenReturn(Request.get(uri));
       });
 
-      test('returns not found when is invalid id', () async {
+      test('returns not found when is invalid id', () {
         when(() => bookingBloc.state).thenReturn(BookingState.initial());
 
-        final response = await onRequest(context, '1');
+        final response = onRequest(context, '1');
 
         expect(response.statusCode, equals(HttpStatus.notFound));
         expect(response.body(), completion(equals('Invalid id')));
@@ -70,7 +70,7 @@ void main() {
         when(() => bookingBloc.state).thenReturn(BookingState.initial());
 
         final booking = BookingState.defaultBooking(sequentialId: 0);
-        final response = await onRequest(context, '0');
+        final response = onRequest(context, '0');
         final body = await response.body();
         final decodedBody = jsonDecode(body) as Map<String, dynamic>;
         final bookingResponse = BookingApiModel.fromJson(decodedBody);
@@ -85,20 +85,20 @@ void main() {
         when(() => context.request).thenReturn(Request.delete(uri));
       });
 
-      test('returns not found when is invalid id', () async {
+      test('returns not found when is invalid id', () {
         when(() => bookingBloc.state).thenReturn(BookingState.initial());
 
-        final response = await onRequest(context, '1');
+        final response = onRequest(context, '1');
 
         expect(response.statusCode, equals(HttpStatus.notFound));
         expect(response.body(), completion(equals('Invalid id')));
       });
 
-      test('returns no content when is valid id', () async {
+      test('returns no content when is valid id', () {
         when(() => bookingBloc.state).thenReturn(BookingState.initial());
 
         final booking = BookingState.defaultBooking(sequentialId: 0);
-        final response = await onRequest(context, '0');
+        final response = onRequest(context, '0');
 
         expect(response.statusCode, equals(HttpStatus.noContent));
         verify(() => bookingBloc.add(BookingRemoved(booking))).called(1);
