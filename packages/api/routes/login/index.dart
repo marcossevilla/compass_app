@@ -19,7 +19,7 @@ Future<Response> _post(RequestContext context) async {
     json.decode(body) as Map<String, dynamic>,
   );
 
-  if (loginRequest.email != Constants.email &&
+  if (loginRequest.email != Constants.email ||
       loginRequest.password != Constants.password) {
     return Response(
       statusCode: HttpStatus.unauthorized,
