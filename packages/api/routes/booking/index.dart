@@ -17,7 +17,7 @@ FutureOr<Response> onRequest(RequestContext context) {
 Response _get(RequestContext context) {
   final bookingBloc = context.read<BookingBloc>();
   final bookings = bookingBloc.state.bookings;
-  return Response.json(body: json.encode(bookings));
+  return Response.json(body: bookings);
 }
 
 Future<Response> _post(RequestContext context) async {
@@ -34,11 +34,11 @@ Future<Response> _post(RequestContext context) async {
     );
   }
 
-  // Add ID to new booking by retrieving the next sequential ID from context.
-  final bookingWithId = booking.copyWith(id: context.read<int>());
-
   // Store booking.
-  context.read<BookingBloc>().add(BookingAdded(bookingWithId));
+  context.read<BookingBloc>().add(BookingAdded(booking));
+
+  // Get newly created booking.
+  final bookingWithId = context.read<BookingBloc>().state.bookings.last;
 
   // Respond with newly created booking.
   return Response.json(statusCode: HttpStatus.created, body: bookingWithId);

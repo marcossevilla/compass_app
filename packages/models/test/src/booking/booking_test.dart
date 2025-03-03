@@ -236,7 +236,7 @@ void main() {
         );
 
         final bookingApiModelCopy = bookingApiModel.copyWith(
-          id: 1,
+          id: () => 1,
           startDate: date,
           endDate: date,
           name: 'other name',

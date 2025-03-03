@@ -130,7 +130,7 @@ class BookingApiModel extends Equatable {
 
   /// Returns an instance of [BookingApiModel] with updated properties.
   BookingApiModel copyWith({
-    int? id,
+    int? Function()? id,
     DateTime? startDate,
     DateTime? endDate,
     String? name,
@@ -138,7 +138,7 @@ class BookingApiModel extends Equatable {
     List<String>? activitiesRef,
   }) {
     return BookingApiModel(
-      id: id ?? this.id,
+      id: id?.call() ?? this.id,
       startDate: startDate ?? this.startDate,
       endDate: endDate ?? this.endDate,
       name: name ?? this.name,

@@ -15,10 +15,14 @@ class BookingBloc extends Bloc<BookingEvent, BookingState> {
   }
 
   void _onBookingAdded(BookingAdded event, Emitter<BookingState> emit) {
+    final nextSequentialId = state.sequentialId + 1;
     emit(
       BookingState(
-        bookings: [...state.bookings, event.booking],
-        sequentialId: state.sequentialId + 1,
+        bookings: [
+          ...state.bookings,
+          event.booking.copyWith(id: () => nextSequentialId),
+        ],
+        sequentialId: nextSequentialId,
       ),
     );
   }
