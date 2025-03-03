@@ -19,13 +19,13 @@ void main() {
 
     group('BookingAdded', () {
       test('supports value comparison', () {
-        expect(BookingAdded(booking), BookingAdded(booking));
+        expect(BookingAdded(booking), equals(BookingAdded(booking)));
       });
     });
 
     group('BookingRemoved', () {
       test('supports value comparison', () {
-        expect(BookingRemoved(booking), BookingRemoved(booking));
+        expect(BookingRemoved(booking), equals(BookingRemoved(booking)));
       });
     });
   });

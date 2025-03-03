@@ -16,13 +16,13 @@ class _MockBookingBloc extends MockBloc<BookingEvent, BookingState>
     implements BookingBloc {}
 
 void main() {
-  group('/booking', () {
+  group('/booking/[id]', () {
     late Uri uri;
     late RequestContext context;
     late BookingBloc bookingBloc;
 
     setUp(() {
-      uri = Uri.parse('http://localhost/routes/booking/');
+      uri = Uri.parse('http://localhost/routes/booking/id');
       context = _MockRequestContext();
       bookingBloc = _MockBookingBloc();
 
@@ -30,7 +30,7 @@ void main() {
     });
 
     test(
-      'returns method not allowed when request method is not [GET, DELETE]',
+      '''returns method not allowed when request method is not [PUT, POST, PATCH]''',
       () {
         final unallowedRequests = [
           Request.put(uri),

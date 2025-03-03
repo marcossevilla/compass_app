@@ -117,6 +117,7 @@ void main() {
 
           expect(response.statusCode, equals(HttpStatus.created));
           expect(bookingResponse, equals(booking));
+          verify(() => bookingBloc.add(BookingAdded(booking))).called(1);
         },
       );
     });
