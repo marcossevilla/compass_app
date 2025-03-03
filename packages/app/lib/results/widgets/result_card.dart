@@ -1,8 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:compass_app/theme/theme.dart';
-import 'package:destination_repository/destination_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:models/models.dart';
 
 class ResultCard extends StatelessWidget {
   const ResultCard({required this.destination, required this.onTap, super.key});

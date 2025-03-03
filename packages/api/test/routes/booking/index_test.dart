@@ -45,7 +45,7 @@ void main() {
             isA<Response>().having(
               (response) => response.statusCode,
               'statusCode',
-              HttpStatus.methodNotAllowed,
+              equals(HttpStatus.methodNotAllowed),
             ),
           );
         }

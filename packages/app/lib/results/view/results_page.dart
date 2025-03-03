@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:itinerary_config_repository/itinerary_config_repository.dart';
+import 'package:models/models.dart';
 
 class ResultsPage extends StatelessWidget {
   const ResultsPage({super.key});
