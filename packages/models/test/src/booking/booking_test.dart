@@ -210,5 +210,42 @@ void main() {
 
       expect(bookingApiModel.toJson(), equals(bookingApiModelMap));
     });
+
+    group('copyWith', () {
+      test('returns same instance', () {
+        final bookingApiModel = BookingApiModel(
+          id: 0,
+          startDate: date,
+          endDate: date,
+          name: 'name',
+          destinationRef: 'destinationRef',
+          activitiesRef: ['activitiesRef'],
+        );
+
+        expect(bookingApiModel.copyWith(), equals(bookingApiModel));
+      });
+
+      test('returns updated instance', () {
+        final bookingApiModel = BookingApiModel(
+          id: 0,
+          startDate: date,
+          endDate: date,
+          name: 'name',
+          destinationRef: 'destinationRef',
+          activitiesRef: ['activitiesRef'],
+        );
+
+        final bookingApiModelCopy = bookingApiModel.copyWith(
+          id: () => 1,
+          startDate: date,
+          endDate: date,
+          name: 'other name',
+          destinationRef: 'other destinationRef',
+          activitiesRef: ['other activitiesRef'],
+        );
+
+        expect(bookingApiModelCopy, isNot(bookingApiModel));
+      });
+    });
   });
 }
