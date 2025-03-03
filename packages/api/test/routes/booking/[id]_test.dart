@@ -22,7 +22,7 @@ void main() {
     late BookingBloc bookingBloc;
 
     setUp(() {
-      uri = Uri.parse('http://localhost/routes/booking/id');
+      uri = Uri.parse('http://localhost/booking/id');
       context = _MockRequestContext();
       bookingBloc = _MockBookingBloc();
 
@@ -30,7 +30,7 @@ void main() {
     });
 
     test(
-      '''returns method not allowed when request method is not [PUT, POST, PATCH]''',
+      'returns method not allowed when request method is not [GET, DELETE]',
       () {
         final unallowedRequests = [
           Request.put(uri),

@@ -22,7 +22,7 @@ void main() {
     late BookingBloc bookingBloc;
 
     setUp(() {
-      uri = Uri.parse('http://localhost/routes/booking/');
+      uri = Uri.parse('http://localhost/booking/');
       context = _MockRequestContext();
       bookingBloc = _MockBookingBloc();
 
