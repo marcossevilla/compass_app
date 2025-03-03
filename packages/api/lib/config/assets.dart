@@ -11,16 +11,14 @@ abstract final class Assets {
   /// List of destinations.
   static List<Destination> get destinations {
     final data = json.decode(File(_destinations).readAsStringSync()) as List;
-    return data
-        .map((e) => Destination.fromJson(e as Map<String, dynamic>))
-        .toList();
+    final list = data.cast<Map<String, dynamic>>();
+    return list.map(Destination.fromJson).toList();
   }
 
   /// List of activities.
   static List<Activity> get activities {
     final data = json.decode(File(_activities).readAsStringSync()) as List;
-    return data
-        .map((e) => Activity.fromJson(e as Map<String, dynamic>))
-        .toList();
+    final list = data.cast<Map<String, dynamic>>();
+    return list.map(Activity.fromJson).toList();
   }
 }

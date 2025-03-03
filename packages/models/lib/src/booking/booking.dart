@@ -128,6 +128,25 @@ class BookingApiModel extends Equatable {
   /// List of chosen activities.
   final List<String> activitiesRef;
 
+  /// Returns an instance of [BookingApiModel] with updated properties.
+  BookingApiModel copyWith({
+    int? Function()? id,
+    DateTime? startDate,
+    DateTime? endDate,
+    String? name,
+    String? destinationRef,
+    List<String>? activitiesRef,
+  }) {
+    return BookingApiModel(
+      id: id?.call() ?? this.id,
+      startDate: startDate ?? this.startDate,
+      endDate: endDate ?? this.endDate,
+      name: name ?? this.name,
+      destinationRef: destinationRef ?? this.destinationRef,
+      activitiesRef: activitiesRef ?? this.activitiesRef,
+    );
+  }
+
   @override
   List<Object?> get props => [
     id,
