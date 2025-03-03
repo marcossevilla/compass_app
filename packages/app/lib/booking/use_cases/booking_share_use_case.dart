@@ -1,7 +1,7 @@
-import 'package:booking_repository/booking_repository.dart';
 import 'package:compass_app/extensions/extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:logging/logging.dart';
+import 'package:models/models.dart';
 import 'package:share_plus/share_plus.dart';
 
 typedef ShareFunction = Future<void> Function(String text);
