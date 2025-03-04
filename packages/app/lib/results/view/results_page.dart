@@ -66,6 +66,9 @@ class ResultsView extends StatelessWidget {
                         ),
                       ),
                       Grid(destinations: state.destinations),
+                      SliverToBoxAdapter(
+                        child: SizedBox(height: dimensions.paddingVertical),
+                      ),
                     ],
                   ),
                 );

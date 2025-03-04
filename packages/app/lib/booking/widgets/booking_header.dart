@@ -90,7 +90,7 @@ class _Tags extends StatelessWidget {
         children: [
           ...booking.destination.tags.map(
             (tag) => TagChip(
-              tag: tag,
+              tag,
               height: 32,
               fontSize: 16,
               chipColor: chipColor,

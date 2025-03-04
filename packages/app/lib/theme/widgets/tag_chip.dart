@@ -4,8 +4,8 @@ import 'package:compass_app/theme/theme.dart';
 import 'package:flutter/material.dart';
 
 class TagChip extends StatelessWidget {
-  const TagChip({
-    required this.tag,
+  const TagChip(
+    this.tag, {
     this.fontSize = 10,
     this.height = 20,
     this.chipColor,
@@ -47,10 +47,13 @@ class TagChip extends StatelessWidget {
                     size: fontSize,
                   ),
                   const SizedBox(width: 4),
-                  Text(
-                    tag,
-                    textAlign: TextAlign.center,
-                    style: tagChipTheme?.textStyle,
+                  Flexible(
+                    child: Text(
+                      tag,
+                      style: tagChipTheme?.textStyle,
+                      overflow: TextOverflow.ellipsis,
+                      textAlign: TextAlign.center,
+                    ),
                   ),
                 ],
               ),

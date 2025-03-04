@@ -25,9 +25,9 @@ class ErrorIndicator extends StatelessWidget {
               padding: const EdgeInsets.all(8),
               child: Row(
                 children: [
-                  Icon(Icons.error_outline, color: colorScheme.onError),
+                  Icon(Icons.error_outline, color: colorScheme.error),
                   const SizedBox(width: 10),
-                  Text(title, style: TextStyle(color: colorScheme.onError)),
+                  Text(title, style: TextStyle(color: colorScheme.error)),
                 ],
               ),
             ),
