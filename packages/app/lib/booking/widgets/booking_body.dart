@@ -1,10 +1,9 @@
-import 'package:activity_repository/activity_repository.dart';
-import 'package:booking_repository/booking_repository.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:compass_app/booking/booking.dart';
 import 'package:compass_app/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:models/models.dart';
 
 class BookingBody extends StatelessWidget {
   const BookingBody({super.key});

@@ -3,7 +3,7 @@ import 'package:compass_app/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:go_router/go_router.dart';
-import 'package:itinerary_config_repository/itinerary_config_repository.dart';
+import 'package:models/models.dart';
 
 import '../../helpers/helpers.dart';
 

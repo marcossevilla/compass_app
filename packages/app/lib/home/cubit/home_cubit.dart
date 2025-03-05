@@ -2,6 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:booking_repository/booking_repository.dart';
 import 'package:equatable/equatable.dart';
 import 'package:logging/logging.dart';
+import 'package:models/models.dart';
 import 'package:user_repository/user_repository.dart';
 
 part 'home_state.dart';

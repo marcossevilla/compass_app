@@ -2,7 +2,7 @@ import 'package:compass_app/extensions/extensions.dart';
 import 'package:compass_app/l10n/l10n.dart';
 import 'package:compass_app/theme/theme.dart';
 import 'package:flutter/material.dart';
-import 'package:itinerary_config_repository/itinerary_config_repository.dart';
+import 'package:models/models.dart';
 
 /// Application top search bar.
 ///

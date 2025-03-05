@@ -2,8 +2,8 @@ import 'package:activity_repository/activity_repository.dart';
 import 'package:booking_repository/booking_repository.dart';
 import 'package:destination_repository/destination_repository.dart';
 import 'package:flutter/widgets.dart';
-import 'package:itinerary_config_repository/itinerary_config_repository.dart';
 import 'package:logging/logging.dart';
+import 'package:models/models.dart';
 
 /// UseCase for creating [Booking] objects from [ItineraryConfig].
 ///
