@@ -1,26 +1,24 @@
-import 'dart:io';
-
 import 'package:api/api.dart';
 import 'package:dart_frog/dart_frog.dart';
+import 'package:dart_frog_auth/dart_frog_auth.dart';
+import 'package:models/models.dart';
 
 Handler middleware(Handler handler) {
-  return handler.use(requestLogger()).use(authentication());
-}
+  return handler
+      .use(requestLogger())
+      .use(
+        bearerAuthentication<UserApiModel>(
+          authenticator: (context, token) async {
+            if (context.request.headers['Authorization'] ==
+                'Bearer ${Constants.token}') {
+              return Constants.user;
+            }
 
-Middleware authentication() {
-  return (handler) => (context) async {
-    final request = context.request;
-
-    if (request.url.path != 'login' &&
-        request.headers['Authorization'] != 'Bearer ${Constants.token}') {
-      // If the request is not a login request and the token is not present,
-      // return a 401 Unauthorized response.
-      return Response(
-        statusCode: HttpStatus.unauthorized,
-        body: 'Unauthorized',
+            // If the request is not a login request and the token is not
+            // present, return a 401 Unauthorized response.
+            return null;
+          },
+          applies: (context) async => context.request.url.path != 'login',
+        ),
       );
-    }
-
-    return handler(context);
-  };
 }

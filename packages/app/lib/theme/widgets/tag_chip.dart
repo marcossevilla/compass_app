@@ -19,6 +19,10 @@ class TagChip extends StatelessWidget {
   final Color? chipColor;
   final Color? onChipColor;
 
+  Color _color(TagChipTheme? tagChipTheme) {
+    return onChipColor ?? tagChipTheme?.onChipColor ?? Colors.white;
+  }
+
   @override
   Widget build(BuildContext context) {
     final tagChipTheme = context.tagChipTheme;
@@ -38,21 +42,16 @@ class TagChip extends StatelessWidget {
               child: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Icon(
-                    iconTag,
-                    color:
-                        onChipColor ??
-                        tagChipTheme?.onChipColor ??
-                        Colors.white,
-                    size: fontSize,
-                  ),
+                  Icon(iconTag, color: _color(tagChipTheme), size: fontSize),
                   const SizedBox(width: 4),
                   Flexible(
                     child: Text(
                       tag,
-                      style: tagChipTheme?.textStyle,
-                      overflow: TextOverflow.ellipsis,
                       textAlign: TextAlign.center,
+                      overflow: TextOverflow.ellipsis,
+                      style: tagChipTheme?.textStyle.copyWith(
+                        color: _color(tagChipTheme),
+                      ),
                     ),
                   ),
                 ],
