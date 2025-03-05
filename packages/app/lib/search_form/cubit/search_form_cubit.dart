@@ -4,6 +4,7 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:itinerary_config_repository/itinerary_config_repository.dart';
 import 'package:logging/logging.dart';
+import 'package:models/models.dart';
 
 part 'search_form_state.dart';
 

@@ -1,4 +1,5 @@
 import 'package:api_client/api_client.dart';
+import 'package:models/models.dart';
 
 /// {@template continent_repository}
 /// Repository that manages the continents domain.

@@ -1,7 +1,7 @@
-import 'package:activity_repository/activity_repository.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:compass_app/theme/theme.dart';
 import 'package:flutter/material.dart';
+import 'package:models/models.dart';
 
 class ActivityEntry extends StatelessWidget {
   const ActivityEntry({

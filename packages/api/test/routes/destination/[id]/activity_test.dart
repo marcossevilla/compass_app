@@ -35,7 +35,7 @@ void main() {
           isA<Response>().having(
             (response) => response.statusCode,
             'statusCode',
-            HttpStatus.methodNotAllowed,
+            equals(HttpStatus.methodNotAllowed),
           ),
         );
       }
@@ -50,7 +50,7 @@ void main() {
         final response = onRequest(context, 'alaska');
         final body = jsonDecode(await response.body()) as List;
 
-        expect(response.statusCode, HttpStatus.ok);
+        expect(response.statusCode, equals(HttpStatus.ok));
         expect(
           body.cast<Map<String, dynamic>>().map(Activity.fromJson),
           isA<Iterable<Activity>>(),

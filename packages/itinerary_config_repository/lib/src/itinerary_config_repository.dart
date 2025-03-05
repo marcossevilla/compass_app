@@ -1,4 +1,4 @@
-import 'package:api_client/api_client.dart';
+import 'package:models/models.dart';
 
 /// {@template itinerary_config_repository}
 /// Repository that manages the itinerary configuration domain.

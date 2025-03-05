@@ -3,7 +3,7 @@ import 'package:compass_app/logout/logout.dart';
 import 'package:compass_app/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:user_repository/user_repository.dart';
+import 'package:models/models.dart';
 
 class HomeHeader extends StatelessWidget {
   const HomeHeader({required this.user, super.key});

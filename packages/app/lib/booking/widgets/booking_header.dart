@@ -1,9 +1,9 @@
-import 'package:booking_repository/booking_repository.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:compass_app/extensions/extensions.dart';
 import 'package:compass_app/l10n/l10n.dart';
 import 'package:compass_app/theme/theme.dart';
 import 'package:flutter/material.dart';
+import 'package:models/models.dart';
 
 class BookingHeader extends StatelessWidget {
   const BookingHeader({required this.booking, super.key});
