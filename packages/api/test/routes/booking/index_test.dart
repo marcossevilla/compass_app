@@ -106,9 +106,11 @@ void main() {
             () => context.request,
           ).thenReturn(Request.post(uri, body: jsonEncode(booking.toJson())));
 
-          when(
-            () => bookingBloc.state,
-          ).thenReturn(BookingState(bookings: [booking], sequentialId: 0));
+          when(() => bookingBloc.stream).thenAnswer(
+            (_) => Stream.value(
+              BookingState(bookings: [booking], sequentialId: 0),
+            ),
+          );
 
           final response = await onRequest(context);
           final body = await response.body();
