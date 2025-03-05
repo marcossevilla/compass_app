@@ -1,4 +1,3 @@
-import 'package:booking_repository/booking_repository.dart';
 import 'package:compass_app/extensions/extensions.dart';
 import 'package:compass_app/home/home.dart';
 import 'package:compass_app/l10n/l10n.dart';
@@ -7,6 +6,7 @@ import 'package:compass_app/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:models/models.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({required this.homeCubit, super.key});

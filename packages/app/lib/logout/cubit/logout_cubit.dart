@@ -3,6 +3,7 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:itinerary_config_repository/itinerary_config_repository.dart';
 import 'package:logging/logging.dart';
+import 'package:models/models.dart';
 
 part 'logout_state.dart';
 

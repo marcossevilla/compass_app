@@ -9,6 +9,7 @@ resolution: workspace
 
 dependencies:
   api_client: ^0.1.0
+  models: ^0.1.0
 
 dev_dependencies:
   mocktail: ^1.0.4

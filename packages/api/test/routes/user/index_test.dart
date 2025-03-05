@@ -7,7 +7,7 @@ import 'package:mocktail/mocktail.dart';
 import 'package:models/models.dart';
 import 'package:test/test.dart';
 
-import '../../routes/user/index.dart';
+import '../../../routes/user/index.dart';
 
 class _MockRequestContext extends Mock implements RequestContext {}
 
@@ -36,7 +36,7 @@ void main() {
           isA<Response>().having(
             (response) => response.statusCode,
             'statusCode',
-            HttpStatus.methodNotAllowed,
+            equals(HttpStatus.methodNotAllowed),
           ),
         );
       }

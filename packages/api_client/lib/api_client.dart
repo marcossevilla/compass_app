@@ -1,7 +1,6 @@
 /// Client for the Compass API.
 library;
 
-export 'package:models/models.dart';
 export 'package:shared_preferences/shared_preferences.dart';
 
 export 'src/api_client.dart';
