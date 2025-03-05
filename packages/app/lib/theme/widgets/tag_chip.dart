@@ -4,8 +4,8 @@ import 'package:compass_app/theme/theme.dart';
 import 'package:flutter/material.dart';
 
 class TagChip extends StatelessWidget {
-  const TagChip({
-    required this.tag,
+  const TagChip(
+    this.tag, {
     this.fontSize = 10,
     this.height = 20,
     this.chipColor,
@@ -18,6 +18,10 @@ class TagChip extends StatelessWidget {
   final double height;
   final Color? chipColor;
   final Color? onChipColor;
+
+  Color _color(TagChipTheme? tagChipTheme) {
+    return onChipColor ?? tagChipTheme?.onChipColor ?? Colors.white;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -38,19 +42,17 @@ class TagChip extends StatelessWidget {
               child: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Icon(
-                    iconTag,
-                    color:
-                        onChipColor ??
-                        tagChipTheme?.onChipColor ??
-                        Colors.white,
-                    size: fontSize,
-                  ),
+                  Icon(iconTag, color: _color(tagChipTheme), size: fontSize),
                   const SizedBox(width: 4),
-                  Text(
-                    tag,
-                    textAlign: TextAlign.center,
-                    style: tagChipTheme?.textStyle,
+                  Flexible(
+                    child: Text(
+                      tag,
+                      textAlign: TextAlign.center,
+                      overflow: TextOverflow.ellipsis,
+                      style: tagChipTheme?.textStyle.copyWith(
+                        color: _color(tagChipTheme),
+                      ),
+                    ),
                   ),
                 ],
               ),

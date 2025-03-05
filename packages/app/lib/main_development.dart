@@ -8,10 +8,13 @@ import 'package:continent_repository/continent_repository.dart';
 import 'package:destination_repository/destination_repository.dart';
 import 'package:flutter/widgets.dart';
 import 'package:itinerary_config_repository/itinerary_config_repository.dart';
+import 'package:logging/logging.dart';
 import 'package:user_repository/user_repository.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  Logger.root.level = Level.ALL;
 
   final sharedPreferences = await SharedPreferences.getInstance();
 

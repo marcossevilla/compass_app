@@ -38,7 +38,8 @@ Future<Response> _post(RequestContext context) async {
   context.read<BookingBloc>().add(BookingAdded(booking));
 
   // Get newly created booking.
-  final bookingWithId = context.read<BookingBloc>().state.bookings.last;
+  final updatedBookingState = await context.read<BookingBloc>().stream.first;
+  final bookingWithId = updatedBookingState.bookings.last;
 
   // Respond with newly created booking.
   return Response.json(statusCode: HttpStatus.created, body: bookingWithId);

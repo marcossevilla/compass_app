@@ -46,7 +46,7 @@ class ResultCard extends StatelessWidget {
                 Wrap(
                   spacing: 4,
                   runSpacing: 4,
-                  children: [...destination.tags.map((e) => TagChip(tag: e))],
+                  children: [...destination.tags.map(TagChip.new)],
                 ),
               ],
             ),
