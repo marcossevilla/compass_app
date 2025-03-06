@@ -4,6 +4,11 @@ The Compass architecture case study is a project that shows how to structure and
 
 The original project is an app that helps users build and book itineraries for trips. The app communicates with an HTTP server that was built using the [shelf](https://pub.dev/packages/shelf) package. Some of the features include development and production environments, brand-specific styling, and high test coverage.
 
+<img src="art/login.png" width="375" height="812"/>
+<img src="art/activities.png" width="375" height="812"/>
+<img src="art/home.png" width="375" height="812"/>
+<img src="art/booking.png" width="375" height="812"/>
+
 ## Goal 🥅
 
 The goal behind this rewrite is to assess how well the architecture of the project is following best practices, and whether it can be improved. The code philosophy applied is [Very Good Engineering](https://engineering.verygood.ventures/engineering/philosophy/), an opinionated approach to Flutter development.
