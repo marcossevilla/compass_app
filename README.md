@@ -22,15 +22,16 @@ $ flutter run --flavor staging --target lib/main_staging.dart
 $ flutter run --flavor production --target lib/main_production.dart
 ```
 
-* To get the HTTP server running and retrieving data, simulating a real app experience. This is a "dummy" server, that has endpoints that simply return fake data. The server can be found in the [`compass_app/server`](https://github.com/flutter/samples/tree/main/compass_app/server) project, which means for now you will have to clone this repository until we rewrite the server code into this project. You need to run the server locally before running the Flutter application.
+* To get the HTTP server running and retrieving data, simulating a real app experience. This is a "dummy" server, that has endpoints that simply return fake data. The server can be found in [`package/api`](packages/api/), so you need to run the server locally before running the Flutter application.
 
 ```bash
-# compass_app original repo
-$ cd server
-$ dart run
-# => Server listening on port 8080
+# package/api
+$ dart_frog dev
+# ✓ Running on http://localhost:8080
+# [hotreload] Hot reload is enabled.
+# Press either R or r to reload
  
-# compass_app/packages/app
+# packages/app
 $ flutter run --flavor development --target lib/main_development.dart
 ```
 
@@ -42,7 +43,7 @@ This project is a work in progress and I plan to continue adding features and ma
 - [x] Move data and domain layer to standalone packages.
 - [x] Refactor project to use a monorepo structure by implementing [Pub Workspaces](https://dart.dev/tools/pub/workspaces).
 - [x] Add GitHub workflows for every package in the monorepo.
-- [ ] Rewrite the server code to use [`package:dart_frog`](https://pub.dev/packages/dart_frog).
+- [x] Rewrite the server code to use [`package:dart_frog`](https://pub.dev/packages/dart_frog).
 - [ ] Add unit and widget tests to each package.
 - [ ] Add integration tests for feature parity with the original app.
 - [ ] Reach 100% test coverage in each package.
