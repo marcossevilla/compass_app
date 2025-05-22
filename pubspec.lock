@@ -306,10 +306,10 @@ packages:
     dependency: transitive
     description:
       name: flutter_bloc
-      sha256: "1046d719fbdf230330d3443187cc33cc11963d15c9089f6cc56faa42a4c5f0cc"
+      sha256: cf51747952201a455a1c840f8171d273be009b932c75093020f9af64f2123e38
       url: "https://pub.dev"
     source: hosted
-    version: "9.1.0"
+    version: "9.1.1"
   flutter_cache_manager:
     dependency: transitive
     description:
@@ -457,10 +457,10 @@ packages:
     dependency: transitive
     description:
       name: json_serializable
-      sha256: "81f04dee10969f89f604e1249382d46b97a1ccad53872875369622b5bfc9e58a"
+      sha256: c50ef5fc083d5b5e12eef489503ba3bf5ccc899e487d691584699b4bdefeea8c
       url: "https://pub.dev"
     source: hosted
-    version: "6.9.4"
+    version: "6.9.5"
   leak_tracker:
     dependency: transitive
     description:
@@ -721,10 +721,10 @@ packages:
     dependency: transitive
     description:
       name: shared_preferences
-      sha256: "846849e3e9b68f3ef4b60c60cf4b3e02e9321bc7f4d8c4692cf87ffa82fc8a3a"
+      sha256: "6e8bf70b7fef813df4e9a36f658ac46d107db4b4cfe1048b477d4e453a8159f5"
       url: "https://pub.dev"
     source: hosted
-    version: "2.5.2"
+    version: "2.5.3"
   shared_preferences_android:
     dependency: transitive
     description:
