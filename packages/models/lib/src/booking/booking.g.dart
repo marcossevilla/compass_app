@@ -12,10 +12,9 @@ Booking _$BookingFromJson(Map<String, dynamic> json) => Booking(
   destination: Destination.fromJson(
     json['destination'] as Map<String, dynamic>,
   ),
-  activities:
-      (json['activities'] as List<dynamic>)
-          .map((e) => Activity.fromJson(e as Map<String, dynamic>))
-          .toList(),
+  activities: (json['activities'] as List<dynamic>)
+      .map((e) => Activity.fromJson(e as Map<String, dynamic>))
+      .toList(),
   id: (json['id'] as num?)?.toInt(),
 );
 
@@ -49,10 +48,9 @@ BookingApiModel _$BookingApiModelFromJson(Map<String, dynamic> json) =>
       endDate: DateTime.parse(json['endDate'] as String),
       name: json['name'] as String,
       destinationRef: json['destinationRef'] as String,
-      activitiesRef:
-          (json['activitiesRef'] as List<dynamic>)
-              .map((e) => e as String)
-              .toList(),
+      activitiesRef: (json['activitiesRef'] as List<dynamic>)
+          .map((e) => e as String)
+          .toList(),
       id: (json['id'] as num?)?.toInt(),
     );
 
