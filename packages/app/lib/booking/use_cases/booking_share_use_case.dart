@@ -4,7 +4,7 @@ import 'package:logging/logging.dart';
 import 'package:models/models.dart';
 import 'package:share_plus/share_plus.dart';
 
-typedef ShareFunction = Future<void> Function(String text);
+typedef ShareFunction = Future<ShareResult> Function(ShareParams params);
 
 /// UseCase for sharing a booking.
 class BookingShareUseCase {
@@ -12,7 +12,7 @@ class BookingShareUseCase {
 
   /// Create a [BookingShareUseCase] that uses `share_plus` package.
   factory BookingShareUseCase.withSharePlus() =>
-      BookingShareUseCase._(Share.share);
+      BookingShareUseCase._(SharePlus.instance.share);
 
   /// Create a [BookingShareUseCase] with a custom share function.
   factory BookingShareUseCase.custom(ShareFunction share) =>
@@ -36,7 +36,7 @@ class BookingShareUseCase {
     _log.info('Sharing booking: $text');
 
     try {
-      await _share(text);
+      await _share(ShareParams(text: text));
       _log.fine('Shared booking');
     } on Exception catch (error) {
       _log.severe('Failed to share booking', error);
