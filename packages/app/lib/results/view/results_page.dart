@@ -15,12 +15,10 @@ class ResultsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create:
-          (_) => ResultsCubit(
-            destinationRepository: context.read<DestinationRepository>(),
-            itineraryConfigRepository:
-                context.read<ItineraryConfigRepository>(),
-          )..search(),
+      create: (_) => ResultsCubit(
+        destinationRepository: context.read<DestinationRepository>(),
+        itineraryConfigRepository: context.read<ItineraryConfigRepository>(),
+      )..search(),
       child: const ResultsView(),
     );
   }
@@ -152,10 +150,9 @@ class Grid extends StatelessWidget {
         return ResultCard(
           key: ValueKey(destination.ref),
           destination: destination,
-          onTap:
-              () => context.read<ResultsCubit>().updateItineraryConfig(
-                destination.ref,
-              ),
+          onTap: () => context.read<ResultsCubit>().updateItineraryConfig(
+            destination.ref,
+          ),
         );
       }),
     );

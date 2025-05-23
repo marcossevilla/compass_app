@@ -9,11 +9,10 @@ class BookingState extends Equatable {
   @visibleForTesting
   static BookingApiModel defaultBooking({required int sequentialId}) {
     final destination = Assets.destinations.first;
-    final activitiesRef =
-        Assets.activities
-            .where((activity) => activity.destinationRef == destination.ref)
-            .map((activity) => activity.ref)
-            .toList();
+    final activitiesRef = Assets.activities
+        .where((activity) => activity.destinationRef == destination.ref)
+        .map((activity) => activity.ref)
+        .toList();
 
     return BookingApiModel(
       id: sequentialId,

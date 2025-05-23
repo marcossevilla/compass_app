@@ -88,9 +88,8 @@ class HomeView extends StatelessWidget {
                       return _Booking(
                         key: ValueKey(booking.id),
                         booking: booking,
-                        onTap:
-                            () =>
-                                context.push(Routes.bookingWithId(booking.id)),
+                        onTap: () =>
+                            context.push(Routes.bookingWithId(booking.id)),
                         confirmDismiss: (_) async {
                           // Wait for command to complete.
                           await context.read<HomeCubit>().deleteBooking(

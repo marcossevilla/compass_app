@@ -65,14 +65,12 @@ class QuantitySelector extends StatelessWidget {
           ),
           BlocSelector<SearchFormCubit, SearchFormState, int>(
             selector: (state) => state.guests,
-            builder:
-                (context, state) => Text(
-                  state.toString(),
-                  style:
-                      state == 0
-                          ? theme.inputDecorationTheme.hintStyle
-                          : theme.textTheme.bodyMedium,
-                ),
+            builder: (context, state) => Text(
+              state.toString(),
+              style: state == 0
+                  ? theme.inputDecorationTheme.hintStyle
+                  : theme.textTheme.bodyMedium,
+            ),
           ),
           InkWell(
             onTap: context.read<SearchFormCubit>().incrementGuests,
