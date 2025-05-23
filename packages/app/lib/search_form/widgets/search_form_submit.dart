@@ -36,8 +36,9 @@ class SearchFormSubmit extends StatelessWidget {
                 content: Text(l10n.errorWhileSavingItinerary),
                 action: SnackBarAction(
                   label: l10n.tryAgain,
-                  onPressed:
-                      context.read<SearchFormCubit>().updateItineraryConfig,
+                  onPressed: context
+                      .read<SearchFormCubit>()
+                      .updateItineraryConfig,
                 ),
               ),
             );
@@ -51,10 +52,9 @@ class SearchFormSubmit extends StatelessWidget {
           bottom: dimensions.paddingScreenVertical,
         ),
         child: FilledButton(
-          onPressed:
-              valid
-                  ? context.read<SearchFormCubit>().updateItineraryConfig
-                  : null,
+          onPressed: valid
+              ? context.read<SearchFormCubit>().updateItineraryConfig
+              : null,
           child: SizedBox(
             height: 52,
             child: Center(child: Text(l10n.search.toUpperCase())),

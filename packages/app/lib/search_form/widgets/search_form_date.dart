@@ -35,7 +35,10 @@ class SearchFormDate extends StatelessWidget {
 
           if (!context.mounted) return;
 
-          context.read<SearchFormCubit>().updateDateTimeRange(dateRange);
+          context.read<SearchFormCubit>().updateDateTimeRange(
+            dateRange?.start,
+            dateRange?.end,
+          );
         },
         child: Container(
           height: 64,
@@ -53,8 +56,11 @@ class SearchFormDate extends StatelessWidget {
                 Text(l10n.when, style: textTheme.titleMedium),
                 BlocBuilder<SearchFormCubit, SearchFormState>(
                   builder: (context, state) {
-                    final dateRange = state.dateRange;
-                    if (dateRange != null) {
+                    if (state.startDate != null && state.endDate != null) {
+                      final dateRange = DateTimeRange(
+                        start: state.startDate!,
+                        end: state.endDate!,
+                      );
                       return Text(
                         dateRange.dateFormatStartEnd,
                         style: textTheme.bodyLarge,

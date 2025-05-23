@@ -1,7 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:continent_repository/continent_repository.dart';
 import 'package:equatable/equatable.dart';
-import 'package:flutter/material.dart';
 import 'package:itinerary_config_repository/itinerary_config_repository.dart';
 import 'package:logging/logging.dart';
 import 'package:models/models.dart';
@@ -47,20 +46,11 @@ class SearchFormCubit extends Cubit<SearchFormState> {
     try {
       final itineraryConfig = _itineraryConfigRepository.itineraryConfig;
 
-      DateTimeRange? dateRange;
-
-      if (itineraryConfig.startDate != null &&
-          itineraryConfig.endDate != null) {
-        dateRange = DateTimeRange(
-          start: itineraryConfig.startDate!,
-          end: itineraryConfig.endDate!,
-        );
-      }
-
       emit(
         state.copyWith(
           selectedContinent: itineraryConfig.continent,
-          dateRange: dateRange,
+          startDate: itineraryConfig.startDate,
+          endDate: itineraryConfig.endDate,
           guests: itineraryConfig.guests ?? 0,
         ),
       );
@@ -77,9 +67,9 @@ class SearchFormCubit extends Cubit<SearchFormState> {
     _log.finest('Selected continent: $continent');
   }
 
-  void updateDateTimeRange(DateTimeRange? dateTimeRange) {
-    emit(state.copyWith(dateRange: dateTimeRange));
-    _log.finest('Selected date range: $dateTimeRange');
+  void updateDateTimeRange(DateTime? start, DateTime? end) {
+    emit(state.copyWith(startDate: start, endDate: end));
+    _log.finest('Selected date range: $start - $end');
   }
 
   void incrementGuests() {
@@ -96,8 +86,8 @@ class SearchFormCubit extends Cubit<SearchFormState> {
     try {
       _itineraryConfigRepository.itineraryConfig = ItineraryConfig(
         continent: state.selectedContinent,
-        startDate: state.dateRange?.start,
-        endDate: state.dateRange?.end,
+        startDate: state.startDate,
+        endDate: state.endDate,
         guests: state.guests,
       );
       emit(state.copyWith(status: SearchFormStatus.configSaved));

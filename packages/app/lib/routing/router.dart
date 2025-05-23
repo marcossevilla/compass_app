@@ -39,15 +39,14 @@ GoRouter router(ValueNotifier<bool> isAuthenticated) {
       ),
       GoRoute(
         path: Routes.home,
-        builder:
-            (context, state) => HomePage(
-              // Passing the [HomeCubit] here to trigger load each time
-              // the home page is opened.
-              homeCubit: HomeCubit(
-                userRepository: context.read<UserRepository>(),
-                bookingRepository: context.read<BookingRepository>(),
-              )..load(),
-            ),
+        builder: (context, state) => HomePage(
+          // Passing the [HomeCubit] here to trigger load each time
+          // the home page is opened.
+          homeCubit: HomeCubit(
+            userRepository: context.read<UserRepository>(),
+            bookingRepository: context.read<BookingRepository>(),
+          )..load(),
+        ),
         routes: [
           GoRoute(
             path: Routes.searchRelative,

@@ -14,12 +14,10 @@ class ActivitiesPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create:
-          (_) => ActivitiesCubit(
-            activityRepository: context.read<ActivityRepository>(),
-            itineraryConfigRepository:
-                context.read<ItineraryConfigRepository>(),
-          )..loadActivities(),
+      create: (_) => ActivitiesCubit(
+        activityRepository: context.read<ActivityRepository>(),
+        itineraryConfigRepository: context.read<ItineraryConfigRepository>(),
+      )..loadActivities(),
       child: const ActivitiesView(),
     );
   }
@@ -100,8 +98,9 @@ class ActivitiesView extends StatelessWidget {
                         child: ErrorIndicator(
                           title: l10n.errorWhileLoadingActivities,
                           label: l10n.tryAgain,
-                          onPressed:
-                              context.read<ActivitiesCubit>().loadActivities,
+                          onPressed: context
+                              .read<ActivitiesCubit>()
+                              .loadActivities,
                         ),
                       ),
                     ),
@@ -144,10 +143,9 @@ class BottomArea extends StatelessWidget {
                 style: Theme.of(context).textTheme.labelLarge,
               ),
               FilledButton(
-                onPressed:
-                    selectedActivities.isNotEmpty
-                        ? context.read<ActivitiesCubit>().saveActivities
-                        : null,
+                onPressed: selectedActivities.isNotEmpty
+                    ? context.read<ActivitiesCubit>().saveActivities
+                    : null,
                 child: Text(l10n.confirm),
               ),
             ],
