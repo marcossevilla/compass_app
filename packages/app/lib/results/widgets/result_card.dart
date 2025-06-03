@@ -10,7 +10,7 @@ class ResultCard extends StatelessWidget {
   final Destination destination;
   final GestureTapCallback onTap;
 
-  static final _cardTitleStyle = GoogleFonts.rubik(
+  static final TextStyle _cardTitleStyle = GoogleFonts.rubik(
     textStyle: const TextStyle(
       fontWeight: FontWeight.w800,
       fontSize: 15,

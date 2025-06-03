@@ -3,4 +3,4 @@ import 'package:dart_frog/dart_frog.dart';
 
 final _booking = BookingBloc();
 
-final bookingProvider = provider<BookingBloc>((_) => _booking);
+final Middleware bookingProvider = provider<BookingBloc>((_) => _booking);

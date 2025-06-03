@@ -34,7 +34,7 @@ dependencies:
   user_repository: ^0.1.0
 
 dev_dependencies:
-  alchemist: ^0.12.0
+  alchemist: ^0.12.1
   bloc_test: ^10.0.0
   flutter_test:
     sdk: flutter

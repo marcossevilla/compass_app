@@ -114,6 +114,6 @@ app.*.map.json
 !.idea/runConfigurations/
 
 # Ignore non-CI golden files and failures
-**/test/**/goldens/**/*.*
-**/test/**/failures/**/*.*
-!**/test/**/goldens/ci/*.*
+packages/**/test/**/goldens/**/*.*
+packages/**/test/**/failures/
+!packages/**/test/**/goldens/ci/*.*
