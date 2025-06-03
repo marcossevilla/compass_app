@@ -25,6 +25,7 @@ void main() {
 
     Widget buildGroup() {
       return GoldenTestGroup(
+        scenarioConstraints: const BoxConstraints(maxWidth: 300),
         children: [
           GoldenTestScenario(name: 'default', child: const AppSearchBar()),
           GoldenTestScenario(
