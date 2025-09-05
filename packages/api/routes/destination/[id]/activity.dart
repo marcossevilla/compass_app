@@ -11,9 +11,8 @@ Response onRequest(RequestContext context, String id) {
 }
 
 Response _get(RequestContext context, String id) {
-  final activities =
-      Assets.activities
-          .where((activity) => activity.destinationRef == id)
-          .toList();
+  final activities = Assets.activities
+      .where((activity) => activity.destinationRef == id)
+      .toList();
   return Response.json(body: activities);
 }

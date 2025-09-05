@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:activity_repository/activity_repository.dart';
 import 'package:compass_app/activities/activities.dart';
 import 'package:compass_app/l10n/l10n.dart';
@@ -14,10 +16,14 @@ class ActivitiesPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (_) => ActivitiesCubit(
-        activityRepository: context.read<ActivityRepository>(),
-        itineraryConfigRepository: context.read<ItineraryConfigRepository>(),
-      )..loadActivities(),
+      create: (_) {
+        final cubit = ActivitiesCubit(
+          activityRepository: context.read<ActivityRepository>(),
+          itineraryConfigRepository: context.read<ItineraryConfigRepository>(),
+        );
+        unawaited(cubit.loadActivities());
+        return cubit;
+      },
       child: const ActivitiesView(),
     );
   }

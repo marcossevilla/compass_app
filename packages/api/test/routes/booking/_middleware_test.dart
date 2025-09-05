@@ -9,7 +9,7 @@ class _MockRequestContext extends Mock implements RequestContext {}
 
 void main() {
   group('middleware', () {
-    test('provides a BookingBloc instance', () async {
+    test('provides a $BookingBloc instance', () async {
       final handler = middleware((_) => Response());
       final request = Request.get(Uri.parse('http://localhost/booking/'));
       final context = _MockRequestContext();

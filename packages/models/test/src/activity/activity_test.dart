@@ -4,7 +4,7 @@ import 'package:test/test.dart';
 import '../../fixtures/fixtures.dart';
 
 void main() {
-  group('Activity', () {
+  group(Activity, () {
     test('supports value comparisons', () {
       expect(
         Activity(

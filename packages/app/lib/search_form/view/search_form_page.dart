@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:compass_app/routing/routing.dart';
 import 'package:compass_app/search_form/search_form.dart';
 import 'package:compass_app/theme/theme.dart';
@@ -13,10 +15,14 @@ class SearchFormPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (_) => SearchFormCubit(
-        continentRepository: context.read<ContinentRepository>(),
-        itineraryConfigRepository: context.read<ItineraryConfigRepository>(),
-      )..load(),
+      create: (_) {
+        final cubit = SearchFormCubit(
+          continentRepository: context.read<ContinentRepository>(),
+          itineraryConfigRepository: context.read<ItineraryConfigRepository>(),
+        );
+        unawaited(cubit.load());
+        return cubit;
+      },
       child: const SearchFormView(),
     );
   }
