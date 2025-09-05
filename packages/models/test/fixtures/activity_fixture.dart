@@ -1,4 +1,4 @@
-final activityMap = {
+final Map<String, Object> activityMap = {
   'name': 'name',
   'description': 'description',
   'locationName': 'locationName',

@@ -2,7 +2,7 @@ import 'package:api/booking/booking.dart';
 import 'package:test/test.dart';
 
 void main() {
-  group('BookingState', () {
+  group(BookingState, () {
     test('supports value comparison', () {
       expect(
         BookingState(bookings: [], sequentialId: 0),
