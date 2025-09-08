@@ -4,14 +4,14 @@ import 'package:test/test.dart';
 
 void main() {
   group(Assets, () {
-    group(Assets.destinations, () {
+    group('.destinations', () {
       test('returns a list of [$Destination]', () {
         expect(Assets.destinations, isA<List<Destination>>());
         expect(Assets.destinations, isNotEmpty);
       });
     });
 
-    group(Assets.activities, () {
+    group('.activities', () {
       test('returns a list of [$Activity]', () {
         expect(Assets.activities, isA<List<Activity>>());
         expect(Assets.activities, isNotEmpty);
