@@ -30,7 +30,7 @@ dependencies:
   itinerary_config_repository: ^0.1.0
   logging: ^1.3.0
   models: ^0.1.0
-  share_plus: ^11.1.0
+  share_plus: ^12.0.0
   user_repository: ^0.1.0
 
 dev_dependencies:
