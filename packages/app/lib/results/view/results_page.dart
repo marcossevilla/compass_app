@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:compass_app/l10n/l10n.dart';
 import 'package:compass_app/results/results.dart';
 import 'package:compass_app/routing/routing.dart';
@@ -15,10 +17,14 @@ class ResultsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (_) => ResultsCubit(
-        destinationRepository: context.read<DestinationRepository>(),
-        itineraryConfigRepository: context.read<ItineraryConfigRepository>(),
-      )..search(),
+      create: (_) {
+        final cubit = ResultsCubit(
+          destinationRepository: context.read<DestinationRepository>(),
+          itineraryConfigRepository: context.read<ItineraryConfigRepository>(),
+        );
+        unawaited(cubit.search());
+        return cubit;
+      },
       child: const ResultsView(),
     );
   }

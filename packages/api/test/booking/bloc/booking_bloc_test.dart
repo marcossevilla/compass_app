@@ -19,7 +19,7 @@ class _FakeBookingApiModel extends Fake implements BookingApiModel {
 }
 
 void main() {
-  group('BookingBloc', () {
+  group(BookingBloc, () {
     late BookingApiModel defaultBooking;
     late BookingApiModel booking;
 
@@ -29,7 +29,7 @@ void main() {
     });
 
     blocTest<BookingBloc, BookingState>(
-      'emits [BookingState] with new booking when BookingAdded is added',
+      'emits [$BookingState] with new booking when $BookingAdded is added',
       build: BookingBloc.new,
       act: (bloc) => bloc.add(BookingAdded(booking)),
       expect: () {
@@ -40,7 +40,8 @@ void main() {
     );
 
     blocTest<BookingBloc, BookingState>(
-      'emits [BookingState] with default booking when BookingRemoved is added',
+      'emits [$BookingState] with default booking '
+      'when $BookingRemoved is added',
       build: BookingBloc.new,
       seed: () {
         return BookingState(

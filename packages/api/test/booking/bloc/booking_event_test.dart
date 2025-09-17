@@ -3,7 +3,7 @@ import 'package:models/models.dart';
 import 'package:test/test.dart';
 
 void main() {
-  group('BookingEvent', () {
+  group(BookingEvent, () {
     late BookingApiModel booking;
 
     setUp(() {
@@ -17,13 +17,13 @@ void main() {
       );
     });
 
-    group('BookingAdded', () {
+    group(BookingAdded, () {
       test('supports value comparison', () {
         expect(BookingAdded(booking), equals(BookingAdded(booking)));
       });
     });
 
-    group('BookingRemoved', () {
+    group(BookingRemoved, () {
       test('supports value comparison', () {
         expect(BookingRemoved(booking), equals(BookingRemoved(booking)));
       });

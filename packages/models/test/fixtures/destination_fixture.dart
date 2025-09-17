@@ -1,4 +1,4 @@
-final destinationMap = {
+final Map<String, Object> destinationMap = {
   'ref': 'ref',
   'name': 'name',
   'country': 'country',
