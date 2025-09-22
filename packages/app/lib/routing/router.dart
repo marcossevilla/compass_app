@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:booking_repository/booking_repository.dart';
 import 'package:compass_app/activities/activities.dart';
 import 'package:compass_app/booking/booking.dart';
@@ -39,14 +41,18 @@ GoRouter router(ValueNotifier<bool> isAuthenticated) {
       ),
       GoRoute(
         path: Routes.home,
-        builder: (context, state) => HomePage(
-          // Passing the [HomeCubit] here to trigger load each time
-          // the home page is opened.
-          homeCubit: HomeCubit(
+        builder: (context, state) {
+          final cubit = HomeCubit(
             userRepository: context.read<UserRepository>(),
             bookingRepository: context.read<BookingRepository>(),
-          )..load(),
-        ),
+          );
+          unawaited(cubit.load());
+          return HomePage(
+            // Passing the [HomeCubit] here to trigger load each time
+            // the home page is opened.
+            homeCubit: cubit,
+          );
+        },
         routes: [
           GoRoute(
             path: Routes.searchRelative,

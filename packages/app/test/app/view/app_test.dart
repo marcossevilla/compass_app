@@ -13,7 +13,7 @@ import 'package:user_repository/user_repository.dart';
 import '../../helpers/helpers.dart';
 
 void main() {
-  group('App', () {
+  group(App, () {
     late ActivityRepository activityRepository;
     late AuthenticationRepository authenticationRepository;
     late BookingRepository bookingRepository;
@@ -37,7 +37,7 @@ void main() {
     });
 
     testWidgets(
-      'renders AppView',
+      'renders $AppView',
       (tester) => mockNetworkImages(() async {
         await tester.pumpWidget(
           App(

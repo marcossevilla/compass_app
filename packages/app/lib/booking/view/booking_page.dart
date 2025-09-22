@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:activity_repository/activity_repository.dart';
 import 'package:booking_repository/booking_repository.dart';
 import 'package:compass_app/booking/booking.dart';
@@ -45,10 +47,14 @@ class BookingPage extends StatelessWidget {
           itineraryConfigRepository: context.read<ItineraryConfigRepository>(),
         );
 
-        return switch (_mode) {
-          _BookingMode.create => cubit..createBooking(),
-          _BookingMode.load => cubit..loadBooking(_id!),
-        };
+        switch (_mode) {
+          case _BookingMode.create:
+            unawaited(cubit.createBooking());
+            return cubit;
+          case _BookingMode.load:
+            unawaited(cubit.loadBooking(_id!));
+            return cubit;
+        }
       },
       child: const BookingView(),
     );

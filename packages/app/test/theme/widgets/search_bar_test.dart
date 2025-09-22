@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:alchemist/alchemist.dart';
 import 'package:compass_app/theme/theme.dart';
 import 'package:flutter/material.dart';
@@ -8,7 +10,7 @@ import 'package:models/models.dart';
 import '../../helpers/helpers.dart';
 
 void main() {
-  group('AppSearchBar', () {
+  group(AppSearchBar, () {
     late GoRouter goRouter;
     late ItineraryConfig config;
 
@@ -44,21 +46,25 @@ void main() {
       );
     }
 
-    goldenTest(
-      'renders correctly',
-      fileName: 'search_bar',
-      pumpWidget: (tester, widget) => tester.pumpApp(widget),
-      builder: buildGroup,
+    unawaited(
+      goldenTest(
+        'renders correctly',
+        fileName: 'search_bar',
+        pumpWidget: (tester, widget) => tester.pumpApp(widget),
+        builder: buildGroup,
+      ),
     );
 
-    goldenTest(
-      'renders correctly when pressed',
-      fileName: 'search_bar_pressed',
-      pumpWidget: (tester, widget) async {
-        await tester.pumpApp(widget, goRouter: goRouter);
-      },
-      whilePerforming: press(find.byType(InkWell)),
-      builder: buildGroup,
+    unawaited(
+      goldenTest(
+        'renders correctly when pressed',
+        fileName: 'search_bar_pressed',
+        pumpWidget: (tester, widget) async {
+          await tester.pumpApp(widget, goRouter: goRouter);
+        },
+        whilePerforming: press(find.byType(InkWell)),
+        builder: buildGroup,
+      ),
     );
   });
 }

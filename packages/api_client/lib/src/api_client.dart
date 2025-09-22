@@ -177,8 +177,8 @@ class ApiClient {
 
   /// Closes the [ApiClient].
   /// This method should be called when the [ApiClient] is no longer needed.
-  void close() {
-    _authHeaderProviderSubscription.cancel();
+  Future<void> close() async {
+    await _authHeaderProviderSubscription.cancel();
     _client.close(force: true);
   }
 }
