@@ -1102,10 +1102,10 @@ packages:
     dependency: "direct dev"
     description:
       name: very_good_analysis
-      sha256: "3c9d43c24b138128844805a79f04f12f1dd04fd06ebe5a86c41d9cff0b2d56e8"
+      sha256: "96245839dbcc45dfab1af5fa551603b5c7a282028a64746c19c547d21a7f1e3a"
       url: "https://pub.dev"
     source: hosted
-    version: "10.0.0-rc.2"
+    version: "10.0.0"
   vm_service:
     dependency: transitive
     description:
@@ -1188,4 +1188,4 @@ packages:
     version: "3.1.3"
 sdks:
   dart: ">=3.9.0 <4.0.0"
-  flutter: ">=3.35.0"
+  flutter: ">=3.35.0 <4.0.0"
