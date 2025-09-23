@@ -22,7 +22,7 @@ dependencies:
   logging: ^1.3.0
 
 dev_dependencies:
-  bloc_lint: ^0.3.1
+  bloc_lint: ^0.3.2
   build_runner: ^2.7.1
   dart_frog_lint: ^0.1.1
   mocktail: ^1.0.4
