@@ -12,7 +12,7 @@ dependencies:
   activity_repository: ^0.1.0
   api_client: ^0.1.0
   authentication_repository: ^0.1.0
-  bloc: ^9.0.0
+  bloc: ^9.0.1
   booking_repository: ^0.1.0
   cached_network_image: ^3.4.1
   continent_repository: ^0.1.0
