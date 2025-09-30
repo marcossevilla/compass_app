@@ -245,10 +245,10 @@ packages:
     dependency: transitive
     description:
       name: dart_frog
-      sha256: "84b8f82413f622dfdcfba6982522f8752ece09b49fea9a35f8794a0b2bc357e4"
+      sha256: "0fc909d10ae79dd069e6a3a4769aeaa9839c93b7f6f1e71cfd37b276410875e7"
       url: "https://pub.dev"
     source: hosted
-    version: "1.2.3"
+    version: "1.2.4"
   dart_frog_auth:
     dependency: transitive
     description:
