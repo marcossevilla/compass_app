@@ -253,10 +253,10 @@ packages:
     dependency: transitive
     description:
       name: dart_frog_auth
-      sha256: af9f6c6e0a430970475d215b672827b7235fec731703713af0899a79ed743b3f
+      sha256: e78b2b1c75e244aee561b260de606c338968fd1e199b1332b175102f6ebdd301
       url: "https://pub.dev"
     source: hosted
-    version: "1.2.1"
+    version: "1.2.2"
   dart_frog_lint:
     dependency: "direct dev"
     description:
