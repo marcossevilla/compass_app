@@ -53,10 +53,10 @@ packages:
     dependency: "direct dev"
     description:
       name: bloc_lint
-      sha256: "0bfcb2885c9faf2fb18b471ec34ed9efa2949799ecbcd2e9c5204f5b7cf94685"
+      sha256: "4ba9c78d73f97c5175eb2c419f94e6d8211edd06ace1783ea32dc64f865e0f38"
       url: "https://pub.dev"
     source: hosted
-    version: "0.3.4"
+    version: "0.3.5"
   bloc_test:
     dependency: transitive
     description:
