@@ -4,28 +4,28 @@ version: 1.0.0+1
 publish_to: none
 
 environment:
-  sdk: ^3.9.0
-  flutter: ^3.35.0
+  sdk: ^3.10.0
+  flutter: ^3.38.0
 resolution: workspace
 
 dependencies:
   activity_repository: ^0.1.0
   api_client: ^0.1.0
   authentication_repository: ^0.1.0
-  bloc: ^9.1.0
+  bloc: ^9.2.0
   booking_repository: ^0.1.0
   cached_network_image: ^3.4.1
   continent_repository: ^0.1.0
   destination_repository: ^0.1.0
-  equatable: ^2.0.7
+  equatable: ^2.0.8
   flutter:
     sdk: flutter
   flutter_bloc: ^9.1.1
   flutter_localizations:
     sdk: flutter
-  flutter_svg: ^2.2.2
-  go_router: ^17.0.0
-  google_fonts: ^6.3.2
+  flutter_svg: ^2.2.3
+  go_router: ^17.1.0
+  google_fonts: ^8.0.1
   intl: ^0.20.2
   itinerary_config_repository: ^0.1.0
   logging: ^1.3.0
