@@ -8,7 +8,8 @@ enum BookingStatus {
   creating,
   created,
   creatingFailure,
-  sharingFailure;
+  sharingFailure
+  ;
 
   bool get isInProgress => this == loading || this == creating;
 }
