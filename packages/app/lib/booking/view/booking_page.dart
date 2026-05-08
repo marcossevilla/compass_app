@@ -11,6 +11,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:itinerary_config_repository/itinerary_config_repository.dart';
+import 'package:models/models.dart';
 
 enum _BookingMode { create, load }
 
@@ -67,7 +68,9 @@ class BookingView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l10n = context.l10n;
-    final booking = context.select((BookingCubit cubit) => cubit.state.booking);
+    final booking = context.select<BookingCubit, Booking?>(
+      (cubit) => cubit.state.booking,
+    );
 
     return BlocListener<BookingCubit, BookingState>(
       listenWhen: (previous, current) =>

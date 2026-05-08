@@ -19,7 +19,9 @@ class SearchFormSubmit extends StatelessWidget {
   Widget build(BuildContext context) {
     final l10n = context.l10n;
     final dimensions = context.dimensions;
-    final valid = context.select((SearchFormCubit cubit) => cubit.state.valid);
+    final valid = context.select<SearchFormCubit, bool>(
+      (cubit) => cubit.state.valid,
+    );
 
     return BlocListener<SearchFormCubit, SearchFormState>(
       listenWhen: (previous, current) => previous.status != current.status,

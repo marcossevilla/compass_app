@@ -3,6 +3,7 @@ import 'package:compass_app/l10n/l10n.dart';
 import 'package:compass_app/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:models/models.dart';
 
 class ActivitiesTitle extends StatelessWidget {
   const ActivitiesTitle({required this.activityTimeOfDay, super.key});
@@ -11,12 +12,12 @@ class ActivitiesTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final daytimeActivities = context.select(
-      (ActivitiesCubit cubit) => cubit.state.daytimeActivities,
+    final daytimeActivities = context.select<ActivitiesCubit, List<Activity>>(
+      (cubit) => cubit.state.daytimeActivities,
     );
 
-    final eveningActivities = context.select(
-      (ActivitiesCubit cubit) => cubit.state.eveningActivities,
+    final eveningActivities = context.select<ActivitiesCubit, List<Activity>>(
+      (cubit) => cubit.state.eveningActivities,
     );
 
     final list = switch (activityTimeOfDay) {
