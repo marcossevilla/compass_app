@@ -4,8 +4,8 @@ version: 1.0.0+1
 publish_to: none
 
 environment:
-  sdk: ^3.9.0
-  flutter: ^3.35.0
+  sdk: ^3.11.5
+  flutter: ^3.41.9
 resolution: workspace
 
 dependencies:
@@ -42,6 +42,7 @@ dev_dependencies:
   mocktail_image_network: ^1.2.0
 
 flutter:
+  generate: true
   uses-material-design: true
   assets:
     - assets/logo.svg
