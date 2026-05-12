@@ -1,7 +1,125 @@
 {
     "@@locale": "es",
-    "counterAppBarTitle": "Contador",
-    "@counterAppBarTitle": {
-        "description": "Texto mostrado en la AppBar de la página del contador"
+    "activities": "Actividades",
+    "@activities": {
+        "description": ""
+    },
+    "addDates": "Agregar Fechas",
+    "@addDates": {
+        "description": ""
+    },
+    "bookingDeleted": "Reserva eliminada",
+    "@bookingDeleted": {
+        "description": ""
+    },
+    "bookNewTrip": "Reservar Nuevo Viaje",
+    "@bookNewTrip": {
+        "description": ""
+    },
+    "close": "Cerrar",
+    "@close": {
+        "description": ""
+    },
+    "confirm": "Confirmar",
+    "@confirm": {
+        "description": ""
+    },
+    "daytime": "Día",
+    "@daytime": {
+        "description": ""
+    },
+    "errorWhileDeletingBooking": "Error al eliminar la reserva",
+    "@errorWhileDeletingBooking": {
+        "description": ""
+    },
+    "errorWhileLoadingActivities": "Error al cargar actividades",
+    "@errorWhileLoadingActivities": {
+        "description": ""
+    },
+    "errorWhileLoadingBooking": "Error al cargar la reserva",
+    "@errorWhileLoadingBooking": {
+        "description": ""
+    },
+    "errorWhileLoadingContinents": "Error al cargar continentes",
+    "@errorWhileLoadingContinents": {
+        "description": ""
+    },
+    "errorWhileLoadingDestinations": "Error al cargar destinos",
+    "@errorWhileLoadingDestinations": {
+        "description": ""
+    },
+    "errorWhileLoadingHome": "Error al cargar inicio",
+    "@errorWhileLoadingHome": {
+        "description": ""
+    },
+    "errorWhileLogin": "Error al intentar iniciar sesión",
+    "@errorWhileLogin": {
+        "description": ""
+    },
+    "errorWhileLogout": "Error al intentar cerrar sesión",
+    "@errorWhileLogout": {
+        "description": ""
+    },
+    "errorWhileSavingActivities": "Error al guardar actividades",
+    "@errorWhileSavingActivities": {
+        "description": ""
+    },
+    "errorWhileSavingItinerary": "Error al guardar el itinerario",
+    "@errorWhileSavingItinerary": {
+        "description": ""
+    },
+    "errorWhileSharing": "Error al compartir la reserva",
+    "@errorWhileSharing": {
+        "description": ""
+    },
+    "evening": "Noche",
+    "@evening": {
+        "description": ""
+    },
+    "login": "Iniciar Sesión",
+    "@login": {
+        "description": ""
+    },
+    "nameTrips": "Viajes de {name}",
+    "@nameTrips": {
+        "description": "",
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "search": "Buscar",
+    "@search": {
+        "description": ""
+    },
+    "searchDestination": "Buscar destino",
+    "@searchDestination": {
+        "description": ""
+    },
+    "selected": "{selection} seleccionado(s)",
+    "@selected": {
+        "description": "",
+        "placeholders": {
+            "selection": {
+                "type": "int"
+            }
+        }
+    },
+    "shareTrip": "Compartir Viaje",
+    "@shareTrip": {
+        "description": ""
+    },
+    "tryAgain": "Intentar de nuevo",
+    "@tryAgain": {
+        "description": ""
+    },
+    "yourChosenActivities": "Tus actividades seleccionadas",
+    "@yourChosenActivities": {
+        "description": ""
+    },
+    "when": "Cuándo",
+    "@when": {
+        "description": ""
     }
 }
