@@ -9,91 +9,90 @@ class AppLocalizationsEs extends AppLocalizations {
   AppLocalizationsEs([String locale = 'es']) : super(locale);
 
   @override
-  String get activities => 'Activities';
+  String get activities => 'Actividades';
 
   @override
-  String get addDates => 'Add Dates';
+  String get addDates => 'Agregar Fechas';
 
   @override
-  String get bookingDeleted => 'Booking deleted';
+  String get bookingDeleted => 'Reserva eliminada';
 
   @override
-  String get bookNewTrip => 'Book New Trip';
+  String get bookNewTrip => 'Reservar Nuevo Viaje';
 
   @override
-  String get close => 'Close';
+  String get close => 'Cerrar';
 
   @override
-  String get confirm => 'Confirm';
+  String get confirm => 'Confirmar';
 
   @override
-  String get daytime => 'Daytime';
+  String get daytime => 'Día';
 
   @override
-  String get errorWhileDeletingBooking => 'Error while deleting booking';
+  String get errorWhileDeletingBooking => 'Error al eliminar la reserva';
 
   @override
-  String get errorWhileLoadingActivities => 'Error while loading activities';
+  String get errorWhileLoadingActivities => 'Error al cargar actividades';
 
   @override
-  String get errorWhileLoadingBooking => 'Error while loading booking';
+  String get errorWhileLoadingBooking => 'Error al cargar la reserva';
 
   @override
-  String get errorWhileLoadingContinents => 'Error while loading continents';
+  String get errorWhileLoadingContinents => 'Error al cargar continentes';
 
   @override
-  String get errorWhileLoadingDestinations =>
-      'Error while loading destinations';
+  String get errorWhileLoadingDestinations => 'Error al cargar destinos';
 
   @override
-  String get errorWhileLoadingHome => 'Error while loading home';
+  String get errorWhileLoadingHome => 'Error al cargar inicio';
 
   @override
-  String get errorWhileLogin => 'Error while trying to login';
+  String get errorWhileLogin => 'Error al intentar iniciar sesión';
 
   @override
-  String get errorWhileLogout => 'Error while trying to logout';
+  String get errorWhileLogout => 'Error al intentar cerrar sesión';
 
   @override
-  String get errorWhileSavingActivities => 'Error while saving activities';
+  String get errorWhileSavingActivities => 'Error al guardar actividades';
 
   @override
-  String get errorWhileSavingItinerary => 'Error while saving itinerary';
+  String get errorWhileSavingItinerary => 'Error al guardar el itinerario';
 
   @override
-  String get errorWhileSharing => 'Error while sharing booking';
+  String get errorWhileSharing => 'Error al compartir la reserva';
 
   @override
-  String get evening => 'Evening';
+  String get evening => 'Noche';
 
   @override
-  String get login => 'Login';
+  String get login => 'Iniciar Sesión';
 
   @override
   String nameTrips(String name) {
-    return '$name\'s Trips';
+    return 'Viajes de $name';
   }
 
   @override
-  String get search => 'Search';
+  String get search => 'Buscar';
 
   @override
-  String get searchDestination => 'Search destination';
+  String get searchDestination => 'Buscar destino';
 
   @override
   String selected(int selection) {
-    return '$selection selected';
+    return '$selection seleccionado(s)';
   }
 
   @override
-  String get shareTrip => 'Share Trip';
+  String get shareTrip => 'Compartir Viaje';
 
   @override
-  String get tryAgain => 'Try again';
+  String get tryAgain => 'Intentar de nuevo';
 
   @override
-  String get yourChosenActivities => 'Your chosen activities';
+  String get yourChosenActivities => 'Tus actividades seleccionadas';
 
   @override
-  String get when => 'When';
+  String get when => 'Cuándo';
 }

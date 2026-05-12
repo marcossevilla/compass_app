@@ -4,4 +4,3 @@ template-arb-file: app_en.arb
 output-localization-file: app_localizations.dart
 format: true
 nullable-getter: false
-synthetic-package: false
