@@ -553,10 +553,10 @@ packages:
     dependency: transitive
     description:
       name: mocktail_image_network
-      sha256: a1fccbba780343517cfc552e0af2b3834d8bdb8f9f55a746c4d495ed1a8d50d6
+      sha256: b05b665e1c2c8ff2489253afdc357972c758c21d220654011738cf2138eb9554
       url: "https://pub.dev"
     source: hosted
-    version: "1.2.0"
+    version: "1.3.0"
   native_toolchain_c:
     dependency: transitive
     description:
