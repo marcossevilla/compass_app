@@ -9,7 +9,7 @@ resolution: workspace
 
 dependencies:
   equatable: ^2.0.8
-  json_annotation: ^4.9.0
+  json_annotation: ^4.12.0
 
 dev_dependencies:
   json_serializable: ^6.11.2
