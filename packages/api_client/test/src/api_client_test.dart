@@ -70,17 +70,14 @@ void main() {
 
     /// Stubs a GET request that returns [response].
     void stubGet(HttpClientResponse response) {
-      when(() => httpClient.get(any(), any(), any())).thenAnswer(
-        (_) async => request,
-      );
+      when(
+        () => httpClient.get(any(), any(), any()),
+      ).thenAnswer((_) async => request);
       when(request.close).thenAnswer((_) async => response);
     }
 
     test('can be instantiated', () {
-      expect(
-        ApiClient(authHeaderProvider: Stream.empty()),
-        isNotNull,
-      );
+      expect(ApiClient(authHeaderProvider: Stream.empty()), isNotNull);
     });
 
     test('uses the provided host and port', () async {
@@ -216,11 +213,8 @@ void main() {
 
         expect(result, equals([activity]));
         verify(
-          () => httpClient.get(
-            'localhost',
-            8080,
-            '/destination/alaska/activity',
-          ),
+          () =>
+              httpClient.get('localhost', 8080, '/destination/alaska/activity'),
         ).called(1);
       });
 
@@ -297,9 +291,9 @@ void main() {
       final created = booking.copyWith(id: () => 1);
 
       void stubPost(HttpClientResponse response) {
-        when(() => httpClient.post(any(), any(), any())).thenAnswer(
-          (_) async => request,
-        );
+        when(
+          () => httpClient.post(any(), any(), any()),
+        ).thenAnswer((_) async => request);
         when(request.close).thenAnswer((_) async => response);
       }
 
@@ -351,9 +345,9 @@ void main() {
 
     group('deleteBooking', () {
       void stubDelete(HttpClientResponse response) {
-        when(() => httpClient.delete(any(), any(), any())).thenAnswer(
-          (_) async => request,
-        );
+        when(
+          () => httpClient.delete(any(), any(), any()),
+        ).thenAnswer((_) async => request);
         when(request.close).thenAnswer((_) async => response);
       }
 
@@ -361,8 +355,9 @@ void main() {
         stubDelete(_FakeHttpClientResponse('', statusCode: 204));
 
         await expectLater(apiClient.deleteBooking(3), completes);
-        verify(() => httpClient.delete('localhost', 8080, '/booking/3'))
-            .called(1);
+        verify(
+          () => httpClient.delete('localhost', 8080, '/booking/3'),
+        ).called(1);
       });
 
       test('throws HttpException on non-204 response', () async {

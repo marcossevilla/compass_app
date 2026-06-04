@@ -66,9 +66,9 @@ void main() {
 
     /// Stubs a POST request that returns [response].
     void stubPost(HttpClientResponse response) {
-      when(() => httpClient.post(any(), any(), any())).thenAnswer(
-        (_) async => request,
-      );
+      when(
+        () => httpClient.post(any(), any(), any()),
+      ).thenAnswer((_) async => request);
       when(request.close).thenAnswer((_) async => response);
     }
 
@@ -80,10 +80,7 @@ void main() {
       test('emits the stored token on the auth header provider', () async {
         when(() => sharedPreferences.getString(tokenKey)).thenReturn('abc');
 
-        expect(
-          authApiClient.authHeaderProvider,
-          emits('Bearer abc'),
-        );
+        expect(authApiClient.authHeaderProvider, emits('Bearer abc'));
 
         await authApiClient.token();
       });
@@ -91,17 +88,15 @@ void main() {
       test('emits null when no token is stored', () async {
         when(() => sharedPreferences.getString(tokenKey)).thenReturn(null);
 
-        expect(
-          authApiClient.authHeaderProvider,
-          emits(null),
-        );
+        expect(authApiClient.authHeaderProvider, emits(null));
 
         await authApiClient.token();
       });
 
       test('rethrows when shared preferences fails', () async {
-        when(() => sharedPreferences.getString(tokenKey))
-            .thenThrow(Exception('oops'));
+        when(
+          () => sharedPreferences.getString(tokenKey),
+        ).thenThrow(Exception('oops'));
 
         await expectLater(authApiClient.token(), throwsException);
       });
@@ -129,11 +124,10 @@ void main() {
       const loginResponse = LoginResponse(token: 'abc', userId: '1');
 
       test('stores the token and emits auth state on success', () async {
-        stubPost(
-          _FakeHttpClientResponse(jsonEncode(loginResponse.toJson())),
-        );
-        when(() => sharedPreferences.setString(tokenKey, 'abc'))
-            .thenAnswer((_) async => true);
+        stubPost(_FakeHttpClientResponse(jsonEncode(loginResponse.toJson())));
+        when(
+          () => sharedPreferences.setString(tokenKey, 'abc'),
+        ).thenAnswer((_) async => true);
 
         // Listening only to the auth header provider keeps the token() side
         // effect of isAuthenticated from interleaving emissions.
@@ -153,11 +147,10 @@ void main() {
           host: 'example.com',
           port: 9090,
         );
-        stubPost(
-          _FakeHttpClientResponse(jsonEncode(loginResponse.toJson())),
-        );
-        when(() => sharedPreferences.setString(tokenKey, 'abc'))
-            .thenAnswer((_) async => true);
+        stubPost(_FakeHttpClientResponse(jsonEncode(loginResponse.toJson())));
+        when(
+          () => sharedPreferences.setString(tokenKey, 'abc'),
+        ).thenAnswer((_) async => true);
 
         await authApiClient.login(loginRequest);
 
@@ -176,8 +169,9 @@ void main() {
 
     group('logout', () {
       test('removes the stored token and emits cleared auth state', () async {
-        when(() => sharedPreferences.remove(tokenKey))
-            .thenAnswer((_) async => true);
+        when(
+          () => sharedPreferences.remove(tokenKey),
+        ).thenAnswer((_) async => true);
 
         expect(authApiClient.authHeaderProvider, emits(null));
         expect(authApiClient.isAuthenticated, emits(false));
@@ -188,8 +182,9 @@ void main() {
       });
 
       test('rethrows when removing the token fails', () async {
-        when(() => sharedPreferences.remove(tokenKey))
-            .thenThrow(Exception('oops'));
+        when(
+          () => sharedPreferences.remove(tokenKey),
+        ).thenThrow(Exception('oops'));
 
         await expectLater(authApiClient.logout(), throwsException);
       });
