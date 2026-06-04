@@ -65,7 +65,7 @@ void main() {
     });
 
     tearDown(() {
-      authHeaderController.close();
+      unawaited(authHeaderController.close());
     });
 
     /// Stubs a GET request that returns [response].
@@ -313,7 +313,7 @@ void main() {
       });
 
       test('throws HttpException on non-201 response', () async {
-        stubPost(_FakeHttpClientResponse('', statusCode: 200));
+        stubPost(_FakeHttpClientResponse(''));
 
         expect(apiClient.postBooking(booking), throwsA(isA<HttpException>()));
       });
