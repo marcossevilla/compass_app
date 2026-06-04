@@ -13,10 +13,10 @@ packages:
     dependency: transitive
     description:
       name: alchemist
-      sha256: "73e6ea7108897b51af27cf2e27f1a7281d0c7a296c31025ae0c367f09c7236c6"
+      sha256: c7d8c7a1116cbfa22286e8ff45d37efe2c31fc63a82ed06c7ccebc997159c21f
       url: "https://pub.dev"
     source: hosted
-    version: "0.13.0"
+    version: "0.14.0"
   analyzer:
     dependency: transitive
     description:
@@ -761,10 +761,10 @@ packages:
     dependency: transitive
     description:
       name: shared_preferences
-      sha256: "2939ae520c9024cb197fc20dee269cd8cdbf564c8b5746374ec6cacdc5169e64"
+      sha256: c3025c5534b01739267eb7d76959bbc25a6d10f6988e1c2a3036940133dd10bf
       url: "https://pub.dev"
     source: hosted
-    version: "2.5.4"
+    version: "2.5.5"
   shared_preferences_android:
     dependency: transitive
     description:
