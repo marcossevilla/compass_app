@@ -16,8 +16,9 @@ class _MockHttpHeaders extends Mock implements HttpHeaders {}
 
 /// A fake [HttpClientResponse] backed by an in-memory [body].
 ///
-/// `transform` and `join` are implemented in terms of [listen], so delegating
-/// [listen] to a real stream is enough for the whole decode pipeline to work.
+/// The production code consumes the response via
+/// `response.transform(utf8.decoder).join()`, so binding the transformer to a
+/// real byte stream is enough for the whole decode pipeline to work.
 class _FakeHttpClientResponse extends Fake implements HttpClientResponse {
   _FakeHttpClientResponse(this.body, {this.statusCode = 200});
 
@@ -27,18 +28,8 @@ class _FakeHttpClientResponse extends Fake implements HttpClientResponse {
   final int statusCode;
 
   @override
-  StreamSubscription<List<int>> listen(
-    void Function(List<int> event)? onData, {
-    Function? onError,
-    void Function()? onDone,
-    bool? cancelOnError,
-  }) {
-    return Stream<List<int>>.value(utf8.encode(body)).listen(
-      onData,
-      onError: onError,
-      onDone: onDone,
-      cancelOnError: cancelOnError,
-    );
+  Stream<S> transform<S>(StreamTransformer<List<int>, S> streamTransformer) {
+    return streamTransformer.bind(Stream<List<int>>.value(utf8.encode(body)));
   }
 }
 
