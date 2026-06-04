@@ -44,13 +44,12 @@ class AuthApiClient {
   }
 
   /// Check if the user is authenticated.
+  ///
+  /// The current status is fetched from storage the first time this stream is
+  /// listened to (via [_isAuthenticated]'s `onListen`), and updated on every
+  /// subsequent [login]/[logout].
   Stream<bool> get isAuthenticated {
-    return _isAuthenticated.stream.asyncMap((isAuth) async {
-      if (isAuth != null) return isAuth;
-      // No status cached, fetch from storage.
-      await token();
-      return isAuth ?? false;
-    });
+    return _isAuthenticated.stream.map((isAuth) => isAuth ?? false);
   }
 
   /// Fetch token from shared preferences.
