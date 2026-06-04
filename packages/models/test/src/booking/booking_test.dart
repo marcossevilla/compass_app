@@ -74,6 +74,29 @@ void main() {
 
       expect(booking.toJson(), equals(bookingMap));
     });
+
+    test('toJson serializes a null id', () {
+      final booking = Booking(
+        startDate: date,
+        endDate: date,
+        destination: Destination.fromJson(destinationMap),
+        activities: [Activity.fromJson(activityMap)],
+      );
+
+      expect(booking.toJson()['id'], isNull);
+    });
+
+    test('round-trips through JSON', () {
+      final booking = Booking(
+        id: 0,
+        startDate: date,
+        endDate: date,
+        destination: Destination.fromJson(destinationMap),
+        activities: [Activity.fromJson(activityMap)],
+      );
+
+      expect(Booking.fromJson(booking.toJson()), equals(booking));
+    });
   });
 
   group(BookingSummary, () {
@@ -246,6 +269,37 @@ void main() {
 
         expect(bookingApiModelCopy, isNot(bookingApiModel));
       });
+
+      test('keeps the current id when the id callback returns null', () {
+        final bookingApiModel = BookingApiModel(
+          id: 0,
+          startDate: date,
+          endDate: date,
+          name: 'name',
+          destinationRef: 'destinationRef',
+          activitiesRef: ['activitiesRef'],
+        );
+
+        final bookingApiModelCopy = bookingApiModel.copyWith(id: () => null);
+
+        expect(bookingApiModelCopy.id, equals(0));
+      });
+    });
+
+    test('round-trips through JSON', () {
+      final bookingApiModel = BookingApiModel(
+        id: 0,
+        startDate: date,
+        endDate: date,
+        name: 'name',
+        destinationRef: 'destinationRef',
+        activitiesRef: ['activitiesRef'],
+      );
+
+      expect(
+        BookingApiModel.fromJson(bookingApiModel.toJson()),
+        equals(bookingApiModel),
+      );
     });
   });
 }
