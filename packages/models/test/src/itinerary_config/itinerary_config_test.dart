@@ -95,6 +95,58 @@ void main() {
           ),
         );
       });
+
+      test('preserves existing values when no overrides are provided', () {
+        final itineraryConfig = ItineraryConfig.fromJson(
+          itineraryConfigMap(date),
+        );
+
+        final copy = itineraryConfig.copyWith(continent: 'updatedContinent');
+
+        expect(copy.continent, equals('updatedContinent'));
+        expect(copy.startDate, equals(itineraryConfig.startDate));
+        expect(copy.endDate, equals(itineraryConfig.endDate));
+        expect(copy.guests, equals(itineraryConfig.guests));
+        expect(copy.destination, equals(itineraryConfig.destination));
+        expect(copy.activities, equals(itineraryConfig.activities));
+      });
+    });
+
+    group('with default/empty values', () {
+      test('can be instantiated with no arguments', () {
+        expect(const ItineraryConfig(), isNotNull);
+      });
+
+      test('defaults activities to an empty list', () {
+        expect(const ItineraryConfig().activities, isEmpty);
+      });
+
+      test('supports value comparisons when empty', () {
+        expect(const ItineraryConfig(), equals(const ItineraryConfig()));
+      });
+
+      test('toJson serializes null optional fields', () {
+        expect(
+          const ItineraryConfig().toJson(),
+          equals({
+            'continent': null,
+            'startDate': null,
+            'endDate': null,
+            'guests': null,
+            'destination': null,
+            'activities': <String>[],
+          }),
+        );
+      });
+
+      test('fromJson handles a minimal map', () {
+        final itineraryConfig = ItineraryConfig.fromJson(
+          const <String, Object?>{},
+        );
+
+        expect(itineraryConfig, equals(const ItineraryConfig()));
+        expect(itineraryConfig.activities, isEmpty);
+      });
     });
   });
 }
