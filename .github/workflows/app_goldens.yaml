@@ -1,0 +1,60 @@
+name: app_goldens
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+on:
+  pull_request:
+    paths:
+      - "packages/app/**"
+      - ".github/workflows/app_goldens.yaml"
+    branches:
+      - main
+
+permissions:
+  contents: read # the App/PAT token performs the write/push
+
+jobs:
+  update-goldens:
+    # Skip fork PRs (the token can't push to a fork branch) and skip the bot's
+    # own push (prevents a generate -> commit -> re-trigger loop). Replace
+    # 'golden-bot[bot]' with the App's bot login (or the PAT owner's login).
+    if: >-
+      github.event.pull_request.head.repo.full_name == github.repository &&
+      github.actor != 'golden-bot[bot]'
+    runs-on: macos-latest
+    steps:
+      - name: Generate app token
+        id: app-token
+        uses: actions/create-github-app-token@v1
+        with:
+          app-id: ${{ secrets.GOLDEN_BOT_APP_ID }}
+          private-key: ${{ secrets.GOLDEN_BOT_PRIVATE_KEY }}
+
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+          token: ${{ steps.app-token.outputs.token }}
+
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: 3.41.x
+          channel: stable
+          cache: true
+
+      - name: Install dependencies
+        run: dart pub get # workspace resolves from root
+
+      - name: Update goldens
+        working-directory: packages/app
+        run: flutter test --update-goldens --tags golden
+
+      - name: Commit goldens
+        run: |
+          git add packages/app/test # only ci/ PNGs surface; rest is gitignored
+          git diff --cached --quiet && { echo "No golden changes."; exit 0; }
+          git config user.name "golden-bot[bot]"
+          git config user.email "golden-bot[bot]@users.noreply.github.com"
+          git commit -m "test(app): update golden files"
+          git push
