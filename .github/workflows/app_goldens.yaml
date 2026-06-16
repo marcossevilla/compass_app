@@ -24,33 +24,56 @@ jobs:
       github.event.pull_request.head.repo.full_name == github.repository &&
       github.actor != 'golden-bot[bot]'
     runs-on: macos-latest
+    # Mapped here because the `secrets` context is not available in `if:`.
+    env:
+      GOLDEN_BOT_APP_ID: ${{ secrets.GOLDEN_BOT_APP_ID }}
     steps:
+      # Until the push credential is configured (see workflow docs), skip the
+      # job gracefully instead of failing — keeps the check green during setup.
+      - name: Check configuration
+        id: config
+        run: |
+          if [ -z "$GOLDEN_BOT_APP_ID" ]; then
+            echo "GOLDEN_BOT_APP_ID secret is not set — skipping golden generation." >> "$GITHUB_STEP_SUMMARY"
+            echo "enabled=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "enabled=true" >> "$GITHUB_OUTPUT"
+          fi
+
       - name: Generate app token
+        if: steps.config.outputs.enabled == 'true'
         id: app-token
         uses: actions/create-github-app-token@v1
         with:
           app-id: ${{ secrets.GOLDEN_BOT_APP_ID }}
           private-key: ${{ secrets.GOLDEN_BOT_PRIVATE_KEY }}
 
-      - uses: actions/checkout@v4
+      - name: Checkout
+        if: steps.config.outputs.enabled == 'true'
+        uses: actions/checkout@v4
         with:
           ref: ${{ github.head_ref }}
           token: ${{ steps.app-token.outputs.token }}
 
-      - uses: subosito/flutter-action@v2
+      - name: Set up Flutter
+        if: steps.config.outputs.enabled == 'true'
+        uses: subosito/flutter-action@v2
         with:
           flutter-version: 3.41.x
           channel: stable
           cache: true
 
       - name: Install dependencies
+        if: steps.config.outputs.enabled == 'true'
         run: dart pub get # workspace resolves from root
 
       - name: Update goldens
+        if: steps.config.outputs.enabled == 'true'
         working-directory: packages/app
         run: flutter test --update-goldens --tags golden
 
       - name: Commit goldens
+        if: steps.config.outputs.enabled == 'true'
         run: |
           git add packages/app/test # only ci/ PNGs surface; rest is gitignored
           git diff --cached --quiet && { echo "No golden changes."; exit 0; }

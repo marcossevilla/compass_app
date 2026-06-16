@@ -138,7 +138,7 @@ All packages inherit this via `include: ../../analysis_options.yaml`. `packages/
 
 One workflow per package in `.github/workflows/`. All use the `VeryGoodOpenSource/very_good_workflows` reusable workflow `flutter_package.yml`. Workflows trigger only on PRs that touch the relevant `packages/<name>/**` path. `main.yaml` runs a spell-check across all `*.md` files. `semantic_pull_request.yaml` enforces Conventional Commits on PR titles.
 
-`app_goldens.yaml` is the exception — a standalone workflow (not the reusable one) that regenerates golden files on PRs touching `packages/app/**` and pushes them back to the PR branch. It pushes with a dedicated GitHub App / PAT token (secrets `GOLDEN_BOT_APP_ID` + `GOLDEN_BOT_PRIVATE_KEY`, or a PAT) so the commit re-triggers CI, and is skipped for fork PRs and for the bot's own push (actor guard) to avoid a commit loop.
+`app_goldens.yaml` is the exception — a standalone workflow (not the reusable one) that regenerates golden files on PRs touching `packages/app/**` and pushes them back to the PR branch. It pushes with a dedicated GitHub App / PAT token (secrets `GOLDEN_BOT_APP_ID` + `GOLDEN_BOT_PRIVATE_KEY`, or a PAT) so the commit re-triggers CI, and is skipped for fork PRs and for the bot's own push (actor guard) to avoid a commit loop. Until `GOLDEN_BOT_APP_ID` is set, the job no-ops (passes green) with a "secret not set" note instead of failing.
 
 ## Commit conventions
 
