@@ -27,4 +27,4 @@ dev_dependencies:
   dart_frog_lint: ^0.1.2
   mocktail: ^1.0.5
   test: ^1.30.0
-  very_good_analysis: ^10.3.0
+  very_good_analysis: ^10.2.0
