@@ -12,7 +12,7 @@ dependencies:
   collection: ^1.19.1
   dart_frog: ^1.2.6
   dart_frog_auth: ^1.2.2
-  equatable: ^2.0.8
+  equatable: ^2.1.0
   meta: ^1.16.0
   models: ^0.1.0
 
