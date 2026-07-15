@@ -121,7 +121,8 @@ All packages inherit this via `include: ../../analysis_options.yaml`. `packages/
 
 - **Mocking**: `mocktail` throughout. Repository mocks are centralized in `packages/app/test/helpers/mocks.dart`.
 - **Widget test helper**: `WidgetTester.pumpApp(widget)` extension in `packages/app/test/helpers/pump_app.dart` — wraps in `MaterialApp` with localizations, `AppTheme.standard`, and a `MockGoRouterProvider`.
-- **Golden tests**: `alchemist` package in `packages/app`. Platform goldens are **disabled in CI** (gated on `GITHUB_ACTIONS` env var in `flutter_test_config.dart`). To update goldens locally, run `flutter test --update-goldens --tags golden`.
+- **Golden tests**: `alchemist` package in `packages/app`. Platform goldens are **disabled in CI** (gated on `GITHUB_ACTIONS` env var in `flutter_test_config.dart`); only the deterministic `ci/` goldens are committed (`.gitignore` ignores all goldens except `goldens/ci/*.*`).
+- **Golden generation runs on CI, not locally.** Write the golden test (or change a widget) and commit — the `app_goldens.yaml` workflow runs `flutter test --update-goldens --tags golden` and pushes the regenerated `ci/` PNGs back to the PR branch. After CI pushes goldens, run `git pull` before continuing. CI auto-updates **all** changed goldens, so the `app` check no longer fails on a changed golden — reviewers must inspect the committed PNG diff in the PR to confirm visual changes are intended. (You can still run `flutter test --update-goldens --tags golden` locally to preview, but the committed goldens are produced by CI.)
 - **Golden tag timeout**: `dart_test.yaml` declares a 15s timeout for the `golden` tag — required to suppress alchemist warnings.
 - `min_coverage` is currently `0` for all packages in CI (tests are in progress).
 
@@ -136,6 +137,8 @@ All packages inherit this via `include: ../../analysis_options.yaml`. `packages/
 ## CI
 
 One workflow per package in `.github/workflows/`. All use the `VeryGoodOpenSource/very_good_workflows` reusable workflow `flutter_package.yml`. Workflows trigger only on PRs that touch the relevant `packages/<name>/**` path. `main.yaml` runs a spell-check across all `*.md` files. `semantic_pull_request.yaml` enforces Conventional Commits on PR titles.
+
+`app_goldens.yaml` is the exception — a standalone workflow (not the reusable one) that regenerates golden files on PRs touching `packages/app/**` and pushes them back to the PR branch. It pushes with a dedicated GitHub App / PAT token (secrets `GOLDEN_BOT_APP_ID` + `GOLDEN_BOT_PRIVATE_KEY`, or a PAT) so the commit re-triggers CI, and is skipped for fork PRs and for the bot's own push (actor guard) to avoid a commit loop. Until `GOLDEN_BOT_APP_ID` is set, the job no-ops (passes green) with a "secret not set" note instead of failing.
 
 ## Commit conventions
 
