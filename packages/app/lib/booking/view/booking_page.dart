@@ -16,9 +16,8 @@ import 'package:models/models.dart';
 enum _BookingMode { create, load }
 
 class BookingPage extends StatelessWidget {
-  const BookingPage.loadBooking({required int id, super.key})
-    : _id = id,
-      _mode = _BookingMode.load;
+  const BookingPage.loadBooking({required this._id, super.key})
+    : _mode = _BookingMode.load;
 
   const BookingPage.createBooking({super.key})
     : _id = null,

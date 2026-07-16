@@ -9,11 +9,9 @@ part 'search_form_state.dart';
 
 class SearchFormCubit extends Cubit<SearchFormState> {
   SearchFormCubit({
-    required ContinentRepository continentRepository,
-    required ItineraryConfigRepository itineraryConfigRepository,
+    required this._continentRepository,
+    required this._itineraryConfigRepository,
   }) : _log = Logger('SearchFormViewModel'),
-       _continentRepository = continentRepository,
-       _itineraryConfigRepository = itineraryConfigRepository,
        super(const SearchFormState());
 
   final Logger _log;
