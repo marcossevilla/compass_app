@@ -9,11 +9,9 @@ part 'activities_state.dart';
 
 class ActivitiesCubit extends Cubit<ActivitiesState> {
   ActivitiesCubit({
-    required ActivityRepository activityRepository,
-    required ItineraryConfigRepository itineraryConfigRepository,
+    required this._activityRepository,
+    required this._itineraryConfigRepository,
   }) : _log = Logger('ActivitiesCubit'),
-       _activityRepository = activityRepository,
-       _itineraryConfigRepository = itineraryConfigRepository,
        super(const ActivitiesState());
 
   final Logger _log;

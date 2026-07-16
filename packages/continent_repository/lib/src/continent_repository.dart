@@ -6,7 +6,7 @@ import 'package:models/models.dart';
 /// {@endtemplate}
 class ContinentRepository {
   /// {@macro continent_repository}
-  ContinentRepository({required ApiClient apiClient}) : _apiClient = apiClient;
+  ContinentRepository({required this._apiClient});
 
   final ApiClient _apiClient;
 

@@ -10,14 +10,13 @@ import 'package:models/models.dart';
 class ApiClient {
   /// {@macro api_client}
   ApiClient({
-    required Stream<String?> authHeaderProvider,
+    required this._authHeaderProvider,
     String? host,
     int? port,
     HttpClient? client,
   }) : _host = host ?? 'localhost',
        _port = port ?? 8080,
-       _client = client ?? HttpClient(),
-       _authHeaderProvider = authHeaderProvider {
+       _client = client ?? HttpClient() {
     _authHeaderProviderSubscription = _authHeaderProvider.listen(
       (data) => data != null ? _authHeader = data : null,
     );

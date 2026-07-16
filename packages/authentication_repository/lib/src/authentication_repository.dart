@@ -9,9 +9,8 @@ import 'package:models/models.dart';
 /// {@endtemplate}
 class AuthenticationRepository {
   /// {@macro authentication_repository}
-  AuthenticationRepository({required AuthApiClient authApiClient})
-    : _logger = Logger('AuthenticationRepository'),
-      _authApiClient = authApiClient;
+  AuthenticationRepository({required this._authApiClient})
+    : _logger = Logger('AuthenticationRepository');
 
   final Logger _logger;
   final AuthApiClient _authApiClient;
