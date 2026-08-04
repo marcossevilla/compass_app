@@ -8,7 +8,7 @@ import 'package:mocktail/mocktail.dart';
 import 'package:models/models.dart';
 import 'package:test/test.dart';
 
-import '../../../routes/booking/[id].dart';
+import '../../../routes/booking/%5Bid%5D.dart';
 
 class _MockRequestContext extends Mock implements RequestContext {}
 

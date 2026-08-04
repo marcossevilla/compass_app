@@ -6,7 +6,7 @@ import 'package:mocktail/mocktail.dart';
 import 'package:models/models.dart';
 import 'package:test/test.dart';
 
-import '../../../../routes/destination/[id]/activity.dart';
+import '../../../../routes/destination/%5Bid%5D/activity.dart';
 
 class _MockRequestContext extends Mock implements RequestContext {}
 
