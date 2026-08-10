@@ -4,3 +4,7 @@ linter:
     file_names: false
     prefer_const_constructors: false
     prefer_const_literals_to_create_immutables: false
+    # Dart Frog route files use bracketed dynamic segment names (e.g.
+    # `[id].dart`) that cannot be simplified; tests must import them by their
+    # real path, so this lint does not apply to the test folder.
+    simple_directive_paths: false
