@@ -17,7 +17,7 @@ dependencies:
   cached_network_image: ^3.4.1
   continent_repository: ^0.1.0
   destination_repository: ^0.1.0
-  equatable: ^2.0.8
+  equatable: ^2.1.0
   flutter:
     sdk: flutter
   flutter_bloc: ^9.1.1
