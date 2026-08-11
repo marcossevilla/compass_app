@@ -40,11 +40,11 @@ jobs:
     needs: check-config
     # Skip fork PRs (the token can't push to a fork branch) and skip the bot's
     # own push (prevents a generate -> commit -> re-trigger loop). Replace
-    # 'golden-bot[bot]' with the App's bot login (or the PAT owner's login).
+    # 'golden-ci-bot[bot]' is the App's bot login (see the golden-ci-bot App).
     if: >-
       needs.check-config.outputs.enabled == 'true' &&
       github.event.pull_request.head.repo.full_name == github.repository &&
-      github.actor != 'golden-bot[bot]'
+      github.actor != 'golden-ci-bot[bot]'
     # CI goldens use alchemist's deterministic font/renderer (platform goldens
     # are disabled in CI, see flutter_test_config.dart) so no macOS runner is
     # needed here.
@@ -81,7 +81,7 @@ jobs:
         run: |
           git add packages/app/test # only ci/ PNGs surface; rest is gitignored
           git diff --cached --quiet && { echo "No golden changes."; exit 0; }
-          git config user.name "golden-bot[bot]"
-          git config user.email "golden-bot[bot]@users.noreply.github.com"
+          git config user.name "golden-ci-bot[bot]"
+          git config user.email "golden-ci-bot[bot]@users.noreply.github.com"
           git commit -m "test(app): update golden files"
           git push
