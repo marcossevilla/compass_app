@@ -12,6 +12,11 @@ class AppCheckbox extends StatelessWidget {
 
     return InkResponse(
       radius: 24,
+      // Disable the growing ink splash (its animated, anti-aliased edge makes
+      // the pressed-state golden non-deterministic) and rely on the highlight,
+      // which fades to a constant steady state and renders identically.
+      splashFactory: NoSplash.splashFactory,
+      highlightColor: colorScheme.primary.withValues(alpha: 0.12),
       onTap: () => onChanged(!value),
       child: DecoratedBox(
         decoration: BoxDecoration(
