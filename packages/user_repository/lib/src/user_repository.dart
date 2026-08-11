@@ -6,7 +6,7 @@ import 'package:models/models.dart';
 /// {@endtemplate}
 class UserRepository {
   /// {@macro user_repository}
-  UserRepository({required ApiClient apiClient}) : _apiClient = apiClient;
+  UserRepository({required this._apiClient});
 
   final ApiClient _apiClient;
 

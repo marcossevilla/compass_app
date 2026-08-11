@@ -1,0 +1,7 @@
+create:
+  org_name: dev.marcossevilla
+  publishable: false
+  workspace: true
+
+test:
+  min_coverage: 0
