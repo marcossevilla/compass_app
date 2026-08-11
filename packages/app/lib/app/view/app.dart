@@ -12,21 +12,15 @@ import 'package:user_repository/user_repository.dart';
 
 class App extends StatelessWidget {
   const App({
-    required ActivityRepository activityRepository,
-    required AuthenticationRepository authenticationRepository,
-    required BookingRepository bookingRepository,
-    required ContinentRepository continentRepository,
-    required DestinationRepository destinationRepository,
-    required ItineraryConfigRepository itineraryConfigRepository,
-    required UserRepository userRepository,
+    required this._activityRepository,
+    required this._authenticationRepository,
+    required this._bookingRepository,
+    required this._continentRepository,
+    required this._destinationRepository,
+    required this._itineraryConfigRepository,
+    required this._userRepository,
     super.key,
-  }) : _activityRepository = activityRepository,
-       _authenticationRepository = authenticationRepository,
-       _bookingRepository = bookingRepository,
-       _continentRepository = continentRepository,
-       _destinationRepository = destinationRepository,
-       _itineraryConfigRepository = itineraryConfigRepository,
-       _userRepository = userRepository;
+  });
 
   final ActivityRepository _activityRepository;
   final AuthenticationRepository _authenticationRepository;

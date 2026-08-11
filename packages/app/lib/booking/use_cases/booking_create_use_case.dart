@@ -11,13 +11,10 @@ import 'package:models/models.dart';
 /// checks if dates are set and creates a [Booking] object.
 class BookingCreateUseCase {
   BookingCreateUseCase({
-    required ActivityRepository activityRepository,
-    required BookingRepository bookingRepository,
-    required DestinationRepository destinationRepository,
-  }) : _log = Logger('BookingCreateUseCase'),
-       _activityRepository = activityRepository,
-       _bookingRepository = bookingRepository,
-       _destinationRepository = destinationRepository;
+    required this._activityRepository,
+    required this._bookingRepository,
+    required this._destinationRepository,
+  }) : _log = Logger('BookingCreateUseCase');
 
   final Logger _log;
   final ActivityRepository _activityRepository;
