@@ -10,15 +10,11 @@ part 'booking_state.dart';
 
 class BookingCubit extends Cubit<BookingState> {
   BookingCubit({
-    required BookingCreateUseCase createUseCase,
-    required BookingShareUseCase shareUseCase,
-    required BookingRepository bookingRepository,
-    required ItineraryConfigRepository itineraryConfigRepository,
+    required this._createUseCase,
+    required this._shareUseCase,
+    required this._bookingRepository,
+    required this._itineraryConfigRepository,
   }) : _log = Logger('BookingCubit'),
-       _createUseCase = createUseCase,
-       _shareUseCase = shareUseCase,
-       _bookingRepository = bookingRepository,
-       _itineraryConfigRepository = itineraryConfigRepository,
        super(const BookingState());
 
   final Logger _log;
