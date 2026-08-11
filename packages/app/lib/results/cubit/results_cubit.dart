@@ -9,11 +9,9 @@ part 'results_state.dart';
 
 class ResultsCubit extends Cubit<ResultsState> {
   ResultsCubit({
-    required DestinationRepository destinationRepository,
-    required ItineraryConfigRepository itineraryConfigRepository,
+    required this._destinationRepository,
+    required this._itineraryConfigRepository,
   }) : _log = Logger('ResultsCubit'),
-       _destinationRepository = destinationRepository,
-       _itineraryConfigRepository = itineraryConfigRepository,
        super(const ResultsState());
 
   final Logger _log;

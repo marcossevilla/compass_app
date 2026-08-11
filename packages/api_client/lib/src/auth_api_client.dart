@@ -12,7 +12,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 class AuthApiClient {
   /// {@macro auth_api_client}
   AuthApiClient({
-    required SharedPreferences sharedPreferences,
+    required this._sharedPreferences,
     int? port,
     String? host,
     HttpClient? client,
@@ -20,7 +20,6 @@ class AuthApiClient {
        _host = host ?? 'localhost',
        _client = client ?? HttpClient(),
        _logger = Logger('AuthApiClient'),
-       _sharedPreferences = sharedPreferences,
        _authToken = StreamController<String?>.broadcast(),
        _isAuthenticated = StreamController<bool>.broadcast() {
     _isAuthenticated.onListen = token;
