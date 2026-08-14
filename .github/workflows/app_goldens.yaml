@@ -78,10 +78,25 @@ jobs:
         run: flutter test --update-goldens --tags golden
 
       - name: Commit goldens
+        env:
+          HEAD_REF: ${{ github.head_ref }}
         run: |
           git add packages/app/test # only ci/ PNGs surface; rest is gitignored
           git diff --cached --quiet && { echo "No golden changes."; exit 0; }
           git config user.name "golden-ci-bot[bot]"
           git config user.email "golden-ci-bot[bot]@users.noreply.github.com"
           git commit -m "test(app): update golden files"
-          git push
+          # The branch may advance while goldens generate (e.g. a developer
+          # pushes another commit). Retry the push, rebasing onto the latest
+          # tip on each non-fast-forward rejection, so the run doesn't go red
+          # spuriously.
+          for attempt in 1 2 3; do
+            if git push; then
+              exit 0
+            fi
+            echo "Push rejected (attempt $attempt) — rebasing onto origin/$HEAD_REF and retrying."
+            git fetch origin "$HEAD_REF"
+            git rebase "origin/$HEAD_REF"
+          done
+          echo "Failed to push golden update after 3 attempts." >&2
+          exit 1
