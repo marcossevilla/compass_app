@@ -9,7 +9,7 @@ part 'destination.g.dart';
 @JsonSerializable()
 class Destination extends Equatable {
   /// {@macro destination}
-  const Destination({
+  const new({
     required this.ref,
     required this.name,
     required this.country,
@@ -20,7 +20,7 @@ class Destination extends Equatable {
   });
 
   /// Creates a [Destination] from a JSON object.
-  factory Destination.fromJson(Map<String, Object?> json) {
+  factory fromJson(Map<String, Object?> json) {
     return _$DestinationFromJson(json);
   }
 

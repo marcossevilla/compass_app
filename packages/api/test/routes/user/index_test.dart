@@ -9,7 +9,7 @@ import 'package:test/test.dart';
 
 import '../../../routes/user/index.dart';
 
-class _MockRequestContext extends Mock implements RequestContext {}
+class _MockRequestContext extends Mock implements RequestContext;
 
 void main() {
   group('/user', () {

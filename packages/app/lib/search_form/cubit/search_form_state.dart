@@ -3,7 +3,7 @@ part of 'search_form_cubit.dart';
 enum SearchFormStatus { initial, loading, loaded, error, configSaved }
 
 class SearchFormState extends Equatable {
-  const SearchFormState({
+  const new({
     this.guests = 0,
     this.startDate,
     this.endDate,

@@ -14,7 +14,7 @@ enum BookingStatus {
 }
 
 class BookingState extends Equatable {
-  const BookingState({this.booking, this.status = BookingStatus.initial});
+  const new({this.booking, this.status = BookingStatus.initial});
 
   final Booking? booking;
   final BookingStatus status;

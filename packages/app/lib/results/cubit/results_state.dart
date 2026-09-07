@@ -10,7 +10,7 @@ enum ResultsStatus {
 }
 
 class ResultsState extends Equatable {
-  const ResultsState({
+  const new({
     this.destinations = const [],
     this.itineraryConfig = const ItineraryConfig(),
     this.status = ResultsStatus.initial,

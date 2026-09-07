@@ -8,11 +8,9 @@ import 'package:user_repository/user_repository.dart';
 part 'home_state.dart';
 
 class HomeCubit extends Cubit<HomeState> {
-  HomeCubit({
-    required this._userRepository,
-    required this._bookingRepository,
-  }) : _log = Logger('HomeCubit'),
-       super(const HomeState());
+  new({required this._userRepository, required this._bookingRepository})
+    : _log = Logger('HomeCubit'),
+      super(const HomeState());
 
   final Logger _log;
   final UserRepository _userRepository;

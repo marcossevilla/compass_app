@@ -5,10 +5,10 @@ extension AppDimensionsX on BuildContext {
 }
 
 abstract final class AppDimensions {
-  const AppDimensions();
+  const new();
 
   /// Get dimensions definition based on screen size.
-  factory AppDimensions.of(BuildContext context) {
+  factory of(BuildContext context) {
     return switch (MediaQuery.sizeOf(context).width) {
       > 600 => desktop,
       _ => mobile,
@@ -48,7 +48,7 @@ abstract final class AppDimensions {
 
 /// Mobile dimensions.
 final class _DimensMobile extends AppDimensions {
-  const _DimensMobile();
+  const new();
 
   @override
   double get paddingScreenHorizontal => paddingHorizontal;
@@ -62,7 +62,7 @@ final class _DimensMobile extends AppDimensions {
 
 /// Desktop/Web dimensions.
 final class _DimensDesktop extends AppDimensions {
-  const _DimensDesktop();
+  const new();
 
   @override
   double get paddingScreenHorizontal => 100;

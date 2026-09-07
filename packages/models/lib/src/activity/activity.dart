@@ -27,7 +27,7 @@ enum TimeOfDay {
 @JsonSerializable()
 class Activity extends Equatable {
   /// {@macro activity}
-  const Activity({
+  const new({
     required this.name,
     required this.description,
     required this.locationName,
@@ -41,7 +41,7 @@ class Activity extends Equatable {
   });
 
   /// Creates an [Activity] from a JSON object.
-  factory Activity.fromJson(Map<String, Object?> json) {
+  factory fromJson(Map<String, Object?> json) {
     return _$ActivityFromJson(json);
   }
 

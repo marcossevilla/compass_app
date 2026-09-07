@@ -6,7 +6,7 @@ import 'package:models/models.dart';
 /// {@endtemplate}
 class ActivityRepository {
   /// {@macro activity_repository}
-  ActivityRepository({required this._apiClient});
+  new({required this._apiClient});
 
   final ApiClient _apiClient;
 

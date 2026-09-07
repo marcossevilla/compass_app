@@ -11,7 +11,7 @@ import 'package:go_router/go_router.dart';
 import 'package:itinerary_config_repository/itinerary_config_repository.dart';
 
 class ActivitiesPage extends StatelessWidget {
-  const ActivitiesPage({super.key});
+  const new({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +30,7 @@ class ActivitiesPage extends StatelessWidget {
 }
 
 class ActivitiesView extends StatelessWidget {
-  const ActivitiesView({super.key});
+  const new({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -122,7 +122,7 @@ class ActivitiesView extends StatelessWidget {
 
 @visibleForTesting
 class BottomArea extends StatelessWidget {
-  const BottomArea({required this.selectedActivities, super.key});
+  const new({required this.selectedActivities, super.key});
 
   final Set<String> selectedActivities;
 

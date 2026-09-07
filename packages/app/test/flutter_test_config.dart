@@ -21,7 +21,7 @@ Future<void> testExecutable(FutureOr<void> Function() testMain) async {
 
   final currentConfig = AlchemistConfig.current();
 
-  return AlchemistConfig.runWithConfig(
+  await AlchemistConfig.runWithConfig(
     config: currentConfig.copyWith(
       theme: theme,
       goldenTestTheme: goldenTestTheme,
