@@ -6,7 +6,7 @@ import 'package:test/test.dart';
 
 class _MockAuthApiClient extends Mock implements AuthApiClient;
 
-class _FakeLoginRequest extends Fake implements LoginRequest {}
+class _FakeLoginRequest extends Fake implements LoginRequest;
 
 void main() {
   group(AuthenticationRepository, () {
@@ -30,9 +30,8 @@ void main() {
 
     group('isAuthenticated', () {
       test('emits values from the api client', () {
-        when(
-          () => authApiClient.isAuthenticated,
-        ).thenAnswer((_) => Stream.value(true));
+        when(() => authApiClient.isAuthenticated)
+            .thenAnswer((_) => Stream.value(true));
 
         expect(authenticationRepository.isAuthenticated, emits(true));
       });
