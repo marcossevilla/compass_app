@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class ErrorIndicator extends StatelessWidget {
-  const ErrorIndicator({
+  const new({
     required this.title,
     required this.label,
     required this.onPressed,

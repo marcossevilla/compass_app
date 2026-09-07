@@ -2,14 +2,10 @@ import 'package:flutter/widgets.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mocktail/mocktail.dart';
 
-class MockGoRouter extends Mock implements GoRouter {}
+class MockGoRouter extends Mock implements GoRouter;
 
 class MockGoRouterProvider extends StatelessWidget {
-  const MockGoRouterProvider({
-    required this.goRouter,
-    required this.child,
-    super.key,
-  });
+  const new({required this.goRouter, required this.child, super.key});
 
   final GoRouter goRouter;
   final Widget child;

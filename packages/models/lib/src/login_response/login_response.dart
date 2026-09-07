@@ -9,10 +9,10 @@ part 'login_response.g.dart';
 @JsonSerializable()
 class LoginResponse extends Equatable {
   /// {@macro login_response}
-  const LoginResponse({required this.token, required this.userId});
+  const new({required this.token, required this.userId});
 
   /// Converts a [Map] to an [LoginResponse].
-  factory LoginResponse.fromJson(Map<String, Object?> json) {
+  factory fromJson(Map<String, Object?> json) {
     return _$LoginResponseFromJson(json);
   }
 

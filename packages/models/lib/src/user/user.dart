@@ -9,10 +9,10 @@ part 'user.g.dart';
 @JsonSerializable()
 class User extends Equatable {
   /// {@macro user}
-  const User({required this.name, required this.picture});
+  const new({required this.name, required this.picture});
 
   /// Creates a [User] from a JSON object.
-  factory User.fromJson(Map<String, Object?> json) => _$UserFromJson(json);
+  factory fromJson(Map<String, Object?> json) => _$UserFromJson(json);
 
   /// Converts this [User] to a JSON object.
   Map<String, Object?> toJson() => _$UserToJson(this);
@@ -33,7 +33,7 @@ class User extends Equatable {
 @JsonSerializable()
 class UserApiModel extends User {
   /// {@macro user_api_model}
-  const UserApiModel({
+  const new({
     required this.id,
     required this.email,
     required super.name,
@@ -41,7 +41,7 @@ class UserApiModel extends User {
   });
 
   /// Creates a [UserApiModel] from a JSON object.
-  factory UserApiModel.fromJson(Map<String, Object?> json) {
+  factory fromJson(Map<String, Object?> json) {
     return _$UserApiModelFromJson(json);
   }
 

@@ -3,7 +3,7 @@ import 'package:mocktail/mocktail.dart';
 import 'package:test/test.dart';
 import 'package:user_repository/user_repository.dart';
 
-class _MockApiClient extends Mock implements ApiClient {}
+class _MockApiClient extends Mock implements ApiClient;
 
 void main() {
   group(UserRepository, () {
