@@ -267,7 +267,7 @@ void main() {
             .thenThrow(const HttpException('Invalid response'));
 
         await expectLater(
-          bookingRepository.delete(1),
+          () => bookingRepository.delete(1),
           throwsA(isA<HttpException>()),
         );
       });
