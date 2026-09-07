@@ -13,7 +13,7 @@ import 'package:go_router/go_router.dart';
 /// When tapped, it navigates to the [ResultsScreen]
 /// passing the search options as query parameters.
 class SearchFormSubmit extends StatelessWidget {
-  const SearchFormSubmit({super.key});
+  const new({super.key});
 
   @override
   Widget build(BuildContext context) {

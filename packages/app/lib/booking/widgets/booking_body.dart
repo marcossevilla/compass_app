@@ -6,7 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:models/models.dart';
 
 class BookingBody extends StatelessWidget {
-  const BookingBody({super.key});
+  const new({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +34,7 @@ class BookingBody extends StatelessWidget {
 }
 
 class _Activity extends StatelessWidget {
-  const _Activity({required this.activity});
+  const new({required this.activity});
 
   final Activity activity;
 

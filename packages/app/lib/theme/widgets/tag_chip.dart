@@ -4,7 +4,7 @@ import 'package:compass_app/theme/theme.dart';
 import 'package:flutter/material.dart';
 
 class TagChip extends StatelessWidget {
-  const TagChip(
+  const new(
     this.tag, {
     this.fontSize = 10,
     this.height = 20,

@@ -4,7 +4,7 @@ import 'package:mocktail/mocktail.dart';
 import 'package:models/models.dart';
 import 'package:test/test.dart';
 
-class _MockAuthApiClient extends Mock implements AuthApiClient {}
+class _MockAuthApiClient extends Mock implements AuthApiClient;
 
 class _FakeLoginRequest extends Fake implements LoginRequest {}
 

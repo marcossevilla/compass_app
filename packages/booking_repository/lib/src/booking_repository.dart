@@ -6,7 +6,7 @@ import 'package:models/models.dart';
 /// {@endtemplate}
 class BookingRepository {
   /// {@macro booking_repository}
-  BookingRepository({required this._apiClient});
+  new({required this._apiClient});
 
   final ApiClient _apiClient;
 
@@ -75,5 +75,5 @@ class BookingRepository {
   }
 
   /// Delete a booking.
-  Future<void> delete(int id) async => _apiClient.deleteBooking(id);
+  Future<void> delete(int id) => _apiClient.deleteBooking(id);
 }

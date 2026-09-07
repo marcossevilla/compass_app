@@ -11,7 +11,7 @@ enum HomeStatus {
 }
 
 class HomeState extends Equatable {
-  const HomeState({
+  const new({
     this.user,
     this.bookings = const [],
     this.status = HomeStatus.initial,

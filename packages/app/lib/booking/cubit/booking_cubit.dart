@@ -9,7 +9,7 @@ import 'package:models/models.dart';
 part 'booking_state.dart';
 
 class BookingCubit extends Cubit<BookingState> {
-  BookingCubit({
+  new({
     required this._createUseCase,
     required this._shareUseCase,
     required this._bookingRepository,

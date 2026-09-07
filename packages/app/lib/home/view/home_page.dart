@@ -9,7 +9,7 @@ import 'package:go_router/go_router.dart';
 import 'package:models/models.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({required this.homeCubit, super.key});
+  const new({required this.homeCubit, super.key});
 
   final HomeCubit homeCubit;
 
@@ -20,7 +20,7 @@ class HomePage extends StatelessWidget {
 }
 
 class HomeView extends StatelessWidget {
-  const HomeView({super.key});
+  const new({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -114,7 +114,7 @@ class HomeView extends StatelessWidget {
 }
 
 class _Booking extends StatelessWidget {
-  const _Booking({
+  const new({
     required this.booking,
     required this.onTap,
     required this.confirmDismiss,

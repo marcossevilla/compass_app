@@ -5,7 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:models/models.dart';
 
 class ResultCard extends StatelessWidget {
-  const ResultCard({required this.destination, required this.onTap, super.key});
+  const new({required this.destination, required this.onTap, super.key});
 
   final Destination destination;
   final GestureTapCallback onTap;

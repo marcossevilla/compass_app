@@ -8,7 +8,7 @@ import 'package:models/models.dart';
 part 'results_state.dart';
 
 class ResultsCubit extends Cubit<ResultsState> {
-  ResultsCubit({
+  new({
     required this._destinationRepository,
     required this._itineraryConfigRepository,
   }) : _log = Logger('ResultsCubit'),

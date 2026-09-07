@@ -10,7 +10,7 @@ import 'package:go_router/go_router.dart';
 import 'package:itinerary_config_repository/itinerary_config_repository.dart';
 
 class SearchFormPage extends StatelessWidget {
-  const SearchFormPage({super.key});
+  const new({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +29,7 @@ class SearchFormPage extends StatelessWidget {
 }
 
 class SearchFormView extends StatelessWidget {
-  const SearchFormView({super.key});
+  const new({super.key});
 
   @override
   Widget build(BuildContext context) {
