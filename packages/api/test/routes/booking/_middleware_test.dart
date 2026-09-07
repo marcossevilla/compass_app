@@ -20,9 +20,9 @@ void main() {
       await handler(context);
 
       final create =
-          verify(
-                () => context.provide<BookingBloc>(captureAny()),
-              ).captured.single
+          verify(() => context.provide<BookingBloc>(captureAny()))
+                  .captured
+                  .single
               as BookingBloc Function();
 
       expect(create(), isA<BookingBloc>());

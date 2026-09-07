@@ -60,9 +60,8 @@ void main() {
       test('returns a list of bookings', () async {
         final booking = BookingState.defaultBooking(sequentialId: 0);
 
-        when(
-          () => bookingBloc.state,
-        ).thenReturn(BookingState(bookings: [booking], sequentialId: 0));
+        when(() => bookingBloc.state)
+            .thenReturn(BookingState(bookings: [booking], sequentialId: 0));
 
         final response = await onRequest(context);
         final body = await response.body();

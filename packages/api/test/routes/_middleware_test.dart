@@ -81,9 +81,9 @@ void main() {
         expect(response.body(), completion(equals('authenticated')));
 
         final create =
-            verify(
-                  () => context.provide<UserApiModel>(captureAny()),
-                ).captured.single
+            verify(() => context.provide<UserApiModel>(captureAny()))
+                    .captured
+                    .single
                 as UserApiModel Function();
 
         expect(create(), equals(Constants.user));

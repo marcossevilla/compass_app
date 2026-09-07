@@ -11,12 +11,10 @@ class BookingShareUseCase {
   new _(this._share) : _log = Logger('BookingShareUseCase');
 
   /// Create a [BookingShareUseCase] that uses `share_plus` package.
-  factory withSharePlus() =>
-      BookingShareUseCase._(SharePlus.instance.share);
+  factory withSharePlus() => BookingShareUseCase._(SharePlus.instance.share);
 
   /// Create a [BookingShareUseCase] with a custom share function.
-  factory custom(ShareFunction share) =>
-      BookingShareUseCase._(share);
+  factory custom(ShareFunction share) => BookingShareUseCase._(share);
 
   final Logger _log;
   final ShareFunction _share;
