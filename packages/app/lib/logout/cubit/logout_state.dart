@@ -3,7 +3,7 @@ part of 'logout_cubit.dart';
 enum LogoutStatus { initial, loading, success, failure }
 
 class LogoutState extends Equatable {
-  const LogoutState({this.status = LogoutStatus.initial});
+  const new({this.status = LogoutStatus.initial});
 
   final LogoutStatus status;
 

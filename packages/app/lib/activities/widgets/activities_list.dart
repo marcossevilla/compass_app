@@ -5,7 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:models/models.dart';
 
 class ActivitiesList extends StatelessWidget {
-  const ActivitiesList({required this.activityTimeOfDay, super.key});
+  const new({required this.activityTimeOfDay, super.key});
 
   final ActivityTimeOfDay activityTimeOfDay;
 

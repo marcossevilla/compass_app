@@ -8,7 +8,7 @@ import 'package:test/test.dart';
 
 import '../../routes/_middleware.dart';
 
-class _MockRequestContext extends Mock implements RequestContext {}
+class _MockRequestContext extends Mock implements RequestContext;
 
 void main() {
   group('middleware', () {
@@ -81,9 +81,9 @@ void main() {
         expect(response.body(), completion(equals('authenticated')));
 
         final create =
-            verify(
-                  () => context.provide<UserApiModel>(captureAny()),
-                ).captured.single
+            verify(() => context.provide<UserApiModel>(captureAny()))
+                    .captured
+                    .single
                 as UserApiModel Function();
 
         expect(create(), equals(Constants.user));

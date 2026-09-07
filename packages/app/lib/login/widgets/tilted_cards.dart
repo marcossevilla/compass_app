@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 class TiltedCards extends StatelessWidget {
-  const TiltedCards({super.key});
+  const new({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +47,7 @@ class TiltedCards extends StatelessWidget {
 }
 
 class _Card extends StatelessWidget {
-  const _Card({
+  const new({
     required this.imageUrl,
     required this.width,
     required this.height,

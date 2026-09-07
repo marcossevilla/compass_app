@@ -6,7 +6,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:models/models.dart';
 
 class HomeHeader extends StatelessWidget {
-  const HomeHeader({required this.user, super.key});
+  const new({required this.user, super.key});
 
   final User? user;
 
@@ -43,7 +43,7 @@ class HomeHeader extends StatelessWidget {
 
 @visibleForTesting
 class Title extends StatelessWidget {
-  const Title({required this.text, super.key});
+  const new({required this.text, super.key});
 
   final String text;
 

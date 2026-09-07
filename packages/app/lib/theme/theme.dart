@@ -22,7 +22,7 @@ class AppTheme {
 }
 
 class TagChipTheme extends ThemeExtension<TagChipTheme> {
-  const TagChipTheme({required this.chipColor, required this.onChipColor});
+  const new({required this.chipColor, required this.onChipColor});
 
   final Color chipColor;
   final Color onChipColor;

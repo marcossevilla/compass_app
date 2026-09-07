@@ -13,7 +13,7 @@ import 'package:models/models.dart';
 /// Users can tap one item to select it.
 /// Tapping again the same item will deselect it.
 class SearchFormContinent extends StatelessWidget {
-  const SearchFormContinent({super.key});
+  const new({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -61,7 +61,7 @@ class SearchFormContinent extends StatelessWidget {
 
 @visibleForTesting
 class CarouselItem extends StatelessWidget {
-  const CarouselItem({
+  const new({
     required this.name,
     required this.imageUrl,
     required this.selectedContinent,

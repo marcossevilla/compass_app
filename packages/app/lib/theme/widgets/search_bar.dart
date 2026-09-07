@@ -9,7 +9,7 @@ import 'package:models/models.dart';
 /// Displays a search bar with the current configuration.
 /// Includes [HomeButton] to navigate back to the '/' path.
 class AppSearchBar extends StatelessWidget {
-  const AppSearchBar({this.config, this.onTap, super.key});
+  const new({this.config, this.onTap, super.key});
 
   final ItineraryConfig? config;
   final GestureTapCallback? onTap;
@@ -50,7 +50,7 @@ class AppSearchBar extends StatelessWidget {
 }
 
 class _QueryText extends StatelessWidget {
-  const _QueryText({required this.config});
+  const new({required this.config});
 
   final ItineraryConfig? config;
 
@@ -77,7 +77,7 @@ class _QueryText extends StatelessWidget {
 }
 
 class _EmptySearch extends StatelessWidget {
-  const _EmptySearch();
+  const new();
 
   @override
   Widget build(BuildContext context) {

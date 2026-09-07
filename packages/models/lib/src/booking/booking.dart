@@ -10,7 +10,7 @@ part 'booking.g.dart';
 @JsonSerializable(explicitToJson: true)
 class Booking extends Equatable {
   /// {@macro booking}
-  const Booking({
+  const new({
     required this.startDate,
     required this.endDate,
     required this.destination,
@@ -19,7 +19,7 @@ class Booking extends Equatable {
   });
 
   /// Creates a [Booking] from a JSON object.
-  factory Booking.fromJson(Map<String, Object?> json) {
+  factory fromJson(Map<String, Object?> json) {
     return _$BookingFromJson(json);
   }
 
@@ -54,7 +54,7 @@ class Booking extends Equatable {
 @JsonSerializable()
 class BookingSummary extends Equatable {
   /// {@macro booking_summary}
-  const BookingSummary({
+  const new({
     required this.id,
     required this.name,
     required this.startDate,
@@ -62,7 +62,7 @@ class BookingSummary extends Equatable {
   });
 
   /// Creates a [BookingSummary] from a JSON object.
-  factory BookingSummary.fromJson(Map<String, Object?> json) {
+  factory fromJson(Map<String, Object?> json) {
     return _$BookingSummaryFromJson(json);
   }
 
@@ -91,7 +91,7 @@ class BookingSummary extends Equatable {
 @JsonSerializable()
 class BookingApiModel extends Equatable {
   /// {@macro booking_api_model}
-  const BookingApiModel({
+  const new({
     required this.startDate,
     required this.endDate,
     required this.name,
@@ -101,7 +101,7 @@ class BookingApiModel extends Equatable {
   });
 
   /// Creates a [BookingApiModel] from a JSON object.
-  factory BookingApiModel.fromJson(Map<String, Object?> json) {
+  factory fromJson(Map<String, Object?> json) {
     return _$BookingApiModelFromJson(json);
   }
 

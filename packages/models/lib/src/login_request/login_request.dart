@@ -9,10 +9,10 @@ part 'login_request.g.dart';
 @JsonSerializable()
 class LoginRequest extends Equatable {
   /// {@macro login_request}
-  const LoginRequest({required this.email, required this.password});
+  const new({required this.email, required this.password});
 
   /// Converts a [Map] to an [LoginRequest].
-  factory LoginRequest.fromJson(Map<String, Object?> json) {
+  factory fromJson(Map<String, Object?> json) {
     return _$LoginRequestFromJson(json);
   }
 

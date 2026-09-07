@@ -6,7 +6,7 @@ import 'package:models/models.dart';
 /// {@endtemplate}
 class UserRepository {
   /// {@macro user_repository}
-  UserRepository({required this._apiClient});
+  new({required this._apiClient});
 
   final ApiClient _apiClient;
 
@@ -14,7 +14,7 @@ class UserRepository {
 
   /// Fetches the user data.
   Future<User> getUser() async {
-    if (_cachedData != null) return Future.value(_cachedData!);
+    if (_cachedData != null) return _cachedData!;
 
     final result = await _apiClient.getUser();
 

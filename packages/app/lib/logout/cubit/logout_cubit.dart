@@ -8,7 +8,7 @@ import 'package:models/models.dart';
 part 'logout_state.dart';
 
 class LogoutCubit extends Cubit<LogoutState> {
-  LogoutCubit({
+  new({
     required this._authenticationRepository,
     required this._itineraryConfigRepository,
   }) : _log = Logger('LogoutCubit'),
