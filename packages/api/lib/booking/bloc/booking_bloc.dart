@@ -9,7 +9,7 @@ part 'booking_event.dart';
 part 'booking_state.dart';
 
 class BookingBloc extends Bloc<BookingEvent, BookingState> {
-  BookingBloc() : super(BookingState.initial()) {
+  new() : super(BookingState.initial()) {
     on<BookingAdded>(_onBookingAdded);
     on<BookingRemoved>(_onBookingRemoved);
   }

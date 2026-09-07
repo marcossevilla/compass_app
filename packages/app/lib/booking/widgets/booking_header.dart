@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:models/models.dart';
 
 class BookingHeader extends StatelessWidget {
-  const BookingHeader({required this.booking, super.key});
+  const new({required this.booking, super.key});
 
   final Booking booking;
 
@@ -40,7 +40,7 @@ class BookingHeader extends StatelessWidget {
 }
 
 class _Top extends StatelessWidget {
-  const _Top({required this.booking});
+  const new({required this.booking});
 
   final Booking booking;
 
@@ -68,7 +68,7 @@ class _Top extends StatelessWidget {
 }
 
 class _Tags extends StatelessWidget {
-  const _Tags({required this.booking});
+  const new({required this.booking});
 
   final Booking booking;
 
@@ -104,7 +104,7 @@ class _Tags extends StatelessWidget {
 }
 
 class _Headline extends StatelessWidget {
-  const _Headline({required this.booking});
+  const new({required this.booking});
 
   final Booking booking;
 
@@ -137,7 +137,7 @@ class _Headline extends StatelessWidget {
 }
 
 class _HeaderImage extends StatelessWidget {
-  const _HeaderImage({required this.booking});
+  const new({required this.booking});
 
   final Booking booking;
 
@@ -151,7 +151,7 @@ class _HeaderImage extends StatelessWidget {
 }
 
 class _Gradient extends StatelessWidget {
-  const _Gradient();
+  const new();
 
   @override
   Widget build(BuildContext context) {

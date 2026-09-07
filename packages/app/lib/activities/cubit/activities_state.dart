@@ -10,7 +10,7 @@ enum ActivitiesStatus {
 }
 
 class ActivitiesState extends Equatable {
-  const ActivitiesState({
+  const new({
     this.daytimeActivities = const [],
     this.eveningActivities = const [],
     this.selectedActivities = const {},

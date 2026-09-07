@@ -10,7 +10,7 @@ part 'itinerary_config.g.dart';
 @JsonSerializable()
 class ItineraryConfig extends Equatable {
   /// {@macro itinerary_config}
-  const ItineraryConfig({
+  const new({
     this.continent,
     this.startDate,
     this.endDate,
@@ -20,7 +20,7 @@ class ItineraryConfig extends Equatable {
   });
 
   /// Creates an [ItineraryConfig] from a JSON object.
-  factory ItineraryConfig.fromJson(Map<String, Object?> json) {
+  factory fromJson(Map<String, Object?> json) {
     return _$ItineraryConfigFromJson(json);
   }
 

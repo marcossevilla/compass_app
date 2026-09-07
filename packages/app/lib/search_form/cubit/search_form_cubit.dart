@@ -8,7 +8,7 @@ import 'package:models/models.dart';
 part 'search_form_state.dart';
 
 class SearchFormCubit extends Cubit<SearchFormState> {
-  SearchFormCubit({
+  new({
     required this._continentRepository,
     required this._itineraryConfigRepository,
   }) : _log = Logger('SearchFormViewModel'),

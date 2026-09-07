@@ -10,10 +10,10 @@ import 'package:test/test.dart';
 
 import '../../../routes/booking/[id].dart';
 
-class _MockRequestContext extends Mock implements RequestContext {}
+class _MockRequestContext extends Mock implements RequestContext;
 
 class _MockBookingBloc extends MockBloc<BookingEvent, BookingState>
-    implements BookingBloc {}
+    implements BookingBloc;
 
 void main() {
   group('/booking/[id]', () {

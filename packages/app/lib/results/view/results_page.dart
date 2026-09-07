@@ -12,7 +12,7 @@ import 'package:itinerary_config_repository/itinerary_config_repository.dart';
 import 'package:models/models.dart';
 
 class ResultsPage extends StatelessWidget {
-  const ResultsPage({super.key});
+  const new({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +31,7 @@ class ResultsPage extends StatelessWidget {
 }
 
 class ResultsView extends StatelessWidget {
-  const ResultsView({super.key});
+  const new({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -108,7 +108,7 @@ class ResultsView extends StatelessWidget {
 
 @visibleForTesting
 class ResultsSearchBar extends StatelessWidget {
-  const ResultsSearchBar({required this.itineraryConfig, super.key});
+  const new({required this.itineraryConfig, super.key});
 
   final ItineraryConfig itineraryConfig;
 
@@ -135,7 +135,7 @@ class ResultsSearchBar extends StatelessWidget {
 
 @visibleForTesting
 class Grid extends StatelessWidget {
-  const Grid({required this.destinations, super.key});
+  const new({required this.destinations, super.key});
 
   final List<Destination> destinations;
 

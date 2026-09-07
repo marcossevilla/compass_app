@@ -3,7 +3,7 @@ import 'package:destination_repository/destination_repository.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:test/test.dart';
 
-class _MockApiClient extends Mock implements ApiClient {}
+class _MockApiClient extends Mock implements ApiClient;
 
 void main() {
   group(DestinationRepository, () {
