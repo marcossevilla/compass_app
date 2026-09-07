@@ -9,10 +9,10 @@ part 'continent.g.dart';
 @JsonSerializable()
 class Continent extends Equatable {
   /// {@macro continent}
-  const Continent({required this.name, required this.imageUrl});
+  const new({required this.name, required this.imageUrl});
 
   /// Creates a [Continent] from a JSON object.
-  factory Continent.fromJson(Map<String, Object?> json) {
+  factory fromJson(Map<String, Object?> json) {
     return _$ContinentFromJson(json);
   }
 

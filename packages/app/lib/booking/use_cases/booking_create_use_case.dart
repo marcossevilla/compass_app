@@ -10,7 +10,7 @@ import 'package:models/models.dart';
 /// Fetches [Destination] and [Activity] objects from repositories,
 /// checks if dates are set and creates a [Booking] object.
 class BookingCreateUseCase {
-  BookingCreateUseCase({
+  new({
     required this._activityRepository,
     required this._bookingRepository,
     required this._destinationRepository,

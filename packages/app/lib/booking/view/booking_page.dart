@@ -16,10 +16,10 @@ import 'package:models/models.dart';
 enum _BookingMode { create, load }
 
 class BookingPage extends StatelessWidget {
-  const BookingPage.loadBooking({required this._id, super.key})
+  const new loadBooking({required this._id, super.key})
     : _mode = _BookingMode.load;
 
-  const BookingPage.createBooking({super.key})
+  const new createBooking({super.key})
     : _id = null,
       _mode = _BookingMode.create;
 
@@ -62,7 +62,7 @@ class BookingPage extends StatelessWidget {
 }
 
 class BookingView extends StatelessWidget {
-  const BookingView({super.key});
+  const new({super.key});
 
   @override
   Widget build(BuildContext context) {

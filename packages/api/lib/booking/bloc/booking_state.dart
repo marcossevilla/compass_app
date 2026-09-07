@@ -1,9 +1,9 @@
 part of 'booking_bloc.dart';
 
 class BookingState extends Equatable {
-  const BookingState({required this.bookings, required this.sequentialId});
+  const new({required this.bookings, required this.sequentialId});
 
-  BookingState.initial({this.sequentialId = 0})
+  new initial({this.sequentialId = 0})
     : bookings = [defaultBooking(sequentialId: sequentialId)];
 
   @visibleForTesting

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class AppCheckbox extends StatelessWidget {
-  const AppCheckbox({required this.value, required this.onChanged, super.key});
+  const new({required this.value, required this.onChanged, super.key});
 
   final bool value;
   final ValueChanged<bool?> onChanged;

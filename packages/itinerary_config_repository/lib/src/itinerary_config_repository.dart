@@ -5,7 +5,7 @@ import 'package:models/models.dart';
 /// {@endtemplate}
 class ItineraryConfigRepository {
   /// {@macro itinerary_config_repository}
-  ItineraryConfigRepository();
+  new();
 
   ItineraryConfig? _itineraryConfig;
 

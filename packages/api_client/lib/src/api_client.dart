@@ -9,7 +9,7 @@ import 'package:models/models.dart';
 /// {@endtemplate}
 class ApiClient {
   /// {@macro api_client}
-  ApiClient({
+  new({
     required this._authHeaderProvider,
     String? host,
     int? port,

@@ -11,7 +11,7 @@ import 'package:itinerary_config_repository/itinerary_config_repository.dart';
 import 'package:user_repository/user_repository.dart';
 
 class App extends StatelessWidget {
-  const App({
+  const new({
     required this._activityRepository,
     required this._authenticationRepository,
     required this._bookingRepository,
@@ -48,7 +48,7 @@ class App extends StatelessWidget {
 }
 
 class AppView extends StatelessWidget {
-  const AppView({super.key});
+  const new({super.key});
 
   @override
   Widget build(BuildContext context) {

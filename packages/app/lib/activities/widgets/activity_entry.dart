@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:models/models.dart';
 
 class ActivityEntry extends StatelessWidget {
-  const ActivityEntry({
+  const new({
     required this.activity,
     required this.selected,
     required this.onChanged,

@@ -6,7 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:itinerary_config_repository/itinerary_config_repository.dart';
 
 class LogoutButton extends StatelessWidget {
-  const LogoutButton({super.key});
+  const new({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +21,7 @@ class LogoutButton extends StatelessWidget {
 }
 
 class LogoutButtonView extends StatelessWidget {
-  const LogoutButtonView({super.key});
+  const new({super.key});
 
   @override
   Widget build(BuildContext context) {

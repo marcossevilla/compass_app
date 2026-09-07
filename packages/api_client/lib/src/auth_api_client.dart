@@ -11,7 +11,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 /// {@endtemplate}
 class AuthApiClient {
   /// {@macro auth_api_client}
-  AuthApiClient({
+  new({
     required this._sharedPreferences,
     int? port,
     String? host,

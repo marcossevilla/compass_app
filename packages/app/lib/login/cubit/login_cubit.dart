@@ -6,7 +6,7 @@ import 'package:logging/logging.dart';
 part 'login_state.dart';
 
 class LoginCubit extends Cubit<LoginState> {
-  LoginCubit({required this._authenticationRepository})
+  new({required this._authenticationRepository})
     : _log = Logger('LoginCubit'),
       super(const LoginState());
 
