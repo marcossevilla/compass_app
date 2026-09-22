@@ -1,0 +1,70 @@
+name: test_shards
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+on:
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+env:
+  # very_good_cli PR #1707 — adds --shard-index / --total-shards
+  # https://github.com/VeryGoodOpenSource/very_good_cli/pull/1707
+  VGC_GIT_URL: https://github.com/peter-trost/very_good_cli.git
+  VGC_GIT_REF: feat/test-sharding
+
+jobs:
+  # Flutter package sharded across runners via `very_good test`.
+  app_shards:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [1, 2, 3]
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: 3.47.x
+          cache: true
+
+      - name: Install very_good_cli (PR #1707)
+        run: dart pub global activate --source git "$VGC_GIT_URL" --git-ref "$VGC_GIT_REF"
+
+      # Pub workspace: resolve the entire workspace from the root.
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Run tests (shard ${{ matrix.shard }} of 3)
+        working-directory: packages/app
+        run: very_good test --shard-index ${{ matrix.shard }} --total-shards 3
+
+  # Pure Dart package sharded across runners via `very_good dart test`.
+  api_shards:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [1, 2, 3]
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: 3.47.x
+          cache: true
+
+      - name: Install very_good_cli (PR #1707)
+        run: dart pub global activate --source git "$VGC_GIT_URL" --git-ref "$VGC_GIT_REF"
+
+      # Pub workspace: resolve the entire workspace from the root.
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Run tests (shard ${{ matrix.shard }} of 3)
+        working-directory: packages/api
+        run: very_good dart test --shard-index ${{ matrix.shard }} --total-shards 3
