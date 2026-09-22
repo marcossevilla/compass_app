@@ -16,35 +16,12 @@ env:
   VGC_GIT_URL: https://github.com/peter-trost/very_good_cli.git
   VGC_GIT_REF: feat/test-sharding
 
+# NOTE: the `app` package is intentionally not sharded here. 3 of its 4 test
+# files are alchemist golden tests, so any 3-way split leaves a golden-only
+# shard; excluding goldens then makes `flutter test` exit 70 ("No tests match
+# the requested tag selectors"). The `api` package (13 pure-Dart files, no
+# goldens) is the clean candidate for demonstrating shard behavior.
 jobs:
-  # Flutter package sharded across runners via `very_good test`.
-  app_shards:
-    runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-      matrix:
-        shard: [1, 2, 3]
-    steps:
-      - uses: actions/checkout@v4
-
-      - uses: subosito/flutter-action@v2
-        with:
-          flutter-version: 3.47.x
-          cache: true
-
-      - name: Install very_good_cli (PR #1707)
-        run: dart pub global activate --source git "$VGC_GIT_URL" --git-ref "$VGC_GIT_REF"
-
-      # Pub workspace: resolve the entire workspace from the root.
-      - name: Install dependencies
-        run: flutter pub get
-
-      # Golden tests are excluded: they carry an environment-driven pixel diff
-      # that is unrelated to sharding. This workflow only validates shard behavior.
-      - name: Run tests (shard ${{ matrix.shard }} of 3)
-        working-directory: packages/app
-        run: very_good test --shard-index ${{ matrix.shard }} --total-shards 3 -x golden
-
   # Pure Dart package sharded across runners via `very_good dart test`.
   api_shards:
     runs-on: ubuntu-latest
