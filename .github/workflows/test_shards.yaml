@@ -1,0 +1,76 @@
+name: test_shards
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+on:
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+env:
+  # very_good_cli PR #1707 — adds --shard-index / --total-shards
+  # https://github.com/VeryGoodOpenSource/very_good_cli/pull/1707
+  VGC_GIT_URL: https://github.com/peter-trost/very_good_cli.git
+  VGC_GIT_REF: feat/test-sharding
+
+jobs:
+  # Flutter package sharded across runners via `very_good test`.
+  #
+  # 3 of the app's 4 test files are alchemist golden tests, so a 3-way split
+  # can leave a golden-only shard. very_good_cli #1707 short-circuits a
+  # structurally empty shard to success, and also treats a shard whose files
+  # are all filtered out by `-x golden` as success — so sharding composes with
+  # tag filtering natively, no wrapper needed.
+  app_shards:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [1, 2, 3]
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: 3.47.x
+          cache: true
+
+      - name: Install very_good_cli (PR #1707)
+        run: dart pub global activate --source git "$VGC_GIT_URL" --git-ref "$VGC_GIT_REF"
+
+      # Pub workspace: resolve the entire workspace from the root.
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Run tests (shard ${{ matrix.shard }} of 3)
+        working-directory: packages/app
+        run: very_good test --shard-index ${{ matrix.shard }} --total-shards 3 -x golden
+
+  # Pure Dart package sharded across runners via `very_good dart test`.
+  api_shards:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [1, 2, 3]
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: 3.47.x
+          cache: true
+
+      - name: Install very_good_cli (PR #1707)
+        run: dart pub global activate --source git "$VGC_GIT_URL" --git-ref "$VGC_GIT_REF"
+
+      # Pub workspace: resolve the entire workspace from the root.
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Run tests (shard ${{ matrix.shard }} of 3)
+        working-directory: packages/api
+        run: very_good dart test --shard-index ${{ matrix.shard }} --total-shards 3
