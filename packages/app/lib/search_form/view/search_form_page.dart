@@ -6,7 +6,6 @@ import 'package:compass_app/theme/theme.dart';
 import 'package:continent_repository/continent_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
 import 'package:itinerary_config_repository/itinerary_config_repository.dart';
 
 class SearchFormPage extends StatelessWidget {
@@ -38,7 +37,7 @@ class SearchFormView extends StatelessWidget {
     return PopScope(
       canPop: false,
       onPopInvokedWithResult: (didPop, result) {
-        if (!didPop) context.go(Routes.home);
+        if (!didPop) const HomeRoute().go(context);
       },
       child: Scaffold(
         body: Column(

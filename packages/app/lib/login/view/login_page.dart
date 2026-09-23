@@ -5,7 +5,6 @@ import 'package:compass_app/routing/routing.dart';
 import 'package:compass_app/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
 
 class LoginPage extends StatelessWidget {
   const new({super.key});
@@ -40,7 +39,7 @@ class _LoginViewState extends State<LoginView> {
       listener: (context, state) => switch (state.status) {
         LoginStatus.initial => () {},
         LoginStatus.loading => () {},
-        LoginStatus.success => context.go(Routes.home),
+        LoginStatus.success => const HomeRoute().go(context),
         LoginStatus.failure => ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: Text(l10n.errorWhileLogin),

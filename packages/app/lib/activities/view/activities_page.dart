@@ -7,7 +7,6 @@ import 'package:compass_app/routing/routes.dart';
 import 'package:compass_app/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
 import 'package:itinerary_config_repository/itinerary_config_repository.dart';
 
 class ActivitiesPage extends StatelessWidget {
@@ -39,7 +38,7 @@ class ActivitiesView extends StatelessWidget {
     return BlocListener<ActivitiesCubit, ActivitiesState>(
       listener: (context, state) {
         if (state.status == ActivitiesStatus.savedActivities) {
-          return context.go(Routes.booking);
+          return const BookingRoute().go(context);
         }
 
         if (state.status == ActivitiesStatus.failedSavingActivities) {
@@ -59,7 +58,7 @@ class ActivitiesView extends StatelessWidget {
       child: PopScope(
         canPop: false,
         onPopInvokedWithResult: (didPop, result) {
-          if (!didPop) context.go(Routes.results);
+          if (!didPop) const ResultsRoute().go(context);
         },
         child: Scaffold(
           body: BlocBuilder<ActivitiesCubit, ActivitiesState>(

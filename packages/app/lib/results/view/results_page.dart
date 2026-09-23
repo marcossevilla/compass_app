@@ -41,7 +41,7 @@ class ResultsView extends StatelessWidget {
     return BlocListener<ResultsCubit, ResultsState>(
       listener: (context, state) {
         if (state.status == ResultsStatus.updatedConfig) {
-          context.go(Routes.activities);
+          const ActivitiesRoute().go(context);
         }
 
         if (state.status == ResultsStatus.updateConfigFailure) {
@@ -55,7 +55,7 @@ class ResultsView extends StatelessWidget {
       child: PopScope(
         canPop: false,
         onPopInvokedWithResult: (didPop, r) {
-          if (!didPop) context.go(Routes.search);
+          if (!didPop) const SearchRoute().go(context);
         },
         child: Scaffold(
           body: BlocBuilder<ResultsCubit, ResultsState>(

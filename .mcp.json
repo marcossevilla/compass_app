@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "very_good_blueprints": {
+      "type": "http",
+      "url": "http://127.0.0.1:37543/b414c0c29ce020d1461459bf60972542"
+    }
+  }
+}
