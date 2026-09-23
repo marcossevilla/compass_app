@@ -1,6 +1,7 @@
 import 'package:activity_repository/activity_repository.dart';
 import 'package:authentication_repository/authentication_repository.dart';
 import 'package:booking_repository/booking_repository.dart';
+import 'package:compass_app/booking/booking.dart';
 import 'package:compass_app/home/home.dart';
 import 'package:compass_app/l10n/l10n.dart';
 import 'package:compass_app/login/login.dart';
@@ -109,5 +110,29 @@ void main() {
         expect(find.byType(HomePage), findsOneWidget);
       }),
     );
+
+    testWidgets(
+      'opens a booking deep link',
+      (tester) => mockNetworkImages(() async {
+        when(() => bookingRepository.getBooking(1)).thenThrow(Exception());
+        final goRouter = await pumpRouter(tester, isAuthenticated: true);
+        goRouter.go('/booking/1');
+        await tester.pump();
+        expect(find.byType(BookingPage), findsOneWidget);
+      }),
+    );
+
+    for (final location in ['/booking/abc', '/unknown']) {
+      testWidgets(
+        'falls back to home for $location',
+        (tester) => mockNetworkImages(() async {
+          final goRouter = await pumpRouter(tester, isAuthenticated: true);
+          goRouter.go(location);
+          await tester.pump();
+          expect(find.byType(HomePage), findsOneWidget);
+          expect(goRouter.state.uri.path, const HomeRoute().location);
+        }),
+      );
+    }
   });
 }

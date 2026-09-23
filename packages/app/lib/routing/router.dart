@@ -27,6 +27,9 @@ GoRouter router(ValueNotifier<bool> isAuthenticated) {
       // No need to redirect at all.
       return null;
     },
+    // Malformed or unknown deep links, e.g. /booking/abc, fall back to home.
+    onException: (context, state, router) =>
+        router.go(const HomeRoute().location),
     refreshListenable: isAuthenticated,
     routes: $appRoutes,
   );
