@@ -2,7 +2,6 @@ import 'dart:ui' as ui;
 
 import 'package:compass_app/routing/routes.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 
 /// Home button to navigate back to the '/' path.
 class HomeButton extends StatelessWidget {
@@ -33,7 +32,7 @@ class HomeButton extends StatelessWidget {
             ),
             child: InkWell(
               borderRadius: BorderRadius.circular(8),
-              onTap: () => context.go(Routes.home),
+              onTap: () => const HomeRoute().go(context),
               child: Center(
                 child: Icon(
                   size: 24,

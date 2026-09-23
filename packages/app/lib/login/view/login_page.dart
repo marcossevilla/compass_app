@@ -1,11 +1,9 @@
 import 'package:authentication_repository/authentication_repository.dart';
 import 'package:compass_app/l10n/l10n.dart';
 import 'package:compass_app/login/login.dart';
-import 'package:compass_app/routing/routing.dart';
 import 'package:compass_app/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
 
 class LoginPage extends StatelessWidget {
   const new({super.key});
@@ -37,23 +35,20 @@ class _LoginViewState extends State<LoginView> {
     final l10n = context.l10n;
     final dimensions = context.dimensions;
     return BlocListener<LoginCubit, LoginState>(
-      listener: (context, state) => switch (state.status) {
-        LoginStatus.initial => () {},
-        LoginStatus.loading => () {},
-        LoginStatus.success => context.go(Routes.home),
-        LoginStatus.failure => ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text(l10n.errorWhileLogin),
-            action: SnackBarAction(
-              label: l10n.tryAgain,
-              onPressed: () async {
-                final credentials = (_email.value.text, _password.value.text);
-                await context.read<LoginCubit>().login(credentials);
-              },
-            ),
+      // The router navigates away on success once the user is authenticated.
+      listenWhen: (_, current) => current.status == LoginStatus.failure,
+      listener: (context, state) => ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(l10n.errorWhileLogin),
+          action: SnackBarAction(
+            label: l10n.tryAgain,
+            onPressed: () async {
+              final credentials = (_email.value.text, _password.value.text);
+              await context.read<LoginCubit>().login(credentials);
+            },
           ),
         ),
-      },
+      ),
       child: Scaffold(
         body: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,

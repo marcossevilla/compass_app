@@ -389,6 +389,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "18.0.1"
+  go_router_builder:
+    dependency: transitive
+    description:
+      name: go_router_builder
+      sha256: fbadb18697941b5efaa90c6295e81335e59b97bde83d675b4251e91eac1d4882
+      url: "https://pub.dev"
+    source: hosted
+    version: "4.5.0"
   google_fonts:
     dependency: transitive
     description:

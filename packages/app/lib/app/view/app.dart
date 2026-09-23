@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:activity_repository/activity_repository.dart';
 import 'package:authentication_repository/authentication_repository.dart';
 import 'package:booking_repository/booking_repository.dart';
@@ -7,6 +9,7 @@ import 'package:continent_repository/continent_repository.dart';
 import 'package:destination_repository/destination_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:itinerary_config_repository/itinerary_config_repository.dart';
 import 'package:user_repository/user_repository.dart';
 
@@ -47,27 +50,49 @@ class App extends StatelessWidget {
   }
 }
 
-class AppView extends StatelessWidget {
+class AppView extends StatefulWidget {
   const new({super.key});
 
   @override
+  State<AppView> createState() => _AppViewState();
+}
+
+class _AppViewState extends State<AppView> {
+  // A single router for the app's lifetime, so an auth change refreshes its
+  // redirect instead of recreating it and dropping the current location.
+  final ValueNotifier<bool> _isAuthenticated = ValueNotifier(false);
+  late final GoRouter _router = router(_isAuthenticated);
+  late final StreamSubscription<bool> _subscription;
+
+  @override
+  void initState() {
+    super.initState();
+    _subscription = context
+        .read<AuthenticationRepository>()
+        .isAuthenticated
+        .listen((value) => _isAuthenticated.value = value);
+  }
+
+  @override
+  void dispose() {
+    unawaited(_subscription.cancel());
+    _router.dispose();
+    _isAuthenticated.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return StreamBuilder<bool>(
-      stream: context.read<AuthenticationRepository>().isAuthenticated,
-      builder: (context, snapshot) {
-        final isAuthenticated = ValueNotifier(snapshot.data ?? false);
-        return MaterialApp.router(
-          theme: ThemeData(
-            appBarTheme: AppBarTheme(
-              backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-            ),
-            useMaterial3: true,
-          ),
-          localizationsDelegates: AppLocalizations.localizationsDelegates,
-          supportedLocales: AppLocalizations.supportedLocales,
-          routerConfig: router(isAuthenticated),
-        );
-      },
+    return MaterialApp.router(
+      theme: ThemeData(
+        appBarTheme: AppBarTheme(
+          backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        ),
+        useMaterial3: true,
+      ),
+      localizationsDelegates: AppLocalizations.localizationsDelegates,
+      supportedLocales: AppLocalizations.supportedLocales,
+      routerConfig: _router,
     );
   }
 }

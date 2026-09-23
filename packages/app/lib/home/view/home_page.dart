@@ -5,7 +5,6 @@ import 'package:compass_app/routing/routing.dart';
 import 'package:compass_app/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
 import 'package:models/models.dart';
 
 class HomePage extends StatelessWidget {
@@ -51,7 +50,7 @@ class HomeView extends StatelessWidget {
           key: const ValueKey('booking-button'),
           icon: const Icon(Icons.add_location_outlined),
           label: Text(l10n.bookNewTrip.toUpperCase()),
-          onPressed: () => context.go(Routes.search),
+          onPressed: () => const SearchRoute().go(context),
         ),
         body: SafeArea(
           child: BlocBuilder<HomeCubit, HomeState>(
@@ -89,7 +88,8 @@ class HomeView extends StatelessWidget {
                         key: ValueKey(booking.id),
                         booking: booking,
                         onTap: () =>
-                            context.push(Routes.bookingWithId(booking.id)),
+                            BookingDetailsRoute(id: booking.id)
+                                .push<void>(context),
                         confirmDismiss: (_) async {
                           // Wait for command to complete.
                           await context.read<HomeCubit>().deleteBooking(

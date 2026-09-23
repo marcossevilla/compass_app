@@ -6,7 +6,6 @@ import 'package:compass_app/l10n/l10n.dart';
 import 'package:compass_app/routing/routes.dart';
 import 'package:compass_app/theme/theme.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 
 class ActivitiesHeader extends StatelessWidget {
   const new({super.key});
@@ -29,7 +28,7 @@ class ActivitiesHeader extends StatelessWidget {
           children: [
             AppBackButton(
               // Navigate to ResultsScreen and edit search.
-              onTap: () => context.go(Routes.results),
+              onTap: () => const ResultsRoute().go(context),
             ),
             Text(
               context.l10n.activities,
