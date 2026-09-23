@@ -20,14 +20,10 @@ jobs:
   # Flutter package sharded across runners via `very_good test`.
   #
   # 3 of the app's 4 test files are alchemist golden tests, so a 3-way split
-  # leaves a golden-only shard. very_good_cli #1707 short-circuits a
-  # STRUCTURALLY empty shard to success, but a shard whose files are all
-  # filtered out by `-x golden` at runtime is not: `flutter test` prints
-  # "No tests match the requested tag selectors" and exits 70.
-  #
-  # The wrapper below treats that specific outcome as success. This is exactly
-  # the behavior the PR should adopt natively (see PR review notes) so that
-  # sharding composes with tag filtering.
+  # can leave a golden-only shard. very_good_cli #1707 short-circuits a
+  # structurally empty shard to success, and also treats a shard whose files
+  # are all filtered out by `-x golden` as success — so sharding composes with
+  # tag filtering natively, no wrapper needed.
   app_shards:
     runs-on: ubuntu-latest
     strategy:
@@ -51,18 +47,7 @@ jobs:
 
       - name: Run tests (shard ${{ matrix.shard }} of 3)
         working-directory: packages/app
-        shell: bash
-        run: |
-          set +e
-          output="$(very_good test --shard-index ${{ matrix.shard }} --total-shards 3 -x golden 2>&1)"
-          code=$?
-          echo "$output"
-          if [ "$code" -ne 0 ] && \
-             grep -q "No tests match the requested tag selectors" <<<"$output"; then
-            echo "::notice::Shard ${{ matrix.shard }} held only excluded (golden) tests — treating as success."
-            exit 0
-          fi
-          exit "$code"
+        run: very_good test --shard-index ${{ matrix.shard }} --total-shards 3 -x golden
 
   # Pure Dart package sharded across runners via `very_good dart test`.
   api_shards:
