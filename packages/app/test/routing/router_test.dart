@@ -46,10 +46,10 @@ void main() {
     });
 
     Future<GoRouter> pumpRouter(
-      WidgetTester tester, {
-      required bool isAuthenticated,
-    }) async {
-      final goRouter = router(ValueNotifier(isAuthenticated));
+      WidgetTester tester,
+      ValueNotifier<bool> isAuthenticated,
+    ) async {
+      final goRouter = router(isAuthenticated);
       await tester.pumpWidget(
         MultiRepositoryProvider(
           providers: [
@@ -88,7 +88,7 @@ void main() {
     });
 
     testWidgets('starts on the home location', (tester) async {
-      final goRouter = await pumpRouter(tester, isAuthenticated: true);
+      final goRouter = await pumpRouter(tester, ValueNotifier(true));
       expect(
         goRouter.routerDelegate.currentConfiguration.uri.path,
         const HomeRoute().location,
@@ -98,7 +98,7 @@ void main() {
     testWidgets(
       'redirects unauthenticated users to the login page',
       (tester) => mockNetworkImages(() async {
-        await pumpRouter(tester, isAuthenticated: false);
+        await pumpRouter(tester, ValueNotifier(false));
         expect(find.byType(LoginPage), findsOneWidget);
       }),
     );
@@ -106,7 +106,7 @@ void main() {
     testWidgets(
       'renders the home page for authenticated users',
       (tester) => mockNetworkImages(() async {
-        await pumpRouter(tester, isAuthenticated: true);
+        await pumpRouter(tester, ValueNotifier(true));
         expect(find.byType(HomePage), findsOneWidget);
       }),
     );
@@ -115,8 +115,26 @@ void main() {
       'opens a booking deep link',
       (tester) => mockNetworkImages(() async {
         when(() => bookingRepository.getBooking(1)).thenThrow(Exception());
-        final goRouter = await pumpRouter(tester, isAuthenticated: true);
+        final goRouter = await pumpRouter(tester, ValueNotifier(true));
         goRouter.go('/booking/1');
+        await tester.pump();
+        expect(find.byType(BookingPage), findsOneWidget);
+      }),
+    );
+
+    testWidgets(
+      'returns to a deep link after login',
+      (tester) => mockNetworkImages(() async {
+        when(() => bookingRepository.getBooking(1)).thenThrow(Exception());
+        final isAuthenticated = ValueNotifier(false);
+        final goRouter = await pumpRouter(tester, isAuthenticated);
+
+        goRouter.go('/booking/1');
+        await tester.pump();
+        expect(find.byType(LoginPage), findsOneWidget);
+        expect(goRouter.state.uri.queryParameters['from'], '/booking/1');
+
+        isAuthenticated.value = true;
         await tester.pump();
         expect(find.byType(BookingPage), findsOneWidget);
       }),
@@ -126,7 +144,7 @@ void main() {
       testWidgets(
         'falls back to home for $location',
         (tester) => mockNetworkImages(() async {
-          final goRouter = await pumpRouter(tester, isAuthenticated: true);
+          final goRouter = await pumpRouter(tester, ValueNotifier(true));
           goRouter.go(location);
           await tester.pump();
           expect(find.byType(HomePage), findsOneWidget);

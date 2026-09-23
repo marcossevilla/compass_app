@@ -16,13 +16,19 @@ GoRouter router(ValueNotifier<bool> isAuthenticated) {
     initialLocation: const HomeRoute().location,
     debugLogDiagnostics: true,
     redirect: (context, state) {
-      // If the user is not logged in, they need to login.
-      if (!isAuthenticated.value) return const LoginRoute().location;
-
-      // If the user is logged in but still on the login page, send them to
-      // the home page.
       final loggingIn = state.matchedLocation == const LoginRoute().location;
-      if (loggingIn) return const HomeRoute().location;
+
+      // If the user is not logged in, they need to login. Remember where they
+      // were headed so they return there afterwards.
+      if (!isAuthenticated.value) {
+        return loggingIn ? null : LoginRoute(from: '${state.uri}').location;
+      }
+
+      // If the user is logged in but still on the login page, send them where
+      // they were headed, or home.
+      if (loggingIn) {
+        return state.uri.queryParameters['from'] ?? const HomeRoute().location;
+      }
 
       // No need to redirect at all.
       return null;

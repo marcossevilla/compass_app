@@ -1,7 +1,6 @@
 import 'package:authentication_repository/authentication_repository.dart';
 import 'package:compass_app/l10n/l10n.dart';
 import 'package:compass_app/login/login.dart';
-import 'package:compass_app/routing/routing.dart';
 import 'package:compass_app/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -39,7 +38,8 @@ class _LoginViewState extends State<LoginView> {
       listener: (context, state) => switch (state.status) {
         LoginStatus.initial => () {},
         LoginStatus.loading => () {},
-        LoginStatus.success => const HomeRoute().go(context),
+        // The router redirects once the user is authenticated.
+        LoginStatus.success => () {},
         LoginStatus.failure => ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: Text(l10n.errorWhileLogin),

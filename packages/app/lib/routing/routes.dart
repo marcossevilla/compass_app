@@ -16,10 +16,13 @@ part 'routes.g.dart';
 
 /// The login screen.
 ///
-/// Deep link: `/login`.
+/// [from] is the location to return to after logging in, so a deep link
+/// opened while signed out still lands on its destination.
 @TypedGoRoute<LoginRoute>(name: 'login', path: '/login')
 class LoginRoute extends GoRouteData with $LoginRoute {
-  const new();
+  const new({this.from});
+
+  final String? from;
 
   @override
   Widget build(BuildContext context, GoRouterState state) => const LoginPage();
