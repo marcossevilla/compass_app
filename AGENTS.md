@@ -1,25 +1,3 @@
-<!-- vgv-ai-bot:injected-context:begin -->
-
-_The block between these markers is injected by the bot for this run only and is removed before anything is committed. Leave it in place, and never copy it into a file you are editing._
-
-## Environment
-
-The following SDK paths are available in this environment:
-- `/tmp/vgv-ai-bot-sdks/flutter-3.47.2/flutter/bin`
-- `/tmp/vgv-ai-bot-pub-cache/bin`
-
-Run `export PATH="/tmp/vgv-ai-bot-sdks/flutter-3.47.2/flutter/bin:/tmp/vgv-ai-bot-pub-cache/bin:$PATH"` at the start of any shell session before using SDK commands (e.g. `flutter`, `dart`).
-
-These SDKs are pinned by this repository's bot configuration and are the only
-toolchains available to you. This container's filesystem lives in RAM and counts
-against the container's memory limit, so downloading and unpacking another SDK,
-or any other multi-gigabyte archive, kills the run outright and loses your work.
-Do not install your own toolchain. Check `df -h /tmp` before writing anything
-large, and if the installed SDK is wrong for this repository, say so in your
-summary and stop rather than working around it.
-
-<!-- vgv-ai-bot:injected-context:end -->
-
 # AGENTS.md
 
 Compass App — VGV architecture case study rewriting the Flutter/Firebase Compass sample.
