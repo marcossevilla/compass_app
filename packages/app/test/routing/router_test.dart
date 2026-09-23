@@ -39,7 +39,7 @@ void main() {
       userRepository = MockUserRepository();
 
       when(userRepository.getUser).thenAnswer(
-        (_) async => const User(name: 'Alice', picture: 'https://picture'),
+        (_) async => const User(name: 'Alice', picture: 'assets/user.jpg'),
       );
       when(bookingRepository.getBookingsList).thenAnswer((_) async => []);
     });
