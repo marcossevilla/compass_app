@@ -10,7 +10,6 @@ List<RouteBase> get $appRoutes => [$loginRoute, $homeRoute];
 
 RouteBase get $loginRoute => GoRouteData.$route(
   path: '/login',
-  name: 'login',
   hasOverriddenOnExit: false,
   factory: $LoginRoute._fromState,
 );
@@ -43,37 +42,31 @@ mixin $LoginRoute on GoRouteData {
 
 RouteBase get $homeRoute => GoRouteData.$route(
   path: '/',
-  name: 'home',
   hasOverriddenOnExit: false,
   factory: $HomeRoute._fromState,
   routes: [
     GoRouteData.$route(
       path: 'search',
-      name: 'search',
       hasOverriddenOnExit: false,
       factory: $SearchRoute._fromState,
     ),
     GoRouteData.$route(
       path: 'results',
-      name: 'results',
       hasOverriddenOnExit: false,
       factory: $ResultsRoute._fromState,
     ),
     GoRouteData.$route(
       path: 'activities',
-      name: 'activities',
       hasOverriddenOnExit: false,
       factory: $ActivitiesRoute._fromState,
     ),
     GoRouteData.$route(
       path: 'booking',
-      name: 'booking',
       hasOverriddenOnExit: false,
       factory: $BookingRoute._fromState,
       routes: [
         GoRouteData.$route(
           path: ':id',
-          name: 'bookingDetails',
           hasOverriddenOnExit: false,
           factory: $BookingDetailsRoute._fromState,
         ),

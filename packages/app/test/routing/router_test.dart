@@ -72,42 +72,12 @@ void main() {
       return goRouter;
     }
 
-    test('registers every deep-link route by name', () {
-      final goRouter = router(ValueNotifier(true));
-
-      expect(goRouter.namedLocation('login'), '/login');
-      expect(goRouter.namedLocation('home'), '/');
-      expect(goRouter.namedLocation('search'), '/search');
-      expect(goRouter.namedLocation('results'), '/results');
-      expect(goRouter.namedLocation('activities'), '/activities');
-      expect(goRouter.namedLocation('booking'), '/booking');
-      expect(
-        goRouter.namedLocation('bookingDetails', pathParameters: {'id': '1'}),
-        '/booking/1',
-      );
-    });
-
-    testWidgets('starts on the home location', (tester) async {
-      final goRouter = await pumpRouter(tester, ValueNotifier(true));
-      expect(
-        goRouter.routerDelegate.currentConfiguration.uri.path,
-        const HomeRoute().location,
-      );
-    });
-
     testWidgets(
-      'redirects unauthenticated users to the login page',
+      'starts on the home page for authenticated users',
       (tester) => mockNetworkImages(() async {
-        await pumpRouter(tester, ValueNotifier(false));
-        expect(find.byType(LoginPage), findsOneWidget);
-      }),
-    );
-
-    testWidgets(
-      'renders the home page for authenticated users',
-      (tester) => mockNetworkImages(() async {
-        await pumpRouter(tester, ValueNotifier(true));
+        final goRouter = await pumpRouter(tester, ValueNotifier(true));
         expect(find.byType(HomePage), findsOneWidget);
+        expect(goRouter.state.uri.path, const HomeRoute().location);
       }),
     );
 

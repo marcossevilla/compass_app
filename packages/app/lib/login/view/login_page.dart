@@ -35,24 +35,20 @@ class _LoginViewState extends State<LoginView> {
     final l10n = context.l10n;
     final dimensions = context.dimensions;
     return BlocListener<LoginCubit, LoginState>(
-      listener: (context, state) => switch (state.status) {
-        LoginStatus.initial => () {},
-        LoginStatus.loading => () {},
-        // The router redirects once the user is authenticated.
-        LoginStatus.success => () {},
-        LoginStatus.failure => ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text(l10n.errorWhileLogin),
-            action: SnackBarAction(
-              label: l10n.tryAgain,
-              onPressed: () async {
-                final credentials = (_email.value.text, _password.value.text);
-                await context.read<LoginCubit>().login(credentials);
-              },
-            ),
+      // The router navigates away on success once the user is authenticated.
+      listenWhen: (_, current) => current.status == LoginStatus.failure,
+      listener: (context, state) => ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(l10n.errorWhileLogin),
+          action: SnackBarAction(
+            label: l10n.tryAgain,
+            onPressed: () async {
+              final credentials = (_email.value.text, _password.value.text);
+              await context.read<LoginCubit>().login(credentials);
+            },
           ),
         ),
-      },
+      ),
       child: Scaffold(
         body: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,

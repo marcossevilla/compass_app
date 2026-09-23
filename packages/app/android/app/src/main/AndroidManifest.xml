@@ -18,21 +18,13 @@
             <meta-data
               android:name="io.flutter.embedding.android.NormalTheme"
               android:resource="@style/NormalTheme"
-              />
+              />            
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
-            <!-- Let Flutter forward incoming deep links to go_router instead
-                 of handling them with the default platform behaviour. -->
-            <meta-data
-                android:name="flutter_deeplinking_enabled"
-                android:value="true" />
-            <!-- Android App Links. External https links whose path matches a
-                 declared route (e.g. https://compass.app/booking/1) open the
-                 corresponding in-app destination.
-                 NOTE: replace `compass.app` with the production domain and host
-                 the matching assetlinks.json to enable autoVerify. -->
+            <!-- App Links. TODO: replace compass.app with the production domain
+                 and host its assetlinks.json so autoVerify succeeds. -->
             <intent-filter android:autoVerify="true">
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />

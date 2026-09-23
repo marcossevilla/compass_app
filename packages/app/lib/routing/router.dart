@@ -4,10 +4,7 @@ import 'package:go_router/go_router.dart';
 
 /// Top go_router entry point.
 ///
-/// Routes are declared as type-safe [GoRouteData] classes in `routes.dart` and
-/// wired up through the generated `$appRoutes` list, which also powers deep
-/// linking: any external URL that matches a declared path opens the
-/// corresponding in-app destination.
+/// Deep links resolve through the typed routes in `routes.dart`.
 ///
 /// Listens to changes in [isAuthenticated] to redirect the user
 /// to /login when the user logs out.
@@ -21,7 +18,10 @@ GoRouter router(ValueNotifier<bool> isAuthenticated) {
       // If the user is not logged in, they need to login. Remember where they
       // were headed so they return there afterwards.
       if (!isAuthenticated.value) {
-        return loggingIn ? null : LoginRoute(from: '${state.uri}').location;
+        if (loggingIn) return null;
+        final from = '${state.uri}';
+        final home = const HomeRoute().location;
+        return LoginRoute(from: from == home ? null : from).location;
       }
 
       // If the user is logged in but still on the login page, send them where

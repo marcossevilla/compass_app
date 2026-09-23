@@ -18,7 +18,7 @@ part 'routes.g.dart';
 ///
 /// [from] is the location to return to after logging in, so a deep link
 /// opened while signed out still lands on its destination.
-@TypedGoRoute<LoginRoute>(name: 'login', path: '/login')
+@TypedGoRoute<LoginRoute>(path: '/login')
 class LoginRoute extends GoRouteData with $LoginRoute {
   const new({this.from});
 
@@ -28,24 +28,16 @@ class LoginRoute extends GoRouteData with $LoginRoute {
   Widget build(BuildContext context, GoRouterState state) => const LoginPage();
 }
 
-/// The home screen and the root of the authenticated navigation tree.
-///
-/// Every other authenticated destination is nested underneath so that back
-/// navigation and deep links follow the URL hierarchy, e.g. `/booking/1`
-/// returns to `/` when popped.
+/// The home screen. Nested routes pop back to it, e.g. `/booking/1` to `/`.
 @TypedGoRoute<HomeRoute>(
-  name: 'home',
   path: '/',
   routes: [
-    TypedGoRoute<SearchRoute>(name: 'search', path: 'search'),
-    TypedGoRoute<ResultsRoute>(name: 'results', path: 'results'),
-    TypedGoRoute<ActivitiesRoute>(name: 'activities', path: 'activities'),
+    TypedGoRoute<SearchRoute>(path: 'search'),
+    TypedGoRoute<ResultsRoute>(path: 'results'),
+    TypedGoRoute<ActivitiesRoute>(path: 'activities'),
     TypedGoRoute<BookingRoute>(
-      name: 'booking',
       path: 'booking',
-      routes: [
-        TypedGoRoute<BookingDetailsRoute>(name: 'bookingDetails', path: ':id'),
-      ],
+      routes: [TypedGoRoute<BookingDetailsRoute>(path: ':id')],
     ),
   ],
 )
@@ -68,8 +60,6 @@ class HomeRoute extends GoRouteData with $HomeRoute {
 }
 
 /// The search form used to configure a new itinerary.
-///
-/// Deep link: `/search`.
 class SearchRoute extends GoRouteData with $SearchRoute {
   const new();
 
@@ -79,8 +69,6 @@ class SearchRoute extends GoRouteData with $SearchRoute {
 }
 
 /// The list of destination results for the configured search.
-///
-/// Deep link: `/results`.
 class ResultsRoute extends GoRouteData with $ResultsRoute {
   const new();
 
@@ -90,8 +78,6 @@ class ResultsRoute extends GoRouteData with $ResultsRoute {
 }
 
 /// The activities available for the selected destination.
-///
-/// Deep link: `/activities`.
 class ActivitiesRoute extends GoRouteData with $ActivitiesRoute {
   const new();
 
@@ -102,7 +88,8 @@ class ActivitiesRoute extends GoRouteData with $ActivitiesRoute {
 
 /// Creates a new booking from the current itinerary configuration.
 ///
-/// Deep link: `/booking`.
+/// Opening it saves the booking right away, so it is meant for the in-app
+/// flow, not for sharing as a deep link.
 class BookingRoute extends GoRouteData with $BookingRoute {
   const new();
 
@@ -112,10 +99,6 @@ class BookingRoute extends GoRouteData with $BookingRoute {
 }
 
 /// Loads and displays an existing booking identified by [id].
-///
-/// Deep link: `/booking/:id`, e.g. `/booking/1`. The [id] path parameter is
-/// parsed to an [int] by the generated route, enabling external links to open
-/// a specific saved booking.
 class BookingDetailsRoute extends GoRouteData with $BookingDetailsRoute {
   const new({required this.id});
 

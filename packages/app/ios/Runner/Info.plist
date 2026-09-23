@@ -27,10 +27,6 @@
 	<string>$(FLUTTER_BUILD_NAME)</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
-	<!-- Let Flutter forward incoming Universal Links to go_router instead of
-	     handling them with the default platform behaviour. -->
-	<key>FlutterDeepLinkingEnabled</key>
-	<true/>
 	<key>CFBundleVersion</key>
 	<string>$(FLUTTER_BUILD_NUMBER)</string>
 	<key>LSRequiresIPhoneOS</key>
