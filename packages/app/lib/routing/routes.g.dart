@@ -64,13 +64,11 @@ RouteBase get $homeRoute => GoRouteData.$route(
       path: 'booking',
       hasOverriddenOnExit: false,
       factory: $BookingRoute._fromState,
-      routes: [
-        GoRouteData.$route(
-          path: ':id',
-          hasOverriddenOnExit: false,
-          factory: $BookingDetailsRoute._fromState,
-        ),
-      ],
+    ),
+    GoRouteData.$route(
+      path: 'booking/:id',
+      hasOverriddenOnExit: false,
+      factory: $BookingDetailsRoute._fromState,
     ),
   ],
 );

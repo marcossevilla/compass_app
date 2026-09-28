@@ -93,6 +93,18 @@ void main() {
     );
 
     testWidgets(
+      'does not create a booking when opening a booking deep link',
+      (tester) => mockNetworkImages(() async {
+        when(() => bookingRepository.getBooking(1)).thenThrow(Exception());
+        final goRouter = await pumpRouter(tester, ValueNotifier(true));
+        goRouter.go('/booking/1');
+        await tester.pumpAndSettle();
+        expect(find.byType(BookingPage, skipOffstage: false), findsOneWidget);
+        verifyNever(() => itineraryConfigRepository.itineraryConfig);
+      }),
+    );
+
+    testWidgets(
       'returns to a deep link after login',
       (tester) => mockNetworkImages(() async {
         when(() => bookingRepository.getBooking(1)).thenThrow(Exception());
