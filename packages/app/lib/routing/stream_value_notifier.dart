@@ -7,8 +7,7 @@ import 'package:flutter/foundation.dart';
 /// Lets a [Stream] drive anything that listens to a [Listenable], such as
 /// `GoRouter.refreshListenable`. The subscription is cancelled on [dispose].
 class StreamValueNotifier<T> extends ValueNotifier<T> {
-  new(Stream<T> stream, {required T initialValue})
-    : super(initialValue) {
+  new(Stream<T> stream, {required T initialValue}) : super(initialValue) {
     _subscription = stream.listen((event) => value = event);
   }
 
