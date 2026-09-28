@@ -35,7 +35,6 @@ class _LoginViewState extends State<LoginView> {
     final l10n = context.l10n;
     final dimensions = context.dimensions;
     return BlocListener<LoginCubit, LoginState>(
-      // The router navigates away on success once the user is authenticated.
       listenWhen: (_, current) => current.status == LoginStatus.failure,
       listener: (context, state) => ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(

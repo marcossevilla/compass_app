@@ -4,7 +4,7 @@ import 'package:activity_repository/activity_repository.dart';
 import 'package:authentication_repository/authentication_repository.dart';
 import 'package:booking_repository/booking_repository.dart';
 import 'package:compass_app/l10n/l10n.dart';
-import 'package:compass_app/routing/router.dart';
+import 'package:compass_app/routing/routing.dart';
 import 'package:continent_repository/continent_repository.dart';
 import 'package:destination_repository/destination_repository.dart';
 import 'package:flutter/material.dart';
@@ -55,7 +55,6 @@ class App extends StatelessWidget {
 class AppView extends StatefulWidget {
   const new({required this.deepLinks, super.key});
 
-  /// Incoming deep links, including the one that launched the app.
   final Stream<Uri> deepLinks;
 
   @override
@@ -63,25 +62,21 @@ class AppView extends StatefulWidget {
 }
 
 class _AppViewState extends State<AppView> {
-  // A single router for the app's lifetime, so an auth change refreshes its
-  // redirect instead of recreating it and dropping the current location.
-  final ValueNotifier<bool> _isAuthenticated = ValueNotifier(false);
-  late final GoRouter _router = router(_isAuthenticated);
-  late final StreamSubscription<bool> _subscription;
+  late final StreamValueNotifier<bool> _isAuthenticated;
+  late final GoRouter _router;
   late final StreamSubscription<Uri> _deepLinkSubscription;
 
   @override
   void initState() {
     super.initState();
-    _subscription = context
-        .read<AuthenticationRepository>()
-        .isAuthenticated
-        .listen((value) => _isAuthenticated.value = value);
+    _isAuthenticated = StreamValueNotifier(
+      context.read<AuthenticationRepository>().isAuthenticated,
+      initialValue: false,
+    );
+    _router = router(_isAuthenticated);
     _deepLinkSubscription = widget.deepLinks.listen(_onDeepLink);
   }
 
-  // Drops the scheme and host so the router only sees the location. The
-  // router's redirect and exception handling take it from there.
   void _onDeepLink(Uri uri) => _router.go(
     Uri(
       path: uri.path.isEmpty ? '/' : uri.path,
@@ -91,7 +86,6 @@ class _AppViewState extends State<AppView> {
 
   @override
   void dispose() {
-    unawaited(_subscription.cancel());
     unawaited(_deepLinkSubscription.cancel());
     _router.dispose();
     _isAuthenticated.dispose();

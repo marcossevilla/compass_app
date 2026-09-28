@@ -36,8 +36,6 @@ class LoginRoute extends GoRouteData with $LoginRoute {
     TypedGoRoute<ResultsRoute>(path: 'results'),
     TypedGoRoute<ActivitiesRoute>(path: 'activities'),
     TypedGoRoute<BookingRoute>(path: 'booking'),
-    // A sibling of [BookingRoute], not a child, so opening a booking link
-    // doesn't build the create route underneath it and save a new booking.
     TypedGoRoute<BookingDetailsRoute>(path: 'booking/:id'),
   ],
 )
