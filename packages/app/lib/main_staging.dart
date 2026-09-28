@@ -1,5 +1,6 @@
 import 'package:activity_repository/activity_repository.dart';
 import 'package:api_client/api_client.dart';
+import 'package:app_links/app_links.dart';
 import 'package:authentication_repository/authentication_repository.dart';
 import 'package:booking_repository/booking_repository.dart';
 import 'package:compass_app/app/app.dart';
@@ -46,6 +47,7 @@ Future<void> main() async {
       authenticationRepository: authenticationRepository,
       bookingRepository: bookingRepository,
       continentRepository: continentRepository,
+      deepLinks: AppLinks().uriLinkStream,
       destinationRepository: destinationRepository,
       itineraryConfigRepository: itineraryConfigRepository,
       userRepository: userRepository,

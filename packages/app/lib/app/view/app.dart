@@ -19,6 +19,7 @@ class App extends StatelessWidget {
     required this._authenticationRepository,
     required this._bookingRepository,
     required this._continentRepository,
+    required this._deepLinks,
     required this._destinationRepository,
     required this._itineraryConfigRepository,
     required this._userRepository,
@@ -29,6 +30,7 @@ class App extends StatelessWidget {
   final AuthenticationRepository _authenticationRepository;
   final BookingRepository _bookingRepository;
   final ContinentRepository _continentRepository;
+  final Stream<Uri> _deepLinks;
   final DestinationRepository _destinationRepository;
   final ItineraryConfigRepository _itineraryConfigRepository;
   final UserRepository _userRepository;
@@ -45,13 +47,16 @@ class App extends StatelessWidget {
         RepositoryProvider.value(value: _itineraryConfigRepository),
         RepositoryProvider.value(value: _userRepository),
       ],
-      child: const AppView(),
+      child: AppView(deepLinks: _deepLinks),
     );
   }
 }
 
 class AppView extends StatefulWidget {
-  const new({super.key});
+  const new({required this.deepLinks, super.key});
+
+  /// Incoming deep links, including the one that launched the app.
+  final Stream<Uri> deepLinks;
 
   @override
   State<AppView> createState() => _AppViewState();
@@ -63,6 +68,7 @@ class _AppViewState extends State<AppView> {
   final ValueNotifier<bool> _isAuthenticated = ValueNotifier(false);
   late final GoRouter _router = router(_isAuthenticated);
   late final StreamSubscription<bool> _subscription;
+  late final StreamSubscription<Uri> _deepLinkSubscription;
 
   @override
   void initState() {
@@ -71,11 +77,22 @@ class _AppViewState extends State<AppView> {
         .read<AuthenticationRepository>()
         .isAuthenticated
         .listen((value) => _isAuthenticated.value = value);
+    _deepLinkSubscription = widget.deepLinks.listen(_onDeepLink);
   }
+
+  // Drops the scheme and host so the router only sees the location. The
+  // router's redirect and exception handling take it from there.
+  void _onDeepLink(Uri uri) => _router.go(
+    Uri(
+      path: uri.path.isEmpty ? '/' : uri.path,
+      query: uri.hasQuery ? uri.query : null,
+    ).toString(),
+  );
 
   @override
   void dispose() {
     unawaited(_subscription.cancel());
+    unawaited(_deepLinkSubscription.cancel());
     _router.dispose();
     _isAuthenticated.dispose();
     super.dispose();

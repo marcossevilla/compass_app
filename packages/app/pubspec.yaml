@@ -11,6 +11,7 @@ resolution: workspace
 dependencies:
   activity_repository: ^0.1.0
   api_client: ^0.1.0
+  app_links: ^7.2.1
   authentication_repository: ^0.1.0
   bloc: ^9.2.1
   booking_repository: ^0.1.0

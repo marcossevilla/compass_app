@@ -4,7 +4,8 @@ import 'package:go_router/go_router.dart';
 
 /// Top go_router entry point.
 ///
-/// Deep links resolve through the typed routes in `routes.dart`.
+/// Deep links arrive through `AppView.deepLinks` and resolve through the
+/// typed routes in `routes.dart`.
 ///
 /// Listens to changes in [isAuthenticated] to redirect the user
 /// to /login when the user logs out.
