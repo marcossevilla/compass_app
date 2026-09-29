@@ -4,7 +4,6 @@ import 'package:compass_app/search_form/search_form.dart';
 import 'package:compass_app/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
 
 /// Search form submit button.
 ///
@@ -27,7 +26,7 @@ class SearchFormSubmit extends StatelessWidget {
       listenWhen: (previous, current) => previous.status != current.status,
       listener: (context, state) {
         if (state.status == SearchFormStatus.configSaved) {
-          context.go(Routes.results);
+          const ResultsRoute().go(context);
         }
 
         if (state.status == SearchFormStatus.error) {

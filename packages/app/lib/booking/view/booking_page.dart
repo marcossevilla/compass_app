@@ -9,7 +9,6 @@ import 'package:compass_app/theme/theme.dart';
 import 'package:destination_repository/destination_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
 import 'package:itinerary_config_repository/itinerary_config_repository.dart';
 import 'package:models/models.dart';
 
@@ -92,7 +91,7 @@ class BookingView extends StatelessWidget {
         canPop: false,
         onPopInvokedWithResult: (didPop, result) {
           // Back navigation always goes to home.
-          if (!didPop) context.go(Routes.home);
+          if (!didPop) const HomeRoute().go(context);
         },
         child: Scaffold(
           floatingActionButton: FloatingActionButton.extended(
@@ -129,7 +128,7 @@ class BookingView extends StatelessWidget {
                   child: ErrorIndicator(
                     label: l10n.close,
                     title: l10n.errorWhileLoadingBooking,
-                    onPressed: () => context.go(Routes.home),
+                    onPressed: () => const HomeRoute().go(context),
                   ),
                 );
               }
