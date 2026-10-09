@@ -1,23 +1,15 @@
 part of 'booking_bloc.dart';
 
-sealed class BookingEvent extends Equatable {
-  const new();
-}
+sealed class const BookingEvent() extends Equatable;
 
-final class BookingAdded extends BookingEvent {
-  const new(this.booking);
-
-  final BookingApiModel booking;
-
+final class const BookingAdded(final BookingApiModel booking)
+    extends BookingEvent {
   @override
   List<Object> get props => [booking];
 }
 
-final class BookingRemoved extends BookingEvent {
-  const new(this.booking);
-
-  final BookingApiModel booking;
-
+final class const BookingRemoved(final BookingApiModel booking)
+    extends BookingEvent {
   @override
   List<Object> get props => [booking];
 }

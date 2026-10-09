@@ -8,8 +8,8 @@ import 'package:models/models.dart';
 part 'booking_event.dart';
 part 'booking_state.dart';
 
-class BookingBloc extends Bloc<BookingEvent, BookingState> {
-  new() : super(BookingState.initial()) {
+class BookingBloc() extends Bloc<BookingEvent, BookingState> {
+  this : super(BookingState.initial()) {
     on<BookingAdded>(_onBookingAdded);
     on<BookingRemoved>(_onBookingRemoved);
   }

@@ -5,14 +5,12 @@ import 'package:logging/logging.dart';
 
 part 'login_state.dart';
 
-class LoginCubit extends Cubit<LoginState> {
-  new({required this._authenticationRepository})
-    : _log = Logger('LoginCubit'),
-      super(const LoginState());
+class LoginCubit({
+  required final AuthenticationRepository _authenticationRepository,
+}) extends Cubit<LoginState> {
+  this : _log = Logger('LoginCubit'), super(const LoginState());
 
   final Logger _log;
-  final AuthenticationRepository _authenticationRepository;
-
   Future<void> login((String, String) credentials) async {
     try {
       final (email, password) = credentials;

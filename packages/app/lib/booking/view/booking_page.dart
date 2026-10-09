@@ -61,9 +61,7 @@ class BookingPage extends StatelessWidget {
   }
 }
 
-class BookingView extends StatelessWidget {
-  const new({super.key});
-
+class const BookingView({super.key}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l10n = context.l10n;

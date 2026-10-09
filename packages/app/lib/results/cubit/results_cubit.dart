@@ -7,17 +7,13 @@ import 'package:models/models.dart';
 
 part 'results_state.dart';
 
-class ResultsCubit extends Cubit<ResultsState> {
-  new({
-    required this._destinationRepository,
-    required this._itineraryConfigRepository,
-  }) : _log = Logger('ResultsCubit'),
-       super(const ResultsState());
+class ResultsCubit({
+  required final DestinationRepository _destinationRepository,
+  required final ItineraryConfigRepository _itineraryConfigRepository,
+}) extends Cubit<ResultsState> {
+  this : _log = Logger('ResultsCubit'), super(const ResultsState());
 
   final Logger _log;
-  final DestinationRepository _destinationRepository;
-  final ItineraryConfigRepository _itineraryConfigRepository;
-
   Future<void> search() async {
     try {
       // Load current itinerary config.

@@ -5,11 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 /// Home button to navigate back to the '/' path.
-class HomeButton extends StatelessWidget {
-  const new({this.blur = false, super.key});
-
-  final bool blur;
-
+class const HomeButton({final bool blur = false, super.key})
+    extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(

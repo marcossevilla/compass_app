@@ -4,21 +4,27 @@ import 'package:models/models.dart';
 
 part 'itinerary_config.g.dart';
 
-/// {@template itinerary_config}
 /// Configuration for an itinerary.
-/// {@endtemplate}
 @JsonSerializable()
-class ItineraryConfig extends Equatable {
-  /// {@macro itinerary_config}
-  const new({
-    this.continent,
-    this.startDate,
-    this.endDate,
-    this.guests,
-    this.destination,
-    this.activities = const [],
-  });
+class const ItineraryConfig({
+  /// [Continent] name.
+  final String? continent,
 
+  /// Start date (check in) of itinerary.
+  final DateTime? startDate,
+
+  /// End date (check out) of itinerary.
+  final DateTime? endDate,
+
+  /// Number of guests.
+  final int? guests,
+
+  /// Selected [Destination] reference.
+  final String? destination,
+
+  /// Selected [Activity] references.
+  final List<String> activities = const [],
+}) extends Equatable {
   /// Creates an [ItineraryConfig] from a JSON object.
   factory fromJson(Map<String, Object?> json) {
     return _$ItineraryConfigFromJson(json);
@@ -26,24 +32,6 @@ class ItineraryConfig extends Equatable {
 
   /// Converts this [ItineraryConfig] to a JSON object.
   Map<String, Object?> toJson() => _$ItineraryConfigToJson(this);
-
-  /// [Continent] name.
-  final String? continent;
-
-  /// Start date (check in) of itinerary.
-  final DateTime? startDate;
-
-  /// End date (check out) of itinerary.
-  final DateTime? endDate;
-
-  /// Number of guests.
-  final int? guests;
-
-  /// Selected [Destination] reference.
-  final String? destination;
-
-  /// Selected [Activity] references.
-  final List<String> activities;
 
   /// Returns an instance of [ItineraryConfig] with updated properties.
   ItineraryConfig copyWith({

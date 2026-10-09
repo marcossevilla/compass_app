@@ -7,17 +7,13 @@ import 'package:models/models.dart';
 
 part 'search_form_state.dart';
 
-class SearchFormCubit extends Cubit<SearchFormState> {
-  new({
-    required this._continentRepository,
-    required this._itineraryConfigRepository,
-  }) : _log = Logger('SearchFormViewModel'),
-       super(const SearchFormState());
+class SearchFormCubit({
+  required final ContinentRepository _continentRepository,
+  required final ItineraryConfigRepository _itineraryConfigRepository,
+}) extends Cubit<SearchFormState> {
+  this : _log = Logger('SearchFormViewModel'), super(const SearchFormState());
 
   final Logger _log;
-  final ContinentRepository _continentRepository;
-  final ItineraryConfigRepository _itineraryConfigRepository;
-
   Future<void> load() async {
     try {
       emit(state.copyWith(status: SearchFormStatus.loading));

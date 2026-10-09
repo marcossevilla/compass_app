@@ -9,9 +9,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:itinerary_config_repository/itinerary_config_repository.dart';
 
-class SearchFormPage extends StatelessWidget {
-  const new({super.key});
-
+class const SearchFormPage({super.key}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -28,9 +26,7 @@ class SearchFormPage extends StatelessWidget {
   }
 }
 
-class SearchFormView extends StatelessWidget {
-  const new({super.key});
-
+class const SearchFormView({super.key}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final dimensions = context.dimensions;

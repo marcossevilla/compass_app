@@ -3,22 +3,14 @@ import 'dart:ui' as ui;
 import 'package:compass_app/theme/theme.dart';
 import 'package:flutter/material.dart';
 
-class TagChip extends StatelessWidget {
-  const new(
-    this.tag, {
-    this.fontSize = 10,
-    this.height = 20,
-    this.chipColor,
-    this.onChipColor,
-    super.key,
-  });
-
-  final String tag;
-  final double fontSize;
-  final double height;
-  final Color? chipColor;
-  final Color? onChipColor;
-
+class const TagChip(
+  final String tag, {
+  final double fontSize = 10,
+  final double height = 20,
+  final Color? chipColor,
+  final Color? onChipColor,
+  super.key,
+}) extends StatelessWidget {
   Color _color(TagChipTheme? tagChipTheme) {
     return onChipColor ?? tagChipTheme?.onChipColor ?? Colors.white;
   }

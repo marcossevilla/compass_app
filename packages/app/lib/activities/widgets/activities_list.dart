@@ -4,11 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:models/models.dart';
 
-class ActivitiesList extends StatelessWidget {
-  const new({required this.activityTimeOfDay, super.key});
-
-  final ActivityTimeOfDay activityTimeOfDay;
-
+class const ActivitiesList({
+  required final ActivityTimeOfDay activityTimeOfDay,
+  super.key,
+}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final dimensions = context.dimensions;

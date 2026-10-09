@@ -8,9 +8,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 /// Date selection form field.
 ///
 /// Opens a date range picker dialog when tapped.
-class SearchFormDate extends StatelessWidget {
-  const new({super.key});
-
+class const SearchFormDate({super.key}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l10n = context.l10n;

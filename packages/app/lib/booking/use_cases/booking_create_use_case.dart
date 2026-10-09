@@ -9,17 +9,14 @@ import 'package:models/models.dart';
 ///
 /// Fetches [Destination] and [Activity] objects from repositories,
 /// checks if dates are set and creates a [Booking] object.
-class BookingCreateUseCase {
-  new({
-    required this._activityRepository,
-    required this._bookingRepository,
-    required this._destinationRepository,
-  }) : _log = Logger('BookingCreateUseCase');
+class BookingCreateUseCase({
+  required final ActivityRepository _activityRepository,
+  required final BookingRepository _bookingRepository,
+  required final DestinationRepository _destinationRepository,
+}) {
+  this : _log = Logger('BookingCreateUseCase');
 
   final Logger _log;
-  final ActivityRepository _activityRepository;
-  final BookingRepository _bookingRepository;
-  final DestinationRepository _destinationRepository;
 
   /// Create [Booking] from a stored [ItineraryConfig].
   Future<Booking> createFrom(ItineraryConfig itineraryConfig) async {

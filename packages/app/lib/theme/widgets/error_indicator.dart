@@ -1,17 +1,11 @@
 import 'package:flutter/material.dart';
 
-class ErrorIndicator extends StatelessWidget {
-  const new({
-    required this.title,
-    required this.label,
-    required this.onPressed,
-    super.key,
-  });
-
-  final String title;
-  final String label;
-  final VoidCallback onPressed;
-
+class const ErrorIndicator({
+  required final String title,
+  required final String label,
+  required final VoidCallback onPressed,
+  super.key,
+}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;

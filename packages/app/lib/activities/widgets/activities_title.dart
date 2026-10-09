@@ -5,11 +5,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:models/models.dart';
 
-class ActivitiesTitle extends StatelessWidget {
-  const new({required this.activityTimeOfDay, super.key});
-
-  final ActivityTimeOfDay activityTimeOfDay;
-
+class const ActivitiesTitle({
+  required final ActivityTimeOfDay activityTimeOfDay,
+  super.key,
+}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final daytimeActivities = context.select<ActivitiesCubit, List<Activity>>(

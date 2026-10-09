@@ -7,17 +7,13 @@ import 'package:models/models.dart';
 
 part 'activities_state.dart';
 
-class ActivitiesCubit extends Cubit<ActivitiesState> {
-  new({
-    required this._activityRepository,
-    required this._itineraryConfigRepository,
-  }) : _log = Logger('ActivitiesCubit'),
-       super(const ActivitiesState());
+class ActivitiesCubit({
+  required final ActivityRepository _activityRepository,
+  required final ItineraryConfigRepository _itineraryConfigRepository,
+}) extends Cubit<ActivitiesState> {
+  this : _log = Logger('ActivitiesCubit'), super(const ActivitiesState());
 
   final Logger _log;
-  final ActivityRepository _activityRepository;
-  final ItineraryConfigRepository _itineraryConfigRepository;
-
   Future<void> loadActivities() async {
     final config = _itineraryConfigRepository.itineraryConfig;
 
