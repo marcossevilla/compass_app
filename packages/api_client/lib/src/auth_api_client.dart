@@ -6,16 +6,13 @@ import 'package:logging/logging.dart';
 import 'package:models/models.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-/// {@template auth_api_client}
 /// Authentication client for the Compass API.
-/// {@endtemplate}
 class AuthApiClient({
   required final SharedPreferences _sharedPreferences,
   int? port,
   String? host,
   HttpClient? client,
 }) {
-  /// {@macro auth_api_client}
   this
     : _logger = Logger('AuthApiClient'),
       _authToken = StreamController<String?>.broadcast(),

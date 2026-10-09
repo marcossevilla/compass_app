@@ -3,9 +3,7 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'user.g.dart';
 
-/// {@template user}
 /// A user that can be authenticated.
-/// {@endtemplate}
 @JsonSerializable()
 class const User({
   /// The user's name.
@@ -14,9 +12,6 @@ class const User({
   /// The user's picture URL.
   required final String picture,
 }) extends Equatable {
-  /// {@macro user}
-  this;
-
   /// Creates a [User] from a JSON object.
   factory fromJson(Map<String, Object?> json) => _$UserFromJson(json);
 
@@ -27,9 +22,7 @@ class const User({
   List<Object> get props => [name, picture];
 }
 
-/// {@template user_api_model}
 /// A user that can be authenticated.
-/// {@endtemplate}
 @JsonSerializable()
 class const UserApiModel({
   /// The user's ID.
@@ -40,9 +33,6 @@ class const UserApiModel({
   required super.name,
   required super.picture,
 }) extends User {
-  /// {@macro user_api_model}
-  this;
-
   /// Creates a [UserApiModel] from a JSON object.
   factory fromJson(Map<String, Object?> json) {
     return _$UserApiModelFromJson(json);

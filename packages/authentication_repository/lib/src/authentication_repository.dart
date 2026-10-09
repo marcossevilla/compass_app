@@ -4,11 +4,8 @@ import 'package:api_client/api_client.dart';
 import 'package:logging/logging.dart';
 import 'package:models/models.dart';
 
-/// {@template authentication_repository}
 /// Repository that manages the authentication domain.
-/// {@endtemplate}
 class AuthenticationRepository({required final AuthApiClient _authApiClient}) {
-  /// {@macro authentication_repository}
   this : _logger = Logger('AuthenticationRepository');
 
   final Logger _logger;

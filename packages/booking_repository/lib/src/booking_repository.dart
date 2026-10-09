@@ -1,13 +1,8 @@
 import 'package:api_client/api_client.dart';
 import 'package:models/models.dart';
 
-/// {@template booking_repository}
 /// Repository that manages the booking domain.
-/// {@endtemplate}
 class BookingRepository({required final ApiClient _apiClient}) {
-  /// {@macro booking_repository}
-  this;
-
   List<Destination>? _cachedDestinations;
 
   /// Creates a new booking.

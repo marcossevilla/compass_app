@@ -4,9 +4,7 @@ import 'package:models/models.dart';
 
 part 'booking.g.dart';
 
-/// {@template booking}
 /// A booking that contains a destination and a list of activities.
-/// {@endtemplate}
 @JsonSerializable(explicitToJson: true)
 class const Booking({
   /// Start date of the trip
@@ -25,9 +23,6 @@ class const Booking({
   /// May be null if the booking is not yet stored.
   final int? id,
 }) extends Equatable {
-  /// {@macro booking}
-  this;
-
   /// Creates a [Booking] from a JSON object.
   factory fromJson(Map<String, Object?> json) {
     return _$BookingFromJson(json);
@@ -40,11 +35,9 @@ class const Booking({
   List<Object?> get props => [id, startDate, endDate, destination, activities];
 }
 
-/// {@template booking_summary}
 /// [BookingSummary] contains the necessary data to display a booking
 /// in the user home screen, but lacks the rest of the booking data
 /// like activitities or destination.
-/// {@endtemplate}
 @JsonSerializable()
 class const BookingSummary({
   /// Booking id.
@@ -59,9 +52,6 @@ class const BookingSummary({
   /// End date of the booking.
   required final DateTime endDate,
 }) extends Equatable {
-  /// {@macro booking_summary}
-  this;
-
   /// Creates a [BookingSummary] from a JSON object.
   factory fromJson(Map<String, Object?> json) {
     return _$BookingSummaryFromJson(json);
@@ -74,9 +64,7 @@ class const BookingSummary({
   List<Object> get props => [id, name, startDate, endDate];
 }
 
-/// {@template booking_api_model}
 /// A booking that contains a destination and a list of activities.
-/// {@endtemplate}
 @JsonSerializable()
 class const BookingApiModel({
   /// Start date of the trip.
@@ -99,9 +87,6 @@ class const BookingApiModel({
   /// Generated when stored in server.
   final int? id,
 }) extends Equatable {
-  /// {@macro booking_api_model}
-  this;
-
   /// Creates a [BookingApiModel] from a JSON object.
   factory fromJson(Map<String, Object?> json) {
     return _$BookingApiModelFromJson(json);

@@ -1,13 +1,8 @@
 import 'package:api_client/api_client.dart';
 import 'package:models/models.dart';
 
-/// {@template destination_repository}
 /// Repository that manages the destinations domain.
-/// {@endtemplate}
 class DestinationRepository({required final ApiClient _apiClient}) {
-  /// {@macro destination_repository}
-  this;
-
   List<Destination>? _cachedData;
 
   /// Fetches a list of destinations.

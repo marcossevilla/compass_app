@@ -1,8 +1,6 @@
 import 'package:models/models.dart';
 
-/// {@template itinerary_config_repository}
 /// Repository that manages the itinerary configuration domain.
-/// {@endtemplate}
 class ItineraryConfigRepository {
   ItineraryConfig? _itineraryConfig;
 

@@ -4,16 +4,13 @@ import 'dart:io';
 
 import 'package:models/models.dart';
 
-/// {@template api_client}
 /// Client for the Compass API.
-/// {@endtemplate}
 class ApiClient({
   required final Stream<String?> _authHeaderProvider,
   String? host,
   int? port,
   HttpClient? client,
 }) {
-  /// {@macro api_client}
   this {
     _authHeaderProviderSubscription = _authHeaderProvider.listen(
       (data) => data != null ? _authHeader = data : null,

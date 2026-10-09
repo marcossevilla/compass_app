@@ -4,9 +4,7 @@ import 'package:models/models.dart';
 
 part 'itinerary_config.g.dart';
 
-/// {@template itinerary_config}
 /// Configuration for an itinerary.
-/// {@endtemplate}
 @JsonSerializable()
 class const ItineraryConfig({
   /// [Continent] name.
@@ -27,9 +25,6 @@ class const ItineraryConfig({
   /// Selected [Activity] references.
   final List<String> activities = const [],
 }) extends Equatable {
-  /// {@macro itinerary_config}
-  this;
-
   /// Creates an [ItineraryConfig] from a JSON object.
   factory fromJson(Map<String, Object?> json) {
     return _$ItineraryConfigFromJson(json);

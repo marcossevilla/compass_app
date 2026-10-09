@@ -21,9 +21,7 @@ enum TimeOfDay {
   night,
 }
 
-/// {@template activity}
 /// An activity that can be done at a destination.
-/// {@endtemplate}
 @JsonSerializable()
 class const Activity({
   /// e.g. 'Glacier Trekking and Ice Climbing'
@@ -59,9 +57,6 @@ class const Activity({
   /// e.g. 'https://storage.googleapis.com/tripedia-images/activities/alaska_glacier-trekking-and-ice-climbing.jpg'
   required final String imageUrl,
 }) extends Equatable {
-  /// {@macro activity}
-  this;
-
   /// Creates an [Activity] from a JSON object.
   factory fromJson(Map<String, Object?> json) {
     return _$ActivityFromJson(json);

@@ -3,9 +3,7 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'login_response.g.dart';
 
-/// {@template login_response}
 /// LoginResponse model.
-/// {@endtemplate}
 @JsonSerializable()
 class const LoginResponse({
   /// The token to be used for authentication.
@@ -14,9 +12,6 @@ class const LoginResponse({
   /// The user id.
   required final String userId,
 }) extends Equatable {
-  /// {@macro login_response}
-  this;
-
   /// Converts a [Map] to an [LoginResponse].
   factory fromJson(Map<String, Object?> json) {
     return _$LoginResponseFromJson(json);
