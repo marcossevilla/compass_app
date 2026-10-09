@@ -1,6 +1,6 @@
 part of 'activities_cubit.dart';
 
-enum ActivitiesStatus() {
+enum ActivitiesStatus {
   initial,
   loadingActivities,
   loadedActivities,

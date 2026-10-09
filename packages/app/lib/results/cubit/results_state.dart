@@ -1,6 +1,6 @@
 part of 'results_cubit.dart';
 
-enum ResultsStatus() {
+enum ResultsStatus {
   initial,
   searching,
   searchCompleted,

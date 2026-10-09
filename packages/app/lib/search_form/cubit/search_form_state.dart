@@ -1,12 +1,6 @@
 part of 'search_form_cubit.dart';
 
-enum SearchFormStatus() {
-  initial,
-  loading,
-  loaded,
-  error,
-  configSaved,
-}
+enum SearchFormStatus { initial, loading, loaded, error, configSaved }
 
 class const SearchFormState({
   final int guests = 0,

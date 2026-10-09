@@ -1,6 +1,6 @@
 part of 'home_cubit.dart';
 
-enum HomeStatus() {
+enum HomeStatus {
   initial,
   loading,
   success,

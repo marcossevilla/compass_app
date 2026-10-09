@@ -13,10 +13,7 @@ import 'package:go_router/go_router.dart';
 import 'package:itinerary_config_repository/itinerary_config_repository.dart';
 import 'package:models/models.dart';
 
-enum _BookingMode() {
-  create,
-  load,
-}
+enum _BookingMode { create, load }
 
 class BookingPage extends StatelessWidget {
   const new loadBooking({required this._id, super.key})

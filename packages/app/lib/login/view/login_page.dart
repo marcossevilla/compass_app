@@ -24,7 +24,7 @@ class const LoginView({super.key}) extends StatefulWidget {
   State<LoginView> createState() => _LoginViewState();
 }
 
-class _LoginViewState() extends State<LoginView> {
+class _LoginViewState extends State<LoginView> {
   final _email = TextEditingController(text: 'email@example.com');
   final _password = TextEditingController(text: 'password');
 

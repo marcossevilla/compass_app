@@ -10,7 +10,7 @@ extension ThemeX on BuildContext {
   TagChipTheme? get tagChipTheme => theme.extension<TagChipTheme>();
 }
 
-class AppTheme() {
+class AppTheme {
   static ColorScheme colorScheme = ColorScheme.fromSwatch(
     accentColor: Colors.indigoAccent,
   );

@@ -3,10 +3,7 @@ import 'package:models/models.dart';
 /// {@template itinerary_config_repository}
 /// Repository that manages the itinerary configuration domain.
 /// {@endtemplate}
-class ItineraryConfigRepository() {
-  /// {@macro itinerary_config_repository}
-  this;
-
+class ItineraryConfigRepository {
   ItineraryConfig? _itineraryConfig;
 
   /// Returns the current itinerary configuration.

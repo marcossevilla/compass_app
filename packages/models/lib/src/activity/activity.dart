@@ -4,7 +4,7 @@ import 'package:json_annotation/json_annotation.dart';
 part 'activity.g.dart';
 
 /// Time of day when the activity is available.
-enum TimeOfDay() {
+enum TimeOfDay {
   /// Any time of day.
   any,
 

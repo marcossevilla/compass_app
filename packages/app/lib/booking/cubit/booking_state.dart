@@ -1,6 +1,6 @@
 part of 'booking_cubit.dart';
 
-enum BookingStatus() {
+enum BookingStatus {
   initial,
   loading,
   loaded,

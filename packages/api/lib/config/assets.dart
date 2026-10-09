@@ -4,7 +4,7 @@ import 'dart:io';
 import 'package:models/models.dart';
 
 /// Class containing constants with assets paths.
-abstract final class Assets() {
+abstract final class Assets {
   static const _activities = 'public/assets/activities.json';
   static const _destinations = 'public/assets/destinations.json';
 
