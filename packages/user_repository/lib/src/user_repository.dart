@@ -4,11 +4,9 @@ import 'package:models/models.dart';
 /// {@template user_repository}
 /// Repository that manages the user domain.
 /// {@endtemplate}
-class UserRepository {
+class UserRepository({required final ApiClient _apiClient}) {
   /// {@macro user_repository}
-  new({required this._apiClient});
-
-  final ApiClient _apiClient;
+  this;
 
   User? _cachedData;
 

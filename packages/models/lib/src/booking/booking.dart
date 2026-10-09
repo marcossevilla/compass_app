@@ -8,15 +8,25 @@ part 'booking.g.dart';
 /// A booking that contains a destination and a list of activities.
 /// {@endtemplate}
 @JsonSerializable(explicitToJson: true)
-class Booking extends Equatable {
+class const Booking({
+  /// Start date of the trip
+  required final DateTime startDate,
+
+  /// End date of the trip.
+  required final DateTime endDate,
+
+  /// Destination of the trip.
+  required final Destination destination,
+
+  /// List of chosen activities.
+  required final List<Activity> activities,
+
+  /// Optional ID of the booking.
+  /// May be null if the booking is not yet stored.
+  final int? id,
+}) extends Equatable {
   /// {@macro booking}
-  const new({
-    required this.startDate,
-    required this.endDate,
-    required this.destination,
-    required this.activities,
-    this.id,
-  });
+  this;
 
   /// Creates a [Booking] from a JSON object.
   factory fromJson(Map<String, Object?> json) {
@@ -25,22 +35,6 @@ class Booking extends Equatable {
 
   /// Converts this [Booking] to a JSON object.
   Map<String, Object?> toJson() => _$BookingToJson(this);
-
-  /// Optional ID of the booking.
-  /// May be null if the booking is not yet stored.
-  final int? id;
-
-  /// Start date of the trip
-  final DateTime startDate;
-
-  /// End date of the trip.
-  final DateTime endDate;
-
-  /// Destination of the trip.
-  final Destination destination;
-
-  /// List of chosen activities.
-  final List<Activity> activities;
 
   @override
   List<Object?> get props => [id, startDate, endDate, destination, activities];
@@ -52,14 +46,21 @@ class Booking extends Equatable {
 /// like activitities or destination.
 /// {@endtemplate}
 @JsonSerializable()
-class BookingSummary extends Equatable {
+class const BookingSummary({
+  /// Booking id.
+  required final int id,
+
+  /// Name to be displayed.
+  required final String name,
+
+  /// Start date of the booking.
+  required final DateTime startDate,
+
+  /// End date of the booking.
+  required final DateTime endDate,
+}) extends Equatable {
   /// {@macro booking_summary}
-  const new({
-    required this.id,
-    required this.name,
-    required this.startDate,
-    required this.endDate,
-  });
+  this;
 
   /// Creates a [BookingSummary] from a JSON object.
   factory fromJson(Map<String, Object?> json) {
@@ -69,18 +70,6 @@ class BookingSummary extends Equatable {
   /// Converts this [BookingSummary] to a JSON object.
   Map<String, Object?> toJson() => _$BookingSummaryToJson(this);
 
-  /// Booking id.
-  final int id;
-
-  /// Name to be displayed.
-  final String name;
-
-  /// Start date of the booking.
-  final DateTime startDate;
-
-  /// End date of the booking.
-  final DateTime endDate;
-
   @override
   List<Object> get props => [id, name, startDate, endDate];
 }
@@ -89,16 +78,29 @@ class BookingSummary extends Equatable {
 /// A booking that contains a destination and a list of activities.
 /// {@endtemplate}
 @JsonSerializable()
-class BookingApiModel extends Equatable {
+class const BookingApiModel({
+  /// Start date of the trip.
+  required final DateTime startDate,
+
+  /// End date of the trip.
+  required final DateTime endDate,
+
+  /// Booking name.
+  /// Should be "Destination, Continent".
+  required final String name,
+
+  /// Destination of the trip.
+  required final String destinationRef,
+
+  /// List of chosen activities.
+  required final List<String> activitiesRef,
+
+  /// Booking ID.
+  /// Generated when stored in server.
+  final int? id,
+}) extends Equatable {
   /// {@macro booking_api_model}
-  const new({
-    required this.startDate,
-    required this.endDate,
-    required this.name,
-    required this.destinationRef,
-    required this.activitiesRef,
-    this.id,
-  });
+  this;
 
   /// Creates a [BookingApiModel] from a JSON object.
   factory fromJson(Map<String, Object?> json) {
@@ -107,26 +109,6 @@ class BookingApiModel extends Equatable {
 
   /// Converts a [BookingApiModel] to a JSON object.
   Map<String, Object?> toJson() => _$BookingApiModelToJson(this);
-
-  /// Booking ID.
-  /// Generated when stored in server.
-  final int? id;
-
-  /// Start date of the trip.
-  final DateTime startDate;
-
-  /// End date of the trip.
-  final DateTime endDate;
-
-  /// Booking name.
-  /// Should be "Destination, Continent".
-  final String name;
-
-  /// Destination of the trip.
-  final String destinationRef;
-
-  /// List of chosen activities.
-  final List<String> activitiesRef;
 
   /// Returns an instance of [BookingApiModel] with updated properties.
   BookingApiModel copyWith({

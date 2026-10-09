@@ -4,7 +4,7 @@ import 'package:mocktail/mocktail.dart';
 import 'package:models/models.dart';
 import 'package:test/test.dart';
 
-class _FakeBookingApiModel extends Fake implements BookingApiModel {
+class _FakeBookingApiModel() extends Fake implements BookingApiModel {
   @override
   BookingApiModel copyWith({
     int? Function()? id,

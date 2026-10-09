@@ -1,7 +1,7 @@
 import 'package:models/models.dart';
 
 /// Class containing constants with the server hardcoded credentials.
-abstract final class Constants {
+abstract final class Constants() {
   /// Email for the hardcoded login.
   static const email = 'email@example.com';
 

@@ -4,11 +4,9 @@ import 'package:models/models.dart';
 /// {@template continent_repository}
 /// Repository that manages the continents domain.
 /// {@endtemplate}
-class ContinentRepository {
+class ContinentRepository({required final ApiClient _apiClient}) {
   /// {@macro continent_repository}
-  new({required this._apiClient});
-
-  final ApiClient _apiClient;
+  this;
 
   List<Continent>? _cachedData;
 

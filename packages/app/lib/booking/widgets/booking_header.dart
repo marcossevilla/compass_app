@@ -5,11 +5,8 @@ import 'package:compass_app/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:models/models.dart';
 
-class BookingHeader extends StatelessWidget {
-  const new({required this.booking, super.key});
-
-  final Booking booking;
-
+class const BookingHeader({required final Booking booking, super.key})
+    extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l10n = context.l10n;
@@ -39,11 +36,7 @@ class BookingHeader extends StatelessWidget {
   }
 }
 
-class _Top extends StatelessWidget {
-  const new({required this.booking});
-
-  final Booking booking;
-
+class const _Top({required final Booking booking}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final dimensions = context.dimensions;
@@ -67,11 +60,7 @@ class _Top extends StatelessWidget {
   }
 }
 
-class _Tags extends StatelessWidget {
-  const new({required this.booking});
-
-  final Booking booking;
-
+class const _Tags({required final Booking booking}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -103,11 +92,8 @@ class _Tags extends StatelessWidget {
   }
 }
 
-class _Headline extends StatelessWidget {
-  const new({required this.booking});
-
-  final Booking booking;
-
+class const _Headline({required final Booking booking})
+    extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
@@ -136,11 +122,8 @@ class _Headline extends StatelessWidget {
   }
 }
 
-class _HeaderImage extends StatelessWidget {
-  const new({required this.booking});
-
-  final Booking booking;
-
+class const _HeaderImage({required final Booking booking})
+    extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CachedNetworkImage(
@@ -150,9 +133,7 @@ class _HeaderImage extends StatelessWidget {
   }
 }
 
-class _Gradient extends StatelessWidget {
-  const new();
-
+class const _Gradient() extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DecoratedBox(

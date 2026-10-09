@@ -1,6 +1,6 @@
 part of 'home_cubit.dart';
 
-enum HomeStatus {
+enum HomeStatus() {
   initial,
   loading,
   success,
@@ -10,17 +10,11 @@ enum HomeStatus {
   errorWhileDeletingBooking,
 }
 
-class HomeState extends Equatable {
-  const new({
-    this.user,
-    this.bookings = const [],
-    this.status = HomeStatus.initial,
-  });
-
-  final User? user;
-  final List<BookingSummary> bookings;
-  final HomeStatus status;
-
+class const HomeState({
+  final User? user,
+  final List<BookingSummary> bookings = const [],
+  final HomeStatus status = HomeStatus.initial,
+}) extends Equatable {
   HomeState copyWith({
     User? user,
     List<BookingSummary>? bookings,

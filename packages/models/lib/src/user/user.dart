@@ -7,21 +7,21 @@ part 'user.g.dart';
 /// A user that can be authenticated.
 /// {@endtemplate}
 @JsonSerializable()
-class User extends Equatable {
+class const User({
+  /// The user's name.
+  required final String name,
+
+  /// The user's picture URL.
+  required final String picture,
+}) extends Equatable {
   /// {@macro user}
-  const new({required this.name, required this.picture});
+  this;
 
   /// Creates a [User] from a JSON object.
   factory fromJson(Map<String, Object?> json) => _$UserFromJson(json);
 
   /// Converts this [User] to a JSON object.
   Map<String, Object?> toJson() => _$UserToJson(this);
-
-  /// The user's name.
-  final String name;
-
-  /// The user's picture URL.
-  final String picture;
 
   @override
   List<Object> get props => [name, picture];
@@ -31,14 +31,17 @@ class User extends Equatable {
 /// A user that can be authenticated.
 /// {@endtemplate}
 @JsonSerializable()
-class UserApiModel extends User {
+class const UserApiModel({
+  /// The user's ID.
+  required final String id,
+
+  /// The user's email.
+  required final String email,
+  required super.name,
+  required super.picture,
+}) extends User {
   /// {@macro user_api_model}
-  const new({
-    required this.id,
-    required this.email,
-    required super.name,
-    required super.picture,
-  });
+  this;
 
   /// Creates a [UserApiModel] from a JSON object.
   factory fromJson(Map<String, Object?> json) {
@@ -48,12 +51,6 @@ class UserApiModel extends User {
   /// Converts this [UserApiModel] to a JSON object.
   @override
   Map<String, Object?> toJson() => _$UserApiModelToJson(this);
-
-  /// The user's ID.
-  final String id;
-
-  /// The user's email.
-  final String email;
 
   @override
   List<Object> get props => [id, name, email, picture];

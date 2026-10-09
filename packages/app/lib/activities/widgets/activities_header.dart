@@ -8,9 +8,7 @@ import 'package:compass_app/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-class ActivitiesHeader extends StatelessWidget {
-  const new({super.key});
-
+class const ActivitiesHeader({super.key}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final dimensions = context.dimensions;

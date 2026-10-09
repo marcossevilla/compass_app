@@ -7,18 +7,20 @@ import 'package:itinerary_config_repository/itinerary_config_repository.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:user_repository/user_repository.dart';
 
-class MockActivityRepository extends Mock implements ActivityRepository;
+class MockActivityRepository() extends Mock implements ActivityRepository;
 
-class MockAuthenticationRepository extends Mock
+class MockAuthenticationRepository()
+    extends Mock
     implements AuthenticationRepository;
 
-class MockBookingRepository extends Mock implements BookingRepository;
+class MockBookingRepository() extends Mock implements BookingRepository;
 
-class MockContinentRepository extends Mock implements ContinentRepository;
+class MockContinentRepository() extends Mock implements ContinentRepository;
 
-class MockDestinationRepository extends Mock implements DestinationRepository;
+class MockDestinationRepository() extends Mock implements DestinationRepository;
 
-class MockItineraryConfigRepository extends Mock
+class MockItineraryConfigRepository()
+    extends Mock
     implements ItineraryConfigRepository;
 
-class MockUserRepository extends Mock implements UserRepository;
+class MockUserRepository() extends Mock implements UserRepository;

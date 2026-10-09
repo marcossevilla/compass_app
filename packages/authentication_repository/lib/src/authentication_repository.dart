@@ -7,13 +7,11 @@ import 'package:models/models.dart';
 /// {@template authentication_repository}
 /// Repository that manages the authentication domain.
 /// {@endtemplate}
-class AuthenticationRepository {
+class AuthenticationRepository({required final AuthApiClient _authApiClient}) {
   /// {@macro authentication_repository}
-  new({required this._authApiClient})
-    : _logger = Logger('AuthenticationRepository');
+  this : _logger = Logger('AuthenticationRepository');
 
   final Logger _logger;
-  final AuthApiClient _authApiClient;
 
   /// Check if the user is authenticated.
   Stream<bool> get isAuthenticated => _authApiClient.isAuthenticated;

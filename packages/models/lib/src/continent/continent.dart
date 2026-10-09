@@ -7,9 +7,15 @@ part 'continent.g.dart';
 /// A continent that can be visited.
 /// {@endtemplate}
 @JsonSerializable()
-class Continent extends Equatable {
+class const Continent({
+  /// e.g. 'Europe'
+  required final String name,
+
+  /// e.g. 'https://rstr.in/google/tripedia/TmR12QdlVTT'
+  required final String imageUrl,
+}) extends Equatable {
   /// {@macro continent}
-  const new({required this.name, required this.imageUrl});
+  this;
 
   /// Creates a [Continent] from a JSON object.
   factory fromJson(Map<String, Object?> json) {
@@ -18,12 +24,6 @@ class Continent extends Equatable {
 
   /// Converts this [Continent] to a JSON object.
   Map<String, Object?> toJson() => _$ContinentToJson(this);
-
-  /// e.g. 'Europe'
-  final String name;
-
-  /// e.g. 'https://rstr.in/google/tripedia/TmR12QdlVTT'
-  final String imageUrl;
 
   @override
   List<Object> get props => [name, imageUrl];

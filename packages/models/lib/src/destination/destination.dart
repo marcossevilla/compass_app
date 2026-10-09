@@ -7,17 +7,30 @@ part 'destination.g.dart';
 /// A destination that can be visited.
 /// {@endtemplate}
 @JsonSerializable()
-class Destination extends Equatable {
+class const Destination({
+  /// e.g. 'alaska'
+  required final String ref,
+
+  /// e.g. 'Alaska'
+  required final String name,
+
+  /// e.g. 'United States'
+  required final String country,
+
+  /// e.g. 'North America'
+  required final String continent,
+
+  /// e.g. 'Alaska is a haven for outdoor enthusiasts ...'
+  required final String knownFor,
+
+  /// e.g. ['Mountain', 'Off-the-beaten-path', 'Wildlife watching']
+  required final List<String> tags,
+
+  /// e.g. 'https://storage.googleapis.com/tripedia-images/destinations/alaska.jpg'
+  required final String imageUrl,
+}) extends Equatable {
   /// {@macro destination}
-  const new({
-    required this.ref,
-    required this.name,
-    required this.country,
-    required this.continent,
-    required this.knownFor,
-    required this.tags,
-    required this.imageUrl,
-  });
+  this;
 
   /// Creates a [Destination] from a JSON object.
   factory fromJson(Map<String, Object?> json) {
@@ -26,27 +39,6 @@ class Destination extends Equatable {
 
   /// Converts this [Destination] to a JSON object.
   Map<String, Object?> toJson() => _$DestinationToJson(this);
-
-  /// e.g. 'alaska'
-  final String ref;
-
-  /// e.g. 'Alaska'
-  final String name;
-
-  /// e.g. 'United States'
-  final String country;
-
-  /// e.g. 'North America'
-  final String continent;
-
-  /// e.g. 'Alaska is a haven for outdoor enthusiasts ...'
-  final String knownFor;
-
-  /// e.g. ['Mountain', 'Off-the-beaten-path', 'Wildlife watching']
-  final List<String> tags;
-
-  /// e.g. 'https://storage.googleapis.com/tripedia-images/destinations/alaska.jpg'
-  final String imageUrl;
 
   @override
   List<Object> get props => [

@@ -12,9 +12,7 @@ import 'package:models/models.dart';
 /// Loads a list of continents in a horizontal carousel.
 /// Users can tap one item to select it.
 /// Tapping again the same item will deselect it.
-class SearchFormContinent extends StatelessWidget {
-  const new({super.key});
-
+class const SearchFormContinent({super.key}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l10n = context.l10n;
@@ -60,18 +58,12 @@ class SearchFormContinent extends StatelessWidget {
 }
 
 @visibleForTesting
-class CarouselItem extends StatelessWidget {
-  const new({
-    required this.name,
-    required this.imageUrl,
-    required this.selectedContinent,
-    super.key,
-  });
-
-  final String name;
-  final String imageUrl;
-  final String? selectedContinent;
-
+class const CarouselItem({
+  required final String name,
+  required final String imageUrl,
+  required final String? selectedContinent,
+  super.key,
+}) extends StatelessWidget {
   bool get selected => selectedContinent == name;
 
   @override

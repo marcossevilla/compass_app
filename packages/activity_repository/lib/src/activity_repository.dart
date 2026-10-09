@@ -4,11 +4,9 @@ import 'package:models/models.dart';
 /// {@template activity_repository}
 /// Repository that manages the activity domain.
 /// {@endtemplate}
-class ActivityRepository {
+class ActivityRepository({required final ApiClient _apiClient}) {
   /// {@macro activity_repository}
-  new({required this._apiClient});
-
-  final ApiClient _apiClient;
+  this;
 
   final Map<String, List<Activity>> _cachedData = {};
 

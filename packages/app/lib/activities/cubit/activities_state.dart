@@ -1,6 +1,6 @@
 part of 'activities_cubit.dart';
 
-enum ActivitiesStatus {
+enum ActivitiesStatus() {
   initial,
   loadingActivities,
   loadedActivities,
@@ -9,19 +9,12 @@ enum ActivitiesStatus {
   failedSavingActivities,
 }
 
-class ActivitiesState extends Equatable {
-  const new({
-    this.daytimeActivities = const [],
-    this.eveningActivities = const [],
-    this.selectedActivities = const {},
-    this.status = ActivitiesStatus.initial,
-  });
-
-  final List<Activity> daytimeActivities;
-  final List<Activity> eveningActivities;
-  final Set<String> selectedActivities;
-  final ActivitiesStatus status;
-
+class const ActivitiesState({
+  final List<Activity> daytimeActivities = const [],
+  final List<Activity> eveningActivities = const [],
+  final Set<String> selectedActivities = const {},
+  final ActivitiesStatus status = ActivitiesStatus.initial,
+}) extends Equatable {
   ActivitiesState copyWith({
     List<Activity>? daytimeActivities,
     List<Activity>? eveningActivities,

@@ -4,12 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:models/models.dart';
 
-class ResultCard extends StatelessWidget {
-  const new({required this.destination, required this.onTap, super.key});
-
-  final Destination destination;
-  final GestureTapCallback onTap;
-
+class const ResultCard({
+  required final Destination destination,
+  required final GestureTapCallback onTap,
+  super.key,
+}) extends StatelessWidget {
   static final TextStyle _cardTitleStyle = GoogleFonts.rubik(
     textStyle: const TextStyle(
       fontWeight: FontWeight.w800,

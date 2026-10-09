@@ -1,24 +1,21 @@
 part of 'search_form_cubit.dart';
 
-enum SearchFormStatus { initial, loading, loaded, error, configSaved }
+enum SearchFormStatus() {
+  initial,
+  loading,
+  loaded,
+  error,
+  configSaved,
+}
 
-class SearchFormState extends Equatable {
-  const new({
-    this.guests = 0,
-    this.startDate,
-    this.endDate,
-    this.selectedContinent,
-    this.continents = const [],
-    this.status = SearchFormStatus.initial,
-  });
-
-  final int guests;
-  final DateTime? startDate;
-  final DateTime? endDate;
-  final String? selectedContinent;
-  final List<Continent> continents;
-  final SearchFormStatus status;
-
+class const SearchFormState({
+  final int guests = 0,
+  final DateTime? startDate,
+  final DateTime? endDate,
+  final String? selectedContinent,
+  final List<Continent> continents = const [],
+  final SearchFormStatus status = SearchFormStatus.initial,
+}) extends Equatable {
   /// True if the form is valid and can be submitted.
   bool get valid {
     return guests > 0 &&
