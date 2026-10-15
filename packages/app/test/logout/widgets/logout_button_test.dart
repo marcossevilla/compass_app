@@ -59,9 +59,11 @@ void main() {
     });
 
     Widget buildSubject() {
-      return BlocProvider.value(
-        value: logoutCubit,
-        child: const LogoutButtonView(),
+      return Scaffold(
+        body: BlocProvider.value(
+          value: logoutCubit,
+          child: const LogoutButtonView(),
+        ),
       );
     }
 
@@ -90,7 +92,7 @@ void main() {
       );
 
       await tester.pumpApp(buildSubject());
-      await tester.pump();
+      await tester.pumpAndSettle();
 
       final l10n = await AppLocalizations.delegate.load(const Locale('en'));
       await tester.tap(find.text(l10n.tryAgain));
