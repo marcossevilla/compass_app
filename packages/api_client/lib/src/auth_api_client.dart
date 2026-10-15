@@ -6,32 +6,26 @@ import 'package:logging/logging.dart';
 import 'package:models/models.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-/// {@template auth_api_client}
 /// Authentication client for the Compass API.
-/// {@endtemplate}
-class AuthApiClient {
-  /// {@macro auth_api_client}
-  new({
-    required this._sharedPreferences,
-    int? port,
-    String? host,
-    HttpClient? client,
-  }) : _port = port ?? 8080,
-       _host = host ?? 'localhost',
-       _client = client ?? HttpClient(),
-       _logger = Logger('AuthApiClient'),
-       _authToken = StreamController<String?>.broadcast(),
-       _isAuthenticated = StreamController<bool>.broadcast() {
+class AuthApiClient({
+  required final SharedPreferences _sharedPreferences,
+  int? port,
+  String? host,
+  HttpClient? client,
+}) {
+  this
+    : _logger = Logger('AuthApiClient'),
+      _authToken = StreamController<String?>.broadcast(),
+      _isAuthenticated = StreamController<bool>.broadcast() {
     _isAuthenticated.onListen = token;
   }
 
   static const _tokenKey = 'TOKEN';
 
-  final int _port;
-  final String _host;
+  final int _port = port ?? 8080;
+  final String _host = host ?? 'localhost';
   final Logger _logger;
-  final HttpClient _client;
-  final SharedPreferences _sharedPreferences;
+  final HttpClient _client = client ?? HttpClient();
   final StreamController<String?> _authToken;
   final StreamController<bool?> _isAuthenticated;
 

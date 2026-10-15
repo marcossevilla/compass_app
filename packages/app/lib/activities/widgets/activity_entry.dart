@@ -3,18 +3,12 @@ import 'package:compass_app/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:models/models.dart';
 
-class ActivityEntry extends StatelessWidget {
-  const new({
-    required this.activity,
-    required this.selected,
-    required this.onChanged,
-    super.key,
-  });
-
-  final Activity activity;
-  final bool selected;
-  final ValueChanged<bool?> onChanged;
-
+class const ActivityEntry({
+  required final Activity activity,
+  required final bool selected,
+  required final ValueChanged<bool?> onChanged,
+  super.key,
+}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;

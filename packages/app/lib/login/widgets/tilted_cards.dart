@@ -2,9 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-class TiltedCards extends StatelessWidget {
-  const new({super.key});
-
+class const TiltedCards({super.key}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ConstrainedBox(
@@ -46,21 +44,13 @@ class TiltedCards extends StatelessWidget {
   }
 }
 
-class _Card extends StatelessWidget {
-  const new({
-    required this.imageUrl,
-    required this.width,
-    required this.height,
-    required this.tilt,
-    this.showTitle = false,
-  });
-
-  final double tilt;
-  final double width;
-  final double height;
-  final String imageUrl;
-  final bool showTitle;
-
+class const _Card({
+  required final String imageUrl,
+  required final double width,
+  required final double height,
+  required final double tilt,
+  final bool showTitle = false,
+}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return RotationTransition(

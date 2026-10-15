@@ -9,17 +9,11 @@ enum ResultsStatus {
   updateConfigFailure,
 }
 
-class ResultsState extends Equatable {
-  const new({
-    this.destinations = const [],
-    this.itineraryConfig = const ItineraryConfig(),
-    this.status = ResultsStatus.initial,
-  });
-
-  final List<Destination> destinations;
-  final ItineraryConfig itineraryConfig;
-  final ResultsStatus status;
-
+class const ResultsState({
+  final List<Destination> destinations = const [],
+  final ItineraryConfig itineraryConfig = const ItineraryConfig(),
+  final ResultsStatus status = ResultsStatus.initial,
+}) extends Equatable {
   ResultsState copyWith({
     List<Destination>? destinations,
     ItineraryConfig? itineraryConfig,

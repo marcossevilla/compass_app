@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 
-class AppCheckbox extends StatelessWidget {
-  const new({required this.value, required this.onChanged, super.key});
-
-  final bool value;
-  final ValueChanged<bool?> onChanged;
-
+class const AppCheckbox({
+  required final bool value,
+  required final ValueChanged<bool?> onChanged,
+  super.key,
+}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;

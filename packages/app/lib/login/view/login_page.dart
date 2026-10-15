@@ -7,9 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
-class LoginPage extends StatelessWidget {
-  const new({super.key});
-
+class const LoginPage({super.key}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -21,9 +19,7 @@ class LoginPage extends StatelessWidget {
   }
 }
 
-class LoginView extends StatefulWidget {
-  const new({super.key});
-
+class const LoginView({super.key}) extends StatefulWidget {
   @override
   State<LoginView> createState() => _LoginViewState();
 }

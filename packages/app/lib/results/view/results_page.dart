@@ -11,9 +11,7 @@ import 'package:go_router/go_router.dart';
 import 'package:itinerary_config_repository/itinerary_config_repository.dart';
 import 'package:models/models.dart';
 
-class ResultsPage extends StatelessWidget {
-  const new({super.key});
-
+class const ResultsPage({super.key}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -30,9 +28,7 @@ class ResultsPage extends StatelessWidget {
   }
 }
 
-class ResultsView extends StatelessWidget {
-  const new({super.key});
-
+class const ResultsView({super.key}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l10n = context.l10n;
@@ -107,11 +103,10 @@ class ResultsView extends StatelessWidget {
 }
 
 @visibleForTesting
-class ResultsSearchBar extends StatelessWidget {
-  const new({required this.itineraryConfig, super.key});
-
-  final ItineraryConfig itineraryConfig;
-
+class const ResultsSearchBar({
+  required final ItineraryConfig itineraryConfig,
+  super.key,
+}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final dimensions = context.dimensions;
@@ -134,11 +129,8 @@ class ResultsSearchBar extends StatelessWidget {
 }
 
 @visibleForTesting
-class Grid extends StatelessWidget {
-  const new({required this.destinations, super.key});
-
-  final List<Destination> destinations;
-
+class const Grid({required final List<Destination> destinations, super.key})
+    extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SliverGrid(

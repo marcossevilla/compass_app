@@ -7,9 +7,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 ///
 /// Users can tap the Plus and Minus icons to increase or decrease
 /// the number of guests.
-class SearchFormGuests extends StatelessWidget {
-  const new({super.key});
-
+class const SearchFormGuests({super.key}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final dimensions = context.dimensions;
@@ -44,9 +42,7 @@ class SearchFormGuests extends StatelessWidget {
 }
 
 @visibleForTesting
-class QuantitySelector extends StatelessWidget {
-  const new({super.key});
-
+class const QuantitySelector({super.key}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);

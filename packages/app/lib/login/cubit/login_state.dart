@@ -2,11 +2,8 @@ part of 'login_cubit.dart';
 
 enum LoginStatus { initial, loading, success, failure }
 
-class LoginState extends Equatable {
-  const new({this.status = LoginStatus.initial});
-
-  final LoginStatus status;
-
+class const LoginState({final LoginStatus status = LoginStatus.initial})
+    extends Equatable {
   LoginState copyWith({LoginStatus? status}) {
     return LoginState(status: status ?? this.status);
   }

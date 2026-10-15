@@ -5,9 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:models/models.dart';
 
-class BookingBody extends StatelessWidget {
-  const new({super.key});
-
+class const BookingBody({super.key}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocSelector<BookingCubit, BookingState, Booking?>(
@@ -33,11 +31,8 @@ class BookingBody extends StatelessWidget {
   }
 }
 
-class _Activity extends StatelessWidget {
-  const new({required this.activity});
-
-  final Activity activity;
-
+class const _Activity({required final Activity activity})
+    extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final dimensions = context.dimensions;

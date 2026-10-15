@@ -10,9 +10,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:itinerary_config_repository/itinerary_config_repository.dart';
 
-class ActivitiesPage extends StatelessWidget {
-  const new({super.key});
-
+class const ActivitiesPage({super.key}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -29,9 +27,7 @@ class ActivitiesPage extends StatelessWidget {
   }
 }
 
-class ActivitiesView extends StatelessWidget {
-  const new({super.key});
-
+class const ActivitiesView({super.key}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l10n = context.l10n;
@@ -121,11 +117,10 @@ class ActivitiesView extends StatelessWidget {
 }
 
 @visibleForTesting
-class BottomArea extends StatelessWidget {
-  const new({required this.selectedActivities, super.key});
-
-  final Set<String> selectedActivities;
-
+class const BottomArea({
+  required final Set<String> selectedActivities,
+  super.key,
+}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l10n = context.l10n;

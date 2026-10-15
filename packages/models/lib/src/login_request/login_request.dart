@@ -3,14 +3,15 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'login_request.g.dart';
 
-/// {@template login_request}
 /// Simple data class to hold login request data.
-/// {@endtemplate}
 @JsonSerializable()
-class LoginRequest extends Equatable {
-  /// {@macro login_request}
-  const new({required this.email, required this.password});
+class const LoginRequest({
+  /// Email address.
+  required final String email,
 
+  /// Plain text password.
+  required final String password,
+}) extends Equatable {
   /// Converts a [Map] to an [LoginRequest].
   factory fromJson(Map<String, Object?> json) {
     return _$LoginRequestFromJson(json);
@@ -18,12 +19,6 @@ class LoginRequest extends Equatable {
 
   /// Converts a [LoginRequest] to a [Map].
   Map<String, Object?> toJson() => _$LoginRequestToJson(this);
-
-  /// Email address.
-  final String email;
-
-  /// Plain text password.
-  final String password;
 
   @override
   List<Object> get props => [email, password];

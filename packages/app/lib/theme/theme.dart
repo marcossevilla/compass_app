@@ -21,12 +21,10 @@ class AppTheme {
   );
 }
 
-class TagChipTheme extends ThemeExtension<TagChipTheme> {
-  const new({required this.chipColor, required this.onChipColor});
-
-  final Color chipColor;
-  final Color onChipColor;
-
+class const TagChipTheme({
+  required final Color chipColor,
+  required final Color onChipColor,
+}) extends ThemeExtension<TagChipTheme> {
   // Note: original Figma file uses Google Sans
   // which is not available on GoogleFonts.
   TextStyle get textStyle {

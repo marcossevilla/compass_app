@@ -7,8 +7,8 @@ import 'package:share_plus/share_plus.dart';
 typedef ShareFunction = Future<ShareResult> Function(ShareParams params);
 
 /// UseCase for sharing a booking.
-class BookingShareUseCase {
-  new _(this._share) : _log = Logger('BookingShareUseCase');
+class BookingShareUseCase._(final ShareFunction _share) {
+  this : _log = Logger('BookingShareUseCase');
 
   /// Create a [BookingShareUseCase] that uses `share_plus` package.
   factory withSharePlus() => BookingShareUseCase._(SharePlus.instance.share);
@@ -17,8 +17,6 @@ class BookingShareUseCase {
   factory custom(ShareFunction share) => BookingShareUseCase._(share);
 
   final Logger _log;
-  final ShareFunction _share;
-
   Future<void> shareBooking(Booking booking) async {
     final dateRange = DateTimeRange(
       start: booking.startDate,

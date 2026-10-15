@@ -8,20 +8,15 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:models/models.dart';
 
-class HomePage extends StatelessWidget {
-  const new({required this.homeCubit, super.key});
-
-  final HomeCubit homeCubit;
-
+class const HomePage({required final HomeCubit homeCubit, super.key})
+    extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider.value(value: homeCubit, child: const HomeView());
   }
 }
 
-class HomeView extends StatelessWidget {
-  const new({super.key});
-
+class const HomeView({super.key}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l10n = context.l10n;
@@ -113,18 +108,12 @@ class HomeView extends StatelessWidget {
   }
 }
 
-class _Booking extends StatelessWidget {
-  const new({
-    required this.booking,
-    required this.onTap,
-    required this.confirmDismiss,
-    super.key,
-  });
-
-  final BookingSummary booking;
-  final GestureTapCallback onTap;
-  final ConfirmDismissCallback confirmDismiss;
-
+class const _Booking({
+  required final BookingSummary booking,
+  required final GestureTapCallback onTap,
+  required final ConfirmDismissCallback confirmDismiss,
+  super.key,
+}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);

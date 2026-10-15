@@ -8,21 +8,15 @@ import 'package:models/models.dart';
 
 part 'booking_state.dart';
 
-class BookingCubit extends Cubit<BookingState> {
-  new({
-    required this._createUseCase,
-    required this._shareUseCase,
-    required this._bookingRepository,
-    required this._itineraryConfigRepository,
-  }) : _log = Logger('BookingCubit'),
-       super(const BookingState());
+class BookingCubit({
+  required final BookingCreateUseCase _createUseCase,
+  required final BookingShareUseCase _shareUseCase,
+  required final BookingRepository _bookingRepository,
+  required final ItineraryConfigRepository _itineraryConfigRepository,
+}) extends Cubit<BookingState> {
+  this : _log = Logger('BookingCubit'), super(const BookingState());
 
   final Logger _log;
-  final BookingCreateUseCase _createUseCase;
-  final BookingShareUseCase _shareUseCase;
-  final BookingRepository _bookingRepository;
-  final ItineraryConfigRepository _itineraryConfigRepository;
-
   Future<void> createBooking() async {
     try {
       _log.fine('Creating booking...');

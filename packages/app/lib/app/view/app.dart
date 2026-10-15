@@ -10,26 +10,16 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:itinerary_config_repository/itinerary_config_repository.dart';
 import 'package:user_repository/user_repository.dart';
 
-class App extends StatelessWidget {
-  const new({
-    required this._activityRepository,
-    required this._authenticationRepository,
-    required this._bookingRepository,
-    required this._continentRepository,
-    required this._destinationRepository,
-    required this._itineraryConfigRepository,
-    required this._userRepository,
-    super.key,
-  });
-
-  final ActivityRepository _activityRepository;
-  final AuthenticationRepository _authenticationRepository;
-  final BookingRepository _bookingRepository;
-  final ContinentRepository _continentRepository;
-  final DestinationRepository _destinationRepository;
-  final ItineraryConfigRepository _itineraryConfigRepository;
-  final UserRepository _userRepository;
-
+class const App({
+  required final ActivityRepository _activityRepository,
+  required final AuthenticationRepository _authenticationRepository,
+  required final BookingRepository _bookingRepository,
+  required final ContinentRepository _continentRepository,
+  required final DestinationRepository _destinationRepository,
+  required final ItineraryConfigRepository _itineraryConfigRepository,
+  required final UserRepository _userRepository,
+  super.key,
+}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiRepositoryProvider(
@@ -47,9 +37,7 @@ class App extends StatelessWidget {
   }
 }
 
-class AppView extends StatelessWidget {
-  const new({super.key});
-
+class const AppView({super.key}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<bool>(

@@ -13,12 +13,10 @@ enum BookingStatus {
   bool get isInProgress => this == loading || this == creating;
 }
 
-class BookingState extends Equatable {
-  const new({this.booking, this.status = BookingStatus.initial});
-
-  final Booking? booking;
-  final BookingStatus status;
-
+class const BookingState({
+  final Booking? booking,
+  final BookingStatus status = BookingStatus.initial,
+}) extends Equatable {
   BookingState copyWith({Booking? booking, BookingStatus? status}) {
     return BookingState(
       booking: booking ?? this.booking,

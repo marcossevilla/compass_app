@@ -7,17 +7,13 @@ import 'package:models/models.dart';
 
 part 'logout_state.dart';
 
-class LogoutCubit extends Cubit<LogoutState> {
-  new({
-    required this._authenticationRepository,
-    required this._itineraryConfigRepository,
-  }) : _log = Logger('LogoutCubit'),
-       super(const LogoutState());
+class LogoutCubit({
+  required final AuthenticationRepository _authenticationRepository,
+  required final ItineraryConfigRepository _itineraryConfigRepository,
+}) extends Cubit<LogoutState> {
+  this : _log = Logger('LogoutCubit'), super(const LogoutState());
 
   final Logger _log;
-  final AuthenticationRepository _authenticationRepository;
-  final ItineraryConfigRepository _itineraryConfigRepository;
-
   Future<void> logout() async {
     try {
       emit(state.copyWith(status: LogoutStatus.loading));

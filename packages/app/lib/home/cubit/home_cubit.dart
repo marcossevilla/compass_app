@@ -7,15 +7,13 @@ import 'package:user_repository/user_repository.dart';
 
 part 'home_state.dart';
 
-class HomeCubit extends Cubit<HomeState> {
-  new({required this._userRepository, required this._bookingRepository})
-    : _log = Logger('HomeCubit'),
-      super(const HomeState());
+class HomeCubit({
+  required final UserRepository _userRepository,
+  required final BookingRepository _bookingRepository,
+}) extends Cubit<HomeState> {
+  this : _log = Logger('HomeCubit'), super(const HomeState());
 
   final Logger _log;
-  final UserRepository _userRepository;
-  final BookingRepository _bookingRepository;
-
   Future<void> load() async {
     try {
       emit(state.copyWith(status: HomeStatus.loading));

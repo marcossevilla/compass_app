@@ -5,11 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:models/models.dart';
 
-class HomeHeader extends StatelessWidget {
-  const new({required this.user, super.key});
-
-  final User? user;
-
+class const HomeHeader({required final User? user, super.key})
+    extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l10n = context.l10n;
@@ -42,11 +39,8 @@ class HomeHeader extends StatelessWidget {
 }
 
 @visibleForTesting
-class Title extends StatelessWidget {
-  const new({required this.text, super.key});
-
-  final String text;
-
+class const Title({required final String text, super.key})
+    extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ShaderMask(
