@@ -9,6 +9,10 @@ import 'package:models/models.dart';
 import '../../helpers/helpers.dart';
 
 void main() {
+  setUpAll(() {
+    registerFallbackValue(const ItineraryConfig());
+  });
+
   group(LogoutCubit, () {
     late AuthenticationRepository authenticationRepository;
     late ItineraryConfigRepository itineraryConfigRepository;
